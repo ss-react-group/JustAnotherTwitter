@@ -46,8 +46,7 @@ const cssFilename = 'static/css/[name].[contenthash:8].css';
 const extractTextPluginOptions = shouldUseRelativeAssetPaths ? // Making sure that the publicPath goes back to to build folder.
   {
     publicPath: Array(cssFilename.split('/').length).join('../')
-  } :
-  {};
+  } : {};
 
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
@@ -92,23 +91,12 @@ module.exports = {
     // `web` extension prefixes have been added for better support
     // for React Native Web.
     extensions: [
-      '.mjs',
-      '.web.ts',
       '.ts',
-      '.web.tsx',
       '.tsx',
-      '.web.js',
       '.js',
-      '.json',
-      '.web.jsx',
       '.jsx',
+      '.less',
     ],
-    alias: {
-
-      // Support React Native Web
-      // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-      'react-native': 'react-native-web',
-    },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
       // This often causes confusion because we only process files within src/ with babel.
@@ -153,7 +141,6 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-
               compact: true,
             },
           },

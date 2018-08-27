@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 import './App.less';
 
-import Post from './components/post/post';
+import Post from './components/post/Post';
 
 interface MainProps {}
 
