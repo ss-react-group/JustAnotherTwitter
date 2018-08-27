@@ -1,5 +1,5 @@
-# Frontend
-Frontend is a social network application using React, written as a part of the SoftServe React academy group.
+# JustAnotherTwitter
+JustAnotherTwitter is a social network application using React, written as a part of the SoftServe React academy group.
 
 ## List of features
   - Login with Facebook || Twitter account
