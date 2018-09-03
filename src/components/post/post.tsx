@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 import { Fetch } from '../../helpers/fetch';
 
+import PasswordEncrypting from '../password-encrypting/PasswordEncrypting';
 // Interface for single post object;
 interface IPost {
   id: number;
@@ -55,6 +56,7 @@ class Post extends Component<PostProps, PostState> {
   public render() {
     return (
       <div className="post">
+        <PasswordEncrypting />
         <ul>
           {this.state.postsArray.map(post => (
             <li>
