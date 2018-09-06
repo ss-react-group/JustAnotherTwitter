@@ -21,8 +21,30 @@ class FacebookLoginComponent extends Component<
   }
 
   handleFacebookResponse = (response: any): void => {
-    this.setState({
-      responseData: response
+    const userObj = {
+      firstName: response.first_name,
+      lastName: response.last_name,
+      email: response.email,
+      birthday: response.birthday,
+      location: response.location.name
+    };
+
+    const authorizeUser = fetch(
+      'http://localhost:8081/api/v1/public/user_authenticate',
+      {
+        method: 'POST',
+        body: JSON.stringify(userObj),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+
+    authorizeUser.then(jsonResponse => jsonResponse.json()).then(response => {
+      this.setState({
+        responseData: response.sprededResponse
+      });
     });
   };
 
@@ -31,7 +53,7 @@ class FacebookLoginComponent extends Component<
       <div className="Facebook-login">
         <FacebookLogin
           appId="295196024410730"
-          fields="id,location,birthday,last_name,first_name"
+          fields="id,location,birthday,last_name,first_name,email"
           callback={this.handleFacebookResponse}
         />
         <p>{JSON.stringify(this.state.responseData)}</p>
