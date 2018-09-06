@@ -1,21 +1,28 @@
 import * as React from 'react';
 import { Component } from 'react';
 import './App.less';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import logo from './logo.svg';
+import Home from './components/Home';
+import User from './components/User';
 
+import SecuredRoute from './components/secured-route';
+
+const loggedIn = false;
 class App extends Component {
   public render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
+      <Router>
+        <div className="router">
+          <Route exact path="/" component={Home} />
+          <SecuredRoute
+            component={User}
+            path="/user"
+            guard={loggedIn}
+            redirectTo="/"
+          />
+        </div>
+      </Router>
     );
   }
 }
