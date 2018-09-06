@@ -13,7 +13,7 @@ class Fileupload extends Component<any, any> {
 
     formData.append('file', file);
 
-    fetch('http://localhost:8081/api/v1/secured/file_upload', {
+    fetch('http://localhost:8081/api/v1/secured/file_upload/2/1', {
       method: 'POST',
       body: formData
     })
