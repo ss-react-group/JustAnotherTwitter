@@ -5,6 +5,7 @@ import './App.less';
 import logo from './logo.svg';
 
 import Fileupload from './file-upload/Fileupload';
+import BackgroundImage from './components/user/background-image/BackroundImage';
 class App extends Component {
   public render() {
     return (
@@ -14,6 +15,8 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <Fileupload />
+
+        <BackgroundImage />
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
