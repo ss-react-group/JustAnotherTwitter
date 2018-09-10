@@ -141,14 +141,12 @@ module.exports = {
             },
           },
           {
-            test: /\.less$/,
-            use: [{
-              loader: 'style-loader' // creates style nodes from JS strings
-            }, {
-              loader: 'css-loader' // translates CSS into CommonJS
-            }, {
-              loader: 'less-loader' // compiles Less to CSS
-            }]
+            test: /\.scss$/,
+            use: [
+              "style-loader", // creates style nodes from JS strings
+              "css-loader", // translates CSS into CommonJS
+              "sass-loader" // compiles Sass to CSS, using Node Sass by default
+            ]
           },
           // Compile .tsx?
           {

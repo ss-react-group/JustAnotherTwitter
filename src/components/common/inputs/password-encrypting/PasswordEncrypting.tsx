@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { encrypt } from '../../helpers/password-encrypting';
+import { encrypt } from '../../../../helpers/password-encrypting';
 
 interface IPasswordEncryptingProps {}
 

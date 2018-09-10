@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { Component } from 'react';
-import './App.less';
+import './App.scss';
+import PasswordEncrypting from './components/common/inputs/password-encrypting/PasswordEncrypting';
 
-// Components
-import Post from './components/post/Post';
 // Application props
 interface IAppProps {}
 // Application state
@@ -15,7 +14,7 @@ class App extends Component<IAppProps, IAppState> {
   public render() {
     return (
       <div className="App">
-        <Post />
+        <PasswordEncrypting />
       </div>
     );
   }
