@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Component } from 'react';
 import './App.scss';
-import PasswordEncrypting from './components/common/inputs/password-encrypting/PasswordEncrypting';
+
+import MainLayout from './components/Layouts/MainLayout';
 
 // Application props
 interface IAppProps {}
@@ -14,7 +15,7 @@ class App extends Component<IAppProps, IAppState> {
   public render() {
     return (
       <div className="App">
-        <PasswordEncrypting />
+        <MainLayout />
       </div>
     );
   }
