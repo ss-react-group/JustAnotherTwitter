@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import './SideNavigation.scss';
-import Button from '../Common/Button';
+import { Button } from '../Common/Button';
 
 const SideNavigation = () => (
   <div className="navigation__side">
