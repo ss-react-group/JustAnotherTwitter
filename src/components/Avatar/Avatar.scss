@@ -1,0 +1,16 @@
+.avatar {
+  grid-column: 6/8;
+  position: relative;
+
+  &__image {
+    border-radius: 50%;
+    max-width: 100%;
+    height: auto;
+    border: 10px solid #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+    bottom: 0;
+  }
+}
