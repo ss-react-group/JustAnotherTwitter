@@ -1,6 +1,6 @@
 import * as React from 'react';
-import MainNavigation from '../MainNavigation/MainNavigation';
-import SideNavigation from '../SideNavigation/SideNavigation';
+import { MainNavigation } from '../MainNavigation';
+import { SideNavigation } from '../SideNavigation';
 
 import './Navigation.scss';
 
