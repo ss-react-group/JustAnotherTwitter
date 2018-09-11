@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Main from './Main';
-import Side from './Side';
+import MainNavigation from '../MainNavigation/MainNavigation';
+import SideNavigation from '../SideNavigation/SideNavigation';
 
 import './Navigation.scss';
 
@@ -10,8 +10,8 @@ const Navigation = () => (
   <header>
     <div className="container">
       <div className="navigation__grid">
-        <Main />
-        <Side />
+        <MainNavigation />
+        <SideNavigation />
       </div>
     </div>
   </header>

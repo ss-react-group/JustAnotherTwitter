@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import './Side.scss';
+import './SideNavigation.scss';
 import Button from '../Common/Button';
 
-const Side = () => (
+const SideNavigation = () => (
   <div className="navigation__side">
     <Button />
   </div>
 );
 
-export default Side;
+export default SideNavigation;

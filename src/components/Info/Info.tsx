@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Avatar from './Avatar';
+import Avatar from '../Avatar/Avatar';
 
 import './Info.scss';
 

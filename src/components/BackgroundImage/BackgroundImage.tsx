@@ -4,8 +4,10 @@ import './BackgroundImage.scss';
 
 interface IBackgroundImageProps {
   source: string;
-} // Application state
+}
+
 interface IBackgroundImageState {}
+
 class BackgroundImage extends React.Component<
   IBackgroundImageProps,
   IBackgroundImageState
@@ -13,6 +15,7 @@ class BackgroundImage extends React.Component<
   constructor(props: IBackgroundImageProps) {
     super(props);
   }
+
   public render() {
     return (
       <div className="background">

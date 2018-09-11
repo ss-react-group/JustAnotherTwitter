@@ -3,12 +3,15 @@ import './Avatar.scss';
 
 interface IAvatarProps {
   source: string;
-} // Application state
+}
+
 interface IAvatarState {}
+
 class Avatar extends React.Component<IAvatarProps, IAvatarState> {
   constructor(props: IAvatarProps) {
     super(props);
   }
+
   public render() {
     return (
       <div className="avatar">
