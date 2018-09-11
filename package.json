@@ -5,6 +5,7 @@
   "dependencies": {
     "@types/bcrypt": "^2.0.0",
     "@types/bcryptjs": "^2.4.1",
+    "@types/react-facebook-login": "^3.6.5",
     "autoprefixer": "7.1.6",
     "babel-jest": "^22.1.0",
     "babel-loader": "^7.1.2",

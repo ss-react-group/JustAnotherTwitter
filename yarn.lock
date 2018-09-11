@@ -49,6 +49,12 @@
     "@types/node" "*"
     "@types/react" "*"
 
+"@types/react-facebook-login@^3.6.5":
+  version "3.6.5"
+  resolved "https://registry.yarnpkg.com/@types/react-facebook-login/-/react-facebook-login-3.6.5.tgz#15b9b5cf60639154285e27dd2b9d6f81f4ec3355"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^16.4.12":
   version "16.4.12"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.12.tgz#c554005770b06c7cbcd6b0b19721e180deab7a02"
