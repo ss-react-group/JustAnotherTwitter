@@ -3,6 +3,18 @@ import * as ReactDOM from 'react-dom';
 import App from './App';
 import './index.scss';
 import registerServiceWorker from './registerServiceWorker';
+import { Provider } from 'mobx-react';
 
-ReactDOM.render(<App />, document.getElementById('root') as HTMLElement);
+import * as stores from './stores';
+import { configure } from 'mobx';
+configure({
+  enforceActions: 'observed'
+});
+
+ReactDOM.render(
+  <Provider store={stores}>
+    <App />
+  </Provider>,
+  document.getElementById('root') as HTMLElement
+);
 registerServiceWorker();
