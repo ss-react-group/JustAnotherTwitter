@@ -1,4 +1,20 @@
-.content__tweets-list {
-  grid-column: 1 / 9;
+.tweets-list {
+  grid-column: 4 / 10;
   background-color: #fff;
+}
+
+.tweets-list__title {
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
+  padding: .6rem;
+}
+
+.tweets-list__count {
+  color: rgba(59, 185, 227, 1);
+}
+
+.tweets-list__container {
+  margin: 0;
 }

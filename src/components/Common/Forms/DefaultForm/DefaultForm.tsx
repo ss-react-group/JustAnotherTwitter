@@ -21,15 +21,19 @@ export class DefaultForm extends React.Component<
         <h3 className="default-form__header">{this.props.formTitle}</h3>
         <form className="default">
           {this.props.inputFields.map(
-            inputField =>
+            (inputField, index) =>
               inputField.type !== 'textarea' ? (
                 <DefaultInput
+                  key={index}
                   type={inputField.type}
                   label={inputField.type}
                   validateFor={inputField.validateFor}
                 />
               ) : (
-                <TextArea maxChars="200" />
+                <TextArea
+                  key={index}
+                  maxChars="200"
+                />
               )
           )}
         </form>
