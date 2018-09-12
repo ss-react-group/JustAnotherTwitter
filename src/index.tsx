@@ -6,13 +6,11 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'mobx-react';
 
 import * as stores from './stores';
-import { configure } from 'mobx';
-configure({
-  enforceActions: 'observed'
-});
+
+(window as any).stores = stores;
 
 ReactDOM.render(
-  <Provider store={stores}>
+  <Provider stores={stores}>
     <App />
   </Provider>,
   document.getElementById('root') as HTMLElement

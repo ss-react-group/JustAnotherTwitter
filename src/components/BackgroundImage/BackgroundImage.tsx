@@ -2,19 +2,28 @@ import * as React from 'react';
 import { observer, inject } from 'mobx-react';
 
 import './BackgroundImage.scss';
+import { IStores } from '../../interfaces/stores';
 
 interface IBackgroundImageProps {
-  store?: any;
+  stores?: IStores;
 }
 
 interface IBackgroundImageState {}
 
-@inject('store')
+@inject('stores')
 @observer
 class BackgroundImage extends React.Component<
   IBackgroundImageProps,
   IBackgroundImageState
 > {
+  static defaultProps = {
+    assets: {
+      background: {
+        filePath: ''
+      }
+    }
+  };
+
   constructor(props: IBackgroundImageProps) {
     super(props);
   }
@@ -22,7 +31,14 @@ class BackgroundImage extends React.Component<
   public render() {
     return (
       <figure className="background">
-        <img src={this.props.store.image.background} alt="Background image" />
+        <img
+          src={
+            this.props.stores
+              ? this.props.stores.assets.background.filePath
+              : ''
+          }
+          alt="Background image"
+        />
       </figure>
     );
   }
