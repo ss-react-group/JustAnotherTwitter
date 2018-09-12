@@ -10,7 +10,7 @@ import { Followers } from '../Followers';
 const MainLayout = () => (
   <React.Fragment>
     <Navigation />
-    <BackgroundImage source="/background.jpg" />
+    <BackgroundImage />
     <Info />
 
     <div className="content container">
