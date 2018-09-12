@@ -11,9 +11,9 @@ interface IAvatarProps {
 class Avatar extends React.Component<IAvatarProps> {
   public render() {
     return (
-      <div className="avatar">
+      <figure className="avatar">
         <img className="avatar__image" src={this.props.store.image.avatar} />
-      </div>
+      </figure>
     );
   }
 }

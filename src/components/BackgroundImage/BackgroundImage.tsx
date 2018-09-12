@@ -21,9 +21,9 @@ class BackgroundImage extends React.Component<
 
   public render() {
     return (
-      <div className="background">
+      <figure className="background">
         <img src={this.props.store.image.background} alt="Background image" />
-      </div>
+      </figure>
     );
   }
 }
