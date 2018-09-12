@@ -15,8 +15,8 @@ interface IAppProps {
 @observer
 class App extends React.Component<IAppProps, {}> {
   componentDidMount() {
-    getAsset(1, 1).then((result: IAsset) => {
-      this.props.stores.assets.avatar = result;
+    getAsset(2, 1).then((result: IAsset) => {
+      this.props.stores.assets.avatar.filePath = `http://localhost:8081/${result.filePath}`;
     });
   }
 
