@@ -8,15 +8,15 @@ import { IAsset } from './interfaces/asset';
 import { observer, inject } from 'mobx-react';
 
 interface IAppProps {
-  assets?: any;
+  stores?: any;
 }
 
-@inject('assets')
+@inject('stores')
 @observer
 class App extends React.Component<IAppProps, {}> {
   componentDidMount() {
     getAsset(1, 1).then((result: IAsset) => {
-      this.props.assets.avatar = result;
+      this.props.stores.assets.avatar = result;
     });
   }
 

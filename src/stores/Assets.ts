@@ -3,7 +3,9 @@ import { observable } from 'mobx';
 
 export class Assets {
   @observable
-  background: IAsset;
+  background: IAsset = {
+    filePath: ''
+  } as IAsset;
 
   @observable
   avatar: IAsset = {
