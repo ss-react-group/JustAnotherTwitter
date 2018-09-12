@@ -1,3 +1,2 @@
-import { Button } from './Button';
-
-export { Button };
+export { DefaultButton } from './Default-button/Default-button';
+export { FacebookLoginComponent } from './FbLoginButton/FbLoginButton';

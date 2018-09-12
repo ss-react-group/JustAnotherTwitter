@@ -1,6 +1,10 @@
 {
-  "name": "my-app",
+  "name": "react-academy-app",
   "version": "0.1.0",
+  "engines": {
+    "node": "9.6.1",
+    "npm": "6.4.0"
+  },
   "private": true,
   "dependencies": {
     "@types/bcrypt": "^2.0.0",

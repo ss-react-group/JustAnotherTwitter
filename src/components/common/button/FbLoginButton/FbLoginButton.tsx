@@ -9,7 +9,7 @@ interface IFacebookLoginState {
   responseData: {};
 }
 
-class FacebookLoginComponent extends Component<
+export class FacebookLoginComponent extends Component<
   IFacebookLoginProps,
   IFacebookLoginState
 > {
@@ -61,5 +61,3 @@ class FacebookLoginComponent extends Component<
     );
   }
 }
-
-export default FacebookLoginComponent;
