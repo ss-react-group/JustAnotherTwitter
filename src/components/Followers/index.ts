@@ -1,3 +1,1 @@
-import Followers from './Followers';
-
-export { Followers };
+export { Followers } from './Followers';

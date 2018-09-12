@@ -1,3 +1,1 @@
-import SideNavigation from './SideNavigation';
-
-export { SideNavigation };
+export { SideNavigation } from './SideNavigation';

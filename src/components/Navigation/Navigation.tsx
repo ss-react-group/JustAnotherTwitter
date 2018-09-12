@@ -6,7 +6,7 @@ import './Navigation.scss';
 
 export interface Props {}
 
-const Navigation = () => (
+export const Navigation = () => (
   <header>
     <div className="container">
       <div className="navigation__grid">
@@ -16,5 +16,3 @@ const Navigation = () => (
     </div>
   </header>
 );
-
-export default Navigation;

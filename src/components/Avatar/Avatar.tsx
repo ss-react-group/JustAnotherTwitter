@@ -11,7 +11,7 @@ interface IAvatarState {}
 
 @inject('stores')
 @observer
-class Avatar extends React.Component<IAvatarProps, IAvatarState> {
+export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
   public render() {
     return (
       <figure className="avatar">
@@ -25,5 +25,3 @@ class Avatar extends React.Component<IAvatarProps, IAvatarState> {
     );
   }
 }
-
-export default Avatar;

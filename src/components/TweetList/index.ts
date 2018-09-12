@@ -1,3 +1,1 @@
-import TweetList from './TweetList';
-
-export { TweetList };
+export { TweetList } from './TweetList';

@@ -12,7 +12,7 @@ interface IBackgroundImageState {}
 
 @inject('stores')
 @observer
-class BackgroundImage extends React.Component<
+export class BackgroundImage extends React.Component<
   IBackgroundImageProps,
   IBackgroundImageState
 > {
@@ -43,5 +43,3 @@ class BackgroundImage extends React.Component<
     );
   }
 }
-
-export default BackgroundImage;
