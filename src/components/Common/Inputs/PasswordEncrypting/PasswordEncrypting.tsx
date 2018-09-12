@@ -9,7 +9,7 @@ interface IPasswordEncryptingState {
   encryptedPassword: string;
 }
 
-class PasswordEncrypting extends Component<
+export class PasswordEncrypting extends Component<
   IPasswordEncryptingProps,
   IPasswordEncryptingState
 > {
@@ -62,5 +62,3 @@ class PasswordEncrypting extends Component<
     );
   }
 }
-
-export default PasswordEncrypting;
