@@ -1,11 +1,13 @@
 import * as React from 'react';
 import './App.scss';
+import './assets/styles/common.scss';
 
 import { MainLayout } from './components/Layouts/MainLayout';
 
 import { getAsset } from './services/asset';
 import { IAsset } from './interfaces/asset';
 import { observer, inject } from 'mobx-react';
+import { UserSettingModal } from './components/UserSettingsModal';
 
 interface IAppProps {
   stores?: any;
@@ -25,6 +27,7 @@ export default class App extends React.Component<IAppProps, {}> {
   render() {
     return (
       <div className="App">
+        <UserSettingModal />
         <MainLayout />
       </div>
     );
