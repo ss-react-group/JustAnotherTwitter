@@ -3,8 +3,10 @@ import './DefaultInput.scss';
 import { IDefaultInput } from '../../../../interfaces/DefaultInput';
 import { inject, observer } from 'mobx-react';
 import { IStores } from '../../../../interfaces';
-import { validateInput } from '../helpers/validation';
+import { validateInput, IRegExpTestResult } from '../helpers/validation';
 import { encrypt } from '../../../../helpers/password-encrypting';
+import { Fetch } from '../../../../helpers/fetch';
+import { env } from '../../../../env/environment';
 
 export interface IDefaultInputProps extends IDefaultInput {
   stores?: IStores;
@@ -14,6 +16,7 @@ export interface IDefaultInputState {
   inputValue: string;
   focused: boolean;
   error: string;
+  userNewDetails: string;
 }
 @inject('stores')
 @observer
@@ -26,10 +29,28 @@ export class DefaultInput extends React.Component<
     this.state = {
       inputValue: '',
       focused: false,
-      error: ''
+      error: '',
+      userNewDetails: ''
     };
   }
 
+  updateUserDetails = () => {
+    const newUserDetails = {
+      [this.props.dbPropertyKey]: this.state.userNewDetails
+    };
+
+    const updateUserPromise = Fetch.request(env.securedRoutes + '/user/' + 1, {
+      method: 'PATCH',
+      body: JSON.stringify(newUserDetails),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    updateUserPromise.then(response => (this.props.stores.user = response));
+  };
+
+  // Change input state;
   handleInputChange = (event: any): void => {
     const { value } = event.target;
 
@@ -38,29 +59,50 @@ export class DefaultInput extends React.Component<
     });
   };
 
+  // Set status focues for input
   handleOnFocus = () => {
     this.setState({
       focused: true
     });
   };
 
+  // Handle event for blur on input
   handleOnBlur = () => {
+    // Chech if input has lenght
     if (!this.state.inputValue.length) {
       this.setState({
         focused: false
       });
-
-      if (this.props.type === 'password') {
-        console.log('password');
-        this.setState({
-          inputValue: encrypt(this.state.inputValue, 10)
-        });
-        console.log(this.state.inputValue);
-      }
     } else {
-      this.setState({
-        error: validateInput(this.props.validateFor, this.state.inputValue)
-      });
+      // Check if is valid and display an arror
+      const inputValidation: IRegExpTestResult = validateInput(
+        this.props.validateFor,
+        this.state.inputValue
+      );
+
+      // If inputValidation is Valid
+      if (inputValidation.isValid) {
+        if (this.props.type === 'password') {
+          const encryptedPassword = encrypt(this.state.inputValue, 10);
+          this.setState(
+            {
+              userNewDetails: encryptedPassword
+            },
+            this.updateUserDetails
+          );
+        } else {
+          this.setState(
+            {
+              userNewDetails: this.state.inputValue
+            },
+            this.updateUserDetails
+          );
+        }
+      } else {
+        this.setState({
+          error: inputValidation.error
+        });
+      }
     }
   };
 

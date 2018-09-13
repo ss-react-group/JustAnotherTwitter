@@ -15,11 +15,20 @@ export class DefaultForm extends React.Component<
   constructor(props: IDefaultFormProps) {
     super(props);
   }
+
+  handleSubmit = (event: any) => {
+    event.preventDefault();
+  };
+
   render() {
     return (
       <div className="default-form">
         <h3 className="default-form__header">{this.props.formTitle}</h3>
-        <form className="default-form__body" autoComplete="autocomplete">
+        <form
+          className="default-form__body"
+          autoComplete="autocomplete"
+          onSubmit={this.handleSubmit}
+        >
           {this.props.inputFields.map(
             (inputField, index) =>
               inputField.type !== 'textarea' ? (

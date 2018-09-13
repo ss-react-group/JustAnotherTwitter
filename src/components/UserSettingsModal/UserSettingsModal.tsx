@@ -29,7 +29,7 @@ export class UserSettingsModal extends React.Component<
     super(props);
     this.state = {};
   }
-  componentWillMount() {
+  componentDidMount() {
     const userDataPromise = getUserData(1);
 
     userDataPromise
