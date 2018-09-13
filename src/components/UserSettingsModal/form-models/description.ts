@@ -6,7 +6,8 @@ export const descriptionForm: IDefaultForm = {
     {
       type: 'textarea',
       label: 'tell us about yourself',
-      validateFor: 'none'
+      validateFor: 'none',
+      dbPropertyKey: 'description'
     }
   ]
 };

@@ -5,27 +5,32 @@ export const userDetailsForm: IDefaultForm = {
     {
       type: 'text',
       label: 'email',
-      validateFor: 'email'
+      validateFor: 'email',
+      dbPropertyKey: 'email'
     },
     {
       type: 'text',
       label: 'first name',
-      validateFor: 'none'
+      validateFor: 'none',
+      dbPropertyKey: 'firstName'
     },
     {
       type: 'text',
       label: 'last name',
-      validateFor: 'none'
+      validateFor: 'none',
+      dbPropertyKey: 'lastName'
     },
     {
       type: 'text',
       label: 'last name',
-      validateFor: 'none'
+      validateFor: 'none',
+      dbPropertyKey: 'lastName'
     },
     {
       type: 'text',
       label: 'user tag',
-      validateFor: 'none'
+      validateFor: 'none',
+      dbPropertyKey: 'userTag'
     }
   ]
 };

@@ -1,8 +1,9 @@
 @import 'src/assets/styles/variables';
+@import 'src/assets/styles/common';
 
 .default-input {
   width: 100%;
-  margin-bottom: 4px;
+  margin-bottom: 20px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -29,15 +30,29 @@
     background-color: $blue;
   }
 
-
-  &:hover {
+  &--filled {
     &:after {
       width: 100%;
     }
   }
 
+  &__label {
+    @extend %label;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    pointer-events: none;
+    transition: .4s;
+
+    &--focused {
+      top: -10px;
+      font-size: 10px;
+    }
+  }
 }
 
 .input {
   border: none;
+  padding: 4px 0px;
+  font-size: 12px;
 }

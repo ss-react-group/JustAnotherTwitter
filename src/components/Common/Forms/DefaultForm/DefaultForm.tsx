@@ -27,7 +27,7 @@ export class DefaultForm extends React.Component<
                   key={index}
                   dbPropertyKey={inputField.dbPropertyKey}
                   type={inputField.type}
-                  label={inputField.type}
+                  label={inputField.label}
                   validateFor={inputField.validateFor}
                 />
               ) : (
