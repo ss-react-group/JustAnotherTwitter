@@ -1,0 +1,12 @@
+@import 'src/assets/styles/common';
+
+.default-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__header {
+    @extend %h3-header;
+  }
+}

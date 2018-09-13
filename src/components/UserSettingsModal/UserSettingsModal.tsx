@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './UserSettingsModal.scss';
 
-import { DefaultForm } from '../Common/forms';
+import { DefaultForm } from '../Common/Forms';
 
 import {
   userDetailsForm,
