@@ -7,7 +7,7 @@ import { MainLayout } from './components/Layouts/MainLayout';
 import { getAsset } from './services/asset';
 import { IAsset } from './interfaces/asset';
 import { observer, inject } from 'mobx-react';
-import { UserSettingsModal } from './components/UserSettingsModal';
+// import { UserSettingsModal } from './components/UserSettingsModal';
 import { host } from './env/environment';
 
 interface IAppProps {
@@ -26,7 +26,7 @@ export default class App extends React.Component<IAppProps, {}> {
   render() {
     return (
       <div className="App">
-        <UserSettingsModal />
+        {/* <UserSettingsModal /> */}
         <MainLayout />
       </div>
     );
