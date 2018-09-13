@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ITextArea } from './TextArea.interface';
+import { ITextArea } from '../../../../interfaces/TextArea';
 
 export interface ITextAreaProps extends ITextArea {}
 
