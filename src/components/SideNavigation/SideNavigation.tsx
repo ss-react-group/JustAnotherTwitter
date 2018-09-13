@@ -3,10 +3,8 @@ import * as React from 'react';
 import './SideNavigation.scss';
 import { Button } from '../Common/Button';
 
-const SideNavigation = () => (
-  <div className="navigation__side">
+export const SideNavigation = () => (
+  <div className="navigation-side">
     <Button />
   </div>
 );
-
-export default SideNavigation;

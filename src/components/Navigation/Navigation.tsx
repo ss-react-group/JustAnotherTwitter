@@ -6,15 +6,13 @@ import './Navigation.scss';
 
 export interface Props {}
 
-const Navigation = () => (
+export const Navigation = () => (
   <header>
     <div className="container">
-      <div className="navigation__grid">
+      <div className="navigation-grid">
         <MainNavigation />
         <SideNavigation />
       </div>
     </div>
   </header>
 );
-
-export default Navigation;

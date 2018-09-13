@@ -7,7 +7,7 @@ import { Info } from '../Info';
 import { TweetList } from '../TweetList';
 import { Followers } from '../Followers';
 
-const MainLayout = () => (
+export const MainLayout = () => (
   <React.Fragment>
     <Navigation />
     <BackgroundImage />
@@ -19,5 +19,3 @@ const MainLayout = () => (
     </div>
   </React.Fragment>
 );
-
-export default MainLayout;

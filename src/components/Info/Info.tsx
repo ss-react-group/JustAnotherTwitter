@@ -4,7 +4,7 @@ import { Avatar } from '../Avatar';
 
 import './Info.scss';
 
-const Info = () => (
+export const Info = () => (
   <div className="info">
     <div className="container">
       <div className="info__grid">
@@ -21,5 +21,3 @@ const Info = () => (
     </div>
   </div>
 );
-
-export default Info;

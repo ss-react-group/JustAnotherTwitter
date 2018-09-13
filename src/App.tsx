@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './App.scss';
 
-import MainLayout from './components/Layouts/MainLayout';
+import { MainLayout } from './components/Layouts/MainLayout';
 
 import { getAsset } from './services/asset';
 import { IAsset } from './interfaces/asset';
@@ -13,10 +13,12 @@ interface IAppProps {
 
 @inject('stores')
 @observer
-class App extends React.Component<IAppProps, {}> {
+export default class App extends React.Component<IAppProps, {}> {
   componentDidMount() {
     getAsset(2, 1).then((result: IAsset) => {
-      this.props.stores.assets.avatar.filePath = `http://localhost:8081/${result.filePath}`;
+      this.props.stores.assets.avatar.filePath = `http://localhost:8081/${
+        result.filePath
+      }`;
     });
   }
 
@@ -28,5 +30,3 @@ class App extends React.Component<IAppProps, {}> {
     );
   }
 }
-
-export default App;

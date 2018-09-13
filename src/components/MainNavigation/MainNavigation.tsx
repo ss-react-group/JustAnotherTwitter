@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import './MainNavigation.scss';
 
-const MainNavigation = () => (
+export const MainNavigation = () => (
   <ul>
     <li>
       <a href="#">Home</a>
@@ -12,5 +12,3 @@ const MainNavigation = () => (
     </li>
   </ul>
 );
-
-export default MainNavigation;
