@@ -5,26 +5,31 @@ import './FileUploadDropdown.scss';
 export class FileUploadDropdown extends React.Component {
   constructor(props: any) {
     super(props);
-    this.fileInput = React.createRef();
-    this.uploadFile = this.uploadFile.bind(this);
   }
+  handleChangeFiles = (event: any) => {
+    const { files } = event.target;
+    const formData = new FormData();
+    formData.append('file', files[0]);
 
-  startUpload() {}
-  uploadFile() {}
+    fetch(
+      'https://react-academy.herokuapp.com/api/v1/secured/file_upload/2/1',
+      {
+        method: 'POST',
+        body: formData
+      }
+    )
+      .then(jsonResponse => jsonResponse.json())
+      .then(response => console.log(response));
+  };
 
   render() {
     return (
       <div className="file-upload-dropdown">
-        <ul className="file-upload-dropdown__list">
-          <li>Upload file</li>
-          <li>Cancel</li>
-        </ul>
         <input
           id="fileUpload"
+          className="file-upload"
           type="file"
-          // ref={this.fileInput}
-          style={{ display: 'none' }}
-          onChange={this.uploadFile}
+          onChange={this.handleChangeFiles}
         />
       </div>
     );

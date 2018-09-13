@@ -1,27 +1,17 @@
 .file-upload-dropdown {
-  background-color: #fff;
-  width: 10%;
+  background-color: #1b1b1b40;
+  width: 100%;
   position: absolute;
   bottom: 0;
   margin: auto;
   left: 0;
+  height: 100%;
   right: 0;
 
-  &__list {
-    padding: 0;
-    margin: 0;
+}
 
-    li {
-      text-align: center;
-      list-style: none;
-      padding: 5px 0;
-      color: #667580;
-
-      &:hover {
-        background-color: gray;
-      }
-      a {
-      }
-    }
-  }
+.file-upload {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
 }
