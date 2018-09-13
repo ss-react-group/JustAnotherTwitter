@@ -1,1 +1,2 @@
-export { DefaultInput } from './default/Default-input';
+export { DefaultInput } from './Default/Default-input';
+export { TextArea } from './TextArea/TextArea';
