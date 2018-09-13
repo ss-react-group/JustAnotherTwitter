@@ -6,18 +6,18 @@ import { DefaultForm } from '../common/forms';
 import {
   userDetailsForm,
   securityPasswordForm,
-  describtionForm
+  descriptionForm
 } from './form-models';
 
-export interface IUserSettingModalProps {}
+export interface IUserSettingsModalProps {}
 
-export interface IUserSettingModalState {}
+export interface IUserSettingsModalState {}
 
-export class UserSettingModal extends React.Component<
-  IUserSettingModalProps,
-  IUserSettingModalState
+export class UserSettingsModal extends React.Component<
+  IUserSettingsModalProps,
+  IUserSettingsModalState
 > {
-  constructor(props: IUserSettingModalProps) {
+  constructor(props: IUserSettingsModalProps) {
     super(props);
     this.state = {};
   }
@@ -45,8 +45,8 @@ export class UserSettingModal extends React.Component<
             </div>
             <div className="grid__column">
               <DefaultForm
-                formTitle={describtionForm.formTitle}
-                inputFields={describtionForm.inputFields}
+                formTitle={descriptionForm.formTitle}
+                inputFields={descriptionForm.inputFields}
               />
             </div>
           </div>

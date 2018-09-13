@@ -7,7 +7,8 @@ import MainLayout from './components/Layouts/MainLayout';
 import { getAsset } from './services/asset';
 import { IAsset } from './interfaces/asset';
 import { observer, inject } from 'mobx-react';
-import { UserSettingModal } from './components/UserSettingsModal';
+import { UserSettingsModal } from './components/UserSettingsModal';
+import { host } from './env/environment';
 
 interface IAppProps {
   stores?: any;
@@ -18,16 +19,14 @@ interface IAppProps {
 class App extends React.Component<IAppProps, {}> {
   componentDidMount() {
     getAsset(2, 1).then((result: IAsset) => {
-      this.props.stores.assets.avatar.filePath = `http://localhost:8081/${
-        result.filePath
-      }`;
+      this.props.stores.assets.avatar.filePath = `${host}${result.filePath}`;
     });
   }
 
   render() {
     return (
       <div className="App">
-        <UserSettingModal />
+        <UserSettingsModal />
         <MainLayout />
       </div>
     );
