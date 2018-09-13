@@ -1,3 +1,3 @@
-import { assets } from './Assets';
+export { assets } from './Assets';
+export { tweetsStore } from './Tweets';
 
-export { assets };
