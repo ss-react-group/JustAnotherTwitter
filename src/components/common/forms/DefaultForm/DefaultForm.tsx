@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDefaultForm } from '../../../../interfaces/default-form';
+import { IDefaultForm } from '../../../../interfaces/DefaultForm';
 import { DefaultInput } from '../../inputs';
 import { TextArea } from '../../inputs/text-area/TextArea';
 

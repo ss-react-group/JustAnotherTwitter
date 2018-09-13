@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './Default-input.scss';
-import { IDefaultInput } from '../../../../interfaces/default-input';
+import { IDefaultInput } from '../../../../interfaces/DefaultInput';
 
 export interface IDefaultInputProps extends IDefaultInput {}
 
