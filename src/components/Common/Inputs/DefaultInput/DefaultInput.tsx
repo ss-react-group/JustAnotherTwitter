@@ -3,6 +3,8 @@ import './DefaultInput.scss';
 import { IDefaultInput } from '../../../../interfaces/DefaultInput';
 import { inject, observer } from 'mobx-react';
 import { IStores } from '../../../../interfaces';
+import { validateInput } from '../helpers/validation';
+import { encrypt } from '../../../../helpers/password-encrypting';
 
 export interface IDefaultInputProps extends IDefaultInput {
   stores?: IStores;
@@ -11,6 +13,7 @@ export interface IDefaultInputProps extends IDefaultInput {
 export interface IDefaultInputState {
   inputValue: string;
   focused: boolean;
+  error: string;
 }
 @inject('stores')
 @observer
@@ -22,7 +25,8 @@ export class DefaultInput extends React.Component<
     super(props);
     this.state = {
       inputValue: '',
-      focused: false
+      focused: false,
+      error: ''
     };
   }
 
@@ -44,6 +48,18 @@ export class DefaultInput extends React.Component<
     if (!this.state.inputValue.length) {
       this.setState({
         focused: false
+      });
+
+      if (this.props.type === 'password') {
+        console.log('password');
+        this.setState({
+          inputValue: encrypt(this.state.inputValue, 10)
+        });
+        console.log(this.state.inputValue);
+      }
+    } else {
+      this.setState({
+        error: validateInput(this.props.validateFor, this.state.inputValue)
       });
     }
   };
@@ -72,7 +88,11 @@ export class DefaultInput extends React.Component<
           className={'input input--' + this.props.type}
           type={this.props.type}
           onChange={this.handleInputChange}
+          autoComplete="autocomplete"
         />
+        <span className="default-input__error">
+          {this.state.error.length > 0 ? this.state.error : ''}
+        </span>
       </div>
     );
   }

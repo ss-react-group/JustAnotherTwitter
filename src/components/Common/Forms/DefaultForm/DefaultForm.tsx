@@ -19,7 +19,7 @@ export class DefaultForm extends React.Component<
     return (
       <div className="default-form">
         <h3 className="default-form__header">{this.props.formTitle}</h3>
-        <form className="default-form__body">
+        <form className="default-form__body" autoComplete="autocomplete">
           {this.props.inputFields.map(
             (inputField, index) =>
               inputField.type !== 'textarea' ? (

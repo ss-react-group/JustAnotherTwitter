@@ -25,12 +25,6 @@ export const userDetailsForm: IDefaultForm = {
       label: 'last name',
       validateFor: 'none',
       dbPropertyKey: 'lastName'
-    },
-    {
-      type: 'text',
-      label: 'user tag',
-      validateFor: 'none',
-      dbPropertyKey: 'userTag'
     }
   ]
 };
