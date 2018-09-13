@@ -32,9 +32,7 @@ export class BackgroundImage extends React.Component<
   public render() {
     return (
       <div className="background">
-        <FileUploadDropdown />
-
-        <span className="image-message">Change image</span>
+        <FileUploadDropdown background />
 
         <figure className="background__figure">
           <img

@@ -16,6 +16,12 @@
       display: block;
     }
   }
+
+  &:hover {
+    .file-upload-dropdown--background {
+      opacity: 1;
+    }
+  }
 }
 
 

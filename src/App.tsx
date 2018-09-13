@@ -21,6 +21,13 @@ export default class App extends React.Component<IAppProps, {}> {
     getAsset(2, 1).then((result: IAsset) => {
       this.props.stores.assets.avatar.filePath = `${host}${result.filePath}`;
     });
+
+    getAsset(2, 2).then((result: IAsset) => {
+      console.log(result);
+      this.props.stores.assets.background.filePath = `${host}${
+        result.filePath
+      }`;
+    });
   }
 
   render() {
