@@ -1,3 +1,6 @@
+export const host = 'https://react-academy.herokuapp.com/';
+
 export const env = {
-  api: 'http://localhost:8081/api/v1/secured'
+  securedRoutes: `${host}api/v1/secured`,
+  publicRoutes: `${host}api/v1/public`
 };

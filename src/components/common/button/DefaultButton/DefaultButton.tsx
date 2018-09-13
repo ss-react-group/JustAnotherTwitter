@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import './Button.scss';
+import './DefaultButton.scss';
 
-export const Button = () => (
+export const DefaultButton = () => (
   <button type="button" className="button button--primary">
     Tweet
   </button>

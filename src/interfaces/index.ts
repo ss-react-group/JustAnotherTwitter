@@ -1,9 +1,5 @@
-import { IAsset } from './asset';
-import { IAssets } from './assets';
-import { IStores } from './stores';
-
-export {
-  IAsset,
-  IAssets,
-  IStores
-};
+export { IAsset } from './asset';
+export { IAssets } from './assets';
+export { IStores } from './stores';
+export { IDefaultForm } from './DefaultForm';
+export { IDefaultInput } from './DefaultInput';
