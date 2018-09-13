@@ -1,1 +1,43 @@
+@import 'src/assets/styles/variables';
 
+.default-input {
+  width: 100%;
+  margin-bottom: 4px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &:before,
+  &:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    content: '';
+    display: block;
+    transition: .9s;
+  }
+
+  &:before {
+    background-color: $disable_gray;
+    width: 100%;
+
+  }
+
+  &:after {
+    width: 0%;
+    background-color: $blue;
+  }
+
+
+  &:hover {
+    &:after {
+      width: 100%;
+    }
+  }
+
+}
+
+.input {
+  border: none;
+}

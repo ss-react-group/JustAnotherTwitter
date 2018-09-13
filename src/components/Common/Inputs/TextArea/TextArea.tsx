@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITextArea } from '../../../../interfaces/TextArea';
-
+import './TextArea.scss';
 export interface ITextAreaProps extends ITextArea {}
 
 export interface ITextAreaState {
@@ -28,8 +28,8 @@ export class TextArea extends React.Component<ITextAreaProps, ITextAreaState> {
   render() {
     return (
       <div className="text-area">
-        <textarea onChange={this.handleChange} />
-        <span>
+        <textarea className="text-area__input" onChange={this.handleChange} />
+        <span className="text-area__input-chars-counter">
           {this.state.charsLength}/{this.props.maxChars}
         </span>
       </div>

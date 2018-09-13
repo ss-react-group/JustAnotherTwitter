@@ -31,7 +31,12 @@ export class DefaultInput extends React.Component<
   render() {
     return (
       <div className={'default-input ' + 'default-input--' + this.props.type}>
-        <input type={this.props.type} onChange={this.handleInputChange} />
+        <label htmlFor="">{this.props.label}</label>
+        <input
+          className={'input input--' + this.props.type}
+          type={this.props.type}
+          onChange={this.handleInputChange}
+        />
       </div>
     );
   }
