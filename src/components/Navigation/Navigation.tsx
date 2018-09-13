@@ -9,7 +9,7 @@ export interface Props {}
 export const Navigation = () => (
   <header>
     <div className="container">
-      <div className="navigation__grid">
+      <div className="navigation-grid">
         <MainNavigation />
         <SideNavigation />
       </div>
