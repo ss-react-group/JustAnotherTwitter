@@ -10,11 +10,17 @@ import {
 } from './form-models';
 import { DatePicker } from '../Common/Inputs';
 import { getUserData } from './UserSettingsModa.service';
+import { inject, observer } from 'mobx-react';
+import { IStores } from '../../interfaces';
 
-export interface IUserSettingsModalProps {}
+export interface IUserSettingsModalProps {
+  stores?: IStores;
+}
 
 export interface IUserSettingsModalState {}
 
+@inject('stores')
+@observer
 export class UserSettingsModal extends React.Component<
   IUserSettingsModalProps,
   IUserSettingsModalState
@@ -26,7 +32,11 @@ export class UserSettingsModal extends React.Component<
   componentWillMount() {
     const userDataPromise = getUserData(1);
 
-    userDataPromise.then(response => console.log(response));
+    userDataPromise
+      .then(response => {
+        this.props.stores.user = response;
+      })
+      .catch(err => console.log(err));
   }
 
   render() {

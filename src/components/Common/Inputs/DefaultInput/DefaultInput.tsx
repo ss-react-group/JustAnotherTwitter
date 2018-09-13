@@ -1,14 +1,19 @@
 import * as React from 'react';
 import './DefaultInput.scss';
 import { IDefaultInput } from '../../../../interfaces/DefaultInput';
+import { inject, observer } from 'mobx-react';
+import { IStores } from '../../../../interfaces';
 
-export interface IDefaultInputProps extends IDefaultInput {}
+export interface IDefaultInputProps extends IDefaultInput {
+  stores?: IStores;
+}
 
 export interface IDefaultInputState {
   inputValue: string;
   focused: boolean;
 }
-
+@inject('stores')
+@observer
 export class DefaultInput extends React.Component<
   IDefaultInputProps,
   IDefaultInputState

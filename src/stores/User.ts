@@ -1,7 +1,8 @@
+import { IUser } from './../interfaces/user';
 import { observable } from 'mobx';
 export class User {
   @observable
-  details: any = {};
+  details: IUser = {} as IUser;
 }
 
-export const user = new User();
+export const userStore = new User();
