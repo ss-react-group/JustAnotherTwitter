@@ -5,7 +5,7 @@ import './FileUploadDropdown.scss';
 export class FileUploadDropdown extends React.Component {
   constructor(props: any) {
     super(props);
-    // this.fileInput = React.createRef();
+    this.fileInput = React.createRef();
     this.uploadFile = this.uploadFile.bind(this);
   }
 

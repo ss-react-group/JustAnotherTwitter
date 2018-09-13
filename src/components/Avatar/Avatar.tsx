@@ -12,6 +12,7 @@ interface IAvatarState {}
 @inject('stores')
 @observer
 export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
+  uploadHandler() {}
   public render() {
     return (
       <figure className="avatar">
