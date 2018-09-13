@@ -1,4 +1,4 @@
-import { IDefaultForm } from '../../../interfaces/default-form';
+import { IDefaultForm } from '../../../interfaces/DefaultForm';
 export const userDetailsForm: IDefaultForm = {
   formTitle: 'User Details',
   inputFields: [
