@@ -1,0 +1,49 @@
+@import 'src/assets/styles/variables';
+
+.user-settings-modal {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  top: 0;
+  background-color: $black_opacity;
+
+  &__box {
+    padding: 25px;
+    background-color: $white;
+    display: grid;
+    grid-template-areas: "avatar avatar""box box";
+  }
+
+  &__avatar {
+    margin: 0;
+    grid-area: avatar;
+    display: flex;
+    justify-content: center;
+
+    .avatar__img {
+      height: 50px;
+      border-radius: 50%;
+      width: 50px;
+      object-fit: cover;
+    }
+  }
+}
+
+
+.box {
+  &__grid {
+    grid-area: box;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(2, 1fr);
+
+    .grid__column {
+      margin: 0px 10px;
+    }
+  }
+}

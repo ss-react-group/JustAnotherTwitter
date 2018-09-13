@@ -1,7 +1,8 @@
 import * as React from 'react';
 import './Default-input.scss';
+import { IDefaultInput } from './Default-input.interface';
 
-export interface IDefaultInputProps {}
+export interface IDefaultInputProps extends IDefaultInput {}
 
 export interface IDefaultInputState {
   inputValue: '';
@@ -29,8 +30,8 @@ export class DefaultInput extends React.Component<
 
   render() {
     return (
-      <div className="default-input">
-        <input type="text" onChange={this.handleInputChange} />
+      <div className={'default-input ' + 'default-input--' + this.props.type}>
+        <input type={this.props.type} onChange={this.handleInputChange} />
       </div>
     );
   }
