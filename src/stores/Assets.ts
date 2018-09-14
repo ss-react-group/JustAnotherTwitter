@@ -18,11 +18,6 @@ export class Assets {
   set(type: string, url: string) {
     const parsedUrl = `${host}${url}`;
 
-    if (type === 'avatar') {
-    } else if (type === 'background') {
-      this.background.filePath = parsedUrl;
-    }
-
     switch (type) {
       case 'avatar':
         this.avatar.filePath = parsedUrl;
