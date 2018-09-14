@@ -36,11 +36,7 @@ export class BackgroundImage extends React.Component<
 
         <figure className="background__figure">
           <img
-            src={
-              this.props.stores
-                ? this.props.stores.assets.background.filePath
-                : ''
-            }
+            src={this.props.stores.assets.background.filePath}
             alt="Background image"
           />
         </figure>
