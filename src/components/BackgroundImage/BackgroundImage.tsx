@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react';
 
 import './BackgroundImage.scss';
 import { IStores } from '../../interfaces/stores';
-import { FileUploadDropdown } from '../FileUploadDropdown';
+import { FileUpload } from '../FileUpload';
 
 interface IBackgroundImageProps {
   stores?: IStores;
@@ -32,7 +32,7 @@ export class BackgroundImage extends React.Component<
   public render() {
     return (
       <div className="background">
-        <FileUploadDropdown background />
+        <FileUpload background />
 
         <figure className="background__figure">
           <img

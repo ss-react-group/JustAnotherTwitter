@@ -2,7 +2,7 @@ import * as React from 'react';
 import './Avatar.scss';
 import { observer, inject } from 'mobx-react';
 import { IStores } from '../../interfaces/stores';
-import { FileUploadDropdown } from '../FileUploadDropdown';
+import { FileUpload } from '../FileUpload';
 
 interface IAvatarProps {
   stores?: IStores;
@@ -18,7 +18,7 @@ export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
       <div className="avatar">
         <div className="avatar__container">
           <figure className="avatar__figure">
-            <FileUploadDropdown avatar />
+            <FileUpload avatar />
             <img
               className="avatar__image"
               src={
