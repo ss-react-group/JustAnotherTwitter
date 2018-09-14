@@ -4,12 +4,12 @@ import { observable } from 'mobx';
 export class Assets {
   @observable
   background: IAsset = {
-    filePath: ''
+    filePath: '/default-image.png'
   } as IAsset;
 
   @observable
   avatar: IAsset = {
-    filePath: ''
+    filePath: '/default-image-square.png'
   } as IAsset;
 }
 
