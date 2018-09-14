@@ -1,5 +1,7 @@
 import { IAsset } from './../interfaces/asset';
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
+
+import { host } from '../env/environment';
 
 export class Assets {
   @observable
@@ -11,6 +13,17 @@ export class Assets {
   avatar: IAsset = {
     filePath: '/default-image-square.png'
   } as IAsset;
+
+  @action
+  set(type: string, url: string) {
+    const parsedUrl = `${host}${url}`;
+
+    if (type === 'avatar') {
+      this.avatar.filePath = parsedUrl;
+    } else if (type === 'background') {
+      this.background.filePath = parsedUrl;
+    }
+  }
 }
 
 export const assets = new Assets();

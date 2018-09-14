@@ -8,7 +8,6 @@ import { getAsset } from './services/asset';
 import { IAsset } from './interfaces/asset';
 import { observer, inject } from 'mobx-react';
 // import { UserSettingsModal } from './components/UserSettingsModal';
-import { host } from './env/environment';
 
 interface IAppProps {
   stores?: any;
@@ -19,14 +18,11 @@ interface IAppProps {
 export default class App extends React.Component<IAppProps, {}> {
   componentDidMount() {
     getAsset(2, 1).then((result: IAsset) => {
-      this.props.stores.assets.avatar.filePath = `${host}${result.filePath}`;
+      this.props.stores.assets.set('avatar', result.filePath);
     });
 
     getAsset(2, 2).then((result: IAsset) => {
-      console.log(result);
-      this.props.stores.assets.background.filePath = `${host}${
-        result.filePath
-      }`;
+      this.props.stores.assets.set('background', result.filePath);
     });
   }
 

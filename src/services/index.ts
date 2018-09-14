@@ -1,3 +1,1 @@
-import { getAsset } from './asset';
-
-export { getAsset };
+export { getAsset, uploadAsset } from './asset';

@@ -13,3 +13,21 @@ export function getAsset(userId: number, typeId: number): Promise<IAsset> {
 
   return request;
 }
+
+export function uploadAsset(params: any): Promise<IAsset> {
+  const { assetType, files } = params;
+  console.log(params);
+  const formData = new FormData();
+  formData.append('file', files[0]);
+
+  const fetch = new Fetch();
+  const request = fetch.request(
+    `https://react-academy.herokuapp.com/api/v1/secured/file_upload/2/${assetType}`,
+    {
+      method: 'POST',
+      body: formData
+    }
+  );
+
+  return request;
+}
