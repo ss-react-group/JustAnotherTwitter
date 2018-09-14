@@ -1,16 +1,12 @@
 import * as React from 'react';
 import './DefaultInput.scss';
 import { IDefaultInput } from '../../../../interfaces/DefaultInput';
-import { inject, observer } from 'mobx-react';
-import { IStores } from '../../../../interfaces';
 import { validateInput, IRegExpTestResult } from '../helpers/validation';
 import { encrypt } from '../../../../helpers/password-encrypting';
 import { Fetch } from '../../../../helpers/fetch';
 import { env } from '../../../../env/environment';
 
-export interface IDefaultInputProps extends IDefaultInput {
-  stores?: IStores;
-}
+export interface IDefaultInputProps extends IDefaultInput {}
 
 export interface IDefaultInputState {
   inputValue: string;
@@ -18,8 +14,7 @@ export interface IDefaultInputState {
   error: string;
   userNewDetails: string;
 }
-@inject('stores')
-@observer
+
 export class DefaultInput extends React.Component<
   IDefaultInputProps,
   IDefaultInputState
@@ -47,7 +42,7 @@ export class DefaultInput extends React.Component<
       }
     });
 
-    updateUserPromise.then(response => (this.props.stores.user = response));
+    updateUserPromise.then(response => console.log(response));
   };
 
   // Change input state;
