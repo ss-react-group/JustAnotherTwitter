@@ -4,6 +4,6 @@ import { ITweet } from './tweet';
 export interface IStores {
   assets: IAssets;
   tweetsStore: {
-    tweets: ITweet[]
-  }
+    tweets: ITweet[];
+  };
 }

@@ -1,0 +1,23 @@
+@import 'src/assets/styles/variables';
+
+.text-area {
+  display: flex;
+  flex-direction: column;
+
+  &__input {
+    outline: none;
+    border: 1px solid $disable_gray;
+    resize: none;
+    min-height: 50px;
+    transition: .5s;
+
+    &:focus {
+      border: 1px solid $blue;
+    }
+  }
+
+  &__input-chars-counter {
+    font-size: 9px;
+    text-align: right;
+  }
+}
