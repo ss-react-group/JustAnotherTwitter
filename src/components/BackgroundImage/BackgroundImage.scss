@@ -1,12 +1,30 @@
 .background {
-  width: 100%;
-  height: 300px;
-  overflow: hidden;
-  margin: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  &__image {
-    max-width: 100%;
-    height: auto;
-    display: block;
+  &__figure {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    margin: 0;
+
+    &__image {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
   }
+
+  &:hover {
+    .file-upload-dropdown--background {
+      opacity: 1;
+    }
+  }
+}
+
+
+.image-message {
+  position: absolute;
 }

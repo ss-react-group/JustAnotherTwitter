@@ -6,9 +6,11 @@ import { BackgroundImage } from '../BackgroundImage';
 import { Info } from '../Info';
 import { TweetList } from '../TweetList';
 import { Followers } from '../Followers';
+import { ProgressBar } from '../ProgressBar';
 
 export const MainLayout = () => (
   <React.Fragment>
+    <ProgressBar />
     <Navigation />
     <BackgroundImage />
     <Info />

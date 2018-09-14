@@ -1,3 +1,4 @@
+export { ILoadingIndicators } from './loadingIndicators';
 export { IAsset } from './asset';
 export { IAssets } from './assets';
 export { IStores } from './stores';
