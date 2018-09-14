@@ -19,9 +19,18 @@ export class Assets {
     const parsedUrl = `${host}${url}`;
 
     if (type === 'avatar') {
-      this.avatar.filePath = parsedUrl;
     } else if (type === 'background') {
       this.background.filePath = parsedUrl;
+    }
+
+    switch (type) {
+      case 'avatar':
+        this.avatar.filePath = parsedUrl;
+        break;
+
+      case 'background':
+        this.background.filePath = parsedUrl;
+        break;
     }
   }
 }
