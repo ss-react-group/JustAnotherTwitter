@@ -16,7 +16,7 @@ export function getAsset(userId: number, typeId: number): Promise<IAsset> {
 
 export function uploadAsset(params: any): Promise<IAsset> {
   const { assetType, files } = params;
-  console.log(params);
+
   const formData = new FormData();
   formData.append('file', files[0]);
 

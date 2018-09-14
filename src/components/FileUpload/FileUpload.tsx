@@ -3,9 +3,9 @@ import { inject, observer } from 'mobx-react';
 import { uploadAsset } from '../../services';
 import { IStores, IAsset } from '../../interfaces';
 
-import './FileUploadDropdown.scss';
+import './FileUpload.scss';
 
-interface IFileUploadDropdown {
+interface IFileUpload {
   background?: boolean;
   avatar?: boolean;
   stores?: IStores;
@@ -13,7 +13,7 @@ interface IFileUploadDropdown {
 
 @inject('stores')
 @observer
-export class FileUploadDropdown extends React.Component<IFileUploadDropdown> {
+export class FileUpload extends React.Component<IFileUpload> {
   static defaultProps = {
     background: false,
     avatar: false
@@ -27,7 +27,6 @@ export class FileUploadDropdown extends React.Component<IFileUploadDropdown> {
     const { files } = event.target;
 
     const { background, avatar } = this.props;
-    console.log(background, avatar);
     let assetType;
     if (avatar) {
       assetType = 1;
@@ -57,17 +56,15 @@ export class FileUploadDropdown extends React.Component<IFileUploadDropdown> {
   render() {
     return (
       <div
-        className={`file-upload-dropdown ${
-          this.props.avatar
-            ? 'file-upload-dropdown--avatar'
-            : 'file-upload-dropdown--background'
+        className={`file-upload ${
+          this.props.avatar ? 'file-upload--avatar' : 'file-upload--background'
         }`}
       >
-        <div className="file-upload-dropdown__message">Change image</div>
+        <div className="file-upload__message">Change image</div>
 
         <input
           id="fileUpload"
-          className="file-upload"
+          className="file-upload__input"
           type="file"
           onChange={this.handleChangeFiles}
         />
