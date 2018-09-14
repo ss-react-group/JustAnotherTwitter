@@ -5,7 +5,8 @@ export const securityPasswordForm: IDefaultForm = {
     {
       type: 'password',
       label: 'new password',
-      validateFor: 'password'
+      validateFor: 'password',
+      dbPropertyKey: 'password'
     }
   ]
 };

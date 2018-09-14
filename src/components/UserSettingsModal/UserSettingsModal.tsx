@@ -8,6 +8,8 @@ import {
   securityPasswordForm,
   descriptionForm
 } from './form-models';
+import { DatePicker } from '../Common/Inputs';
+import { getUserData } from './UserSettingsModa.service';
 
 export interface IUserSettingsModalProps {}
 
@@ -21,6 +23,16 @@ export class UserSettingsModal extends React.Component<
     super(props);
     this.state = {};
   }
+  componentWillMount() {
+    const userDataPromise = getUserData(1);
+
+    userDataPromise
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <div className="user-settings-modal">
@@ -48,6 +60,7 @@ export class UserSettingsModal extends React.Component<
                 formTitle={descriptionForm.formTitle}
                 inputFields={descriptionForm.inputFields}
               />
+              <DatePicker />
             </div>
           </div>
         </div>

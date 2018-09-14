@@ -1,4 +1,5 @@
 @import 'src/assets/styles/common';
+@import 'src/assets/styles/variables';
 
 .default-form {
   width: 100%;
@@ -8,5 +9,10 @@
 
   &__header {
     @extend %h3-header;
+    color: $navy_blue;
+  }
+
+  &__body {
+    width: 100%;
   }
 }
