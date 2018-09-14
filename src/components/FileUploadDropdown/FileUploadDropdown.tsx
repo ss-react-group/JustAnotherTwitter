@@ -39,6 +39,10 @@ export class FileUploadDropdown extends React.Component<IFileUploadDropdown> {
       assetType = 1;
     }
 
+    if (this.props.stores) {
+      this.props.stores.loadingIndicators.toggle();
+    }
+
     fetch(
       `https://react-academy.herokuapp.com/api/v1/secured/file_upload/2/${assetType}`,
       {
@@ -65,6 +69,10 @@ export class FileUploadDropdown extends React.Component<IFileUploadDropdown> {
             }`;
           }
           // this.props.stores.assets.avatar.filePath = response.filePath;
+        }
+
+        if (this.props.stores) {
+          this.props.stores.loadingIndicators.toggle();
         }
       });
   };

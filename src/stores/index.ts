@@ -1,3 +1,2 @@
-import { assets } from './Assets';
-
-export { assets };
+export { loadingIndicators } from './LoadingIndicators';
+export { assets } from './Assets';
