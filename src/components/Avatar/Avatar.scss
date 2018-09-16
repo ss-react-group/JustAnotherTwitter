@@ -16,13 +16,13 @@
   }
 
   &:hover {
-    .file-upload-dropdown--avatar {
+    .file-upload--avatar {
       opacity: 1;
     }
   }
 
   &__figure {
-    border-radius: 100%;
+    border-radius: 50%;
     display: flex;
     flex: 0 0 150px;
     height: 150px;
@@ -34,10 +34,8 @@
   }
 
   &__image {
-    border-radius: 50%;
     width: 100%;
     height: 100%;
-    box-shadow: 10px solid #fff;
     position: absolute;
     top: 0;
     left: 0;
