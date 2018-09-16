@@ -19,7 +19,7 @@ export class TweetItem extends React.Component<ITweetItemProps, {}> {
     return (
       <div className="tweet">
         <div className="tweet__header">
-          <span className="tweet__user-name">{this.props.tweet.user.firstName}{' '}{this.props.tweet.user.firstName}</span>
+          <span className="tweet__user-name">{this.props.tweet.user.firstName}{' '}{this.props.tweet.user.lastName}</span>
           <span className="tweet__created">
             &#183;{' '}
             {new Intl.DateTimeFormat('en-GB', {

@@ -1,9 +1,41 @@
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
 import { ITweet } from '../interfaces/tweet';
+import { Fetch } from '../helpers/fetch';
+import { env } from 'src/env/environment';
 
 export class Tweets {
   @observable
   tweets: ITweet[] = [];
+
+  @action
+  fetchTweets() {
+    return Fetch.request(env.securedRoutes + '/posts', { method: 'GET' })
+      .then((response: ITweet[]) => {
+        this.tweets = response;
+        return response;
+      });
+  }
+
+  @action
+  addTweet(authorId: number, content: string) {
+    return Fetch.request(
+      env.securedRoutes + '/add_new_post', 
+      { 
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          'authorId': authorId,
+          'content': content
+        })
+      }
+    )
+    .then(() => {
+      this.fetchTweets();
+    });
+  }
 }
 
 export const tweetsStore = new Tweets();

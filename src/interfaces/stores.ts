@@ -10,6 +10,12 @@ export interface IStores {
   };
   tweetsStore: {
     tweets: ITweet[];
+    fetchTweets?: any,
+    addTweet?: (authorId: number, content: string) => Promise<any>
   };
   loadingIndicators: ILoadingIndicators;
+  textareaStore: {
+    content: string;
+    setInitValue: () => void;
+  }
 }

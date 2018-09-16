@@ -3,9 +3,6 @@ import { observer, inject } from 'mobx-react';
 
 import './TweetList.scss';
 
-import { Fetch } from '../../helpers/fetch';
-import { env } from '../../env/environment';
-
 import { ITweet } from '../../interfaces/tweet';
 import { IStores } from '../../interfaces/stores';
 import { TweetItem } from '../TweetItem';
@@ -23,10 +20,7 @@ export class TweetList extends React.Component<IAllTweetsProps, {}> {
   }
 
   componentWillMount() {
-    Fetch.request(env.securedRoutes + '/posts', { method: 'GET' })
-      .then((response: ITweet[]) => {
-        this.props.stores.tweetsStore.tweets = response;
-      });
+    this.props.stores.tweetsStore.fetchTweets();
   }
 
   render() {
