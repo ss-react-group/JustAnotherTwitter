@@ -21,11 +21,7 @@ export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
             <FileUpload avatar />
             <img
               className="avatar__image"
-              src={
-                this.props.stores
-                  ? this.props.stores.assets.avatar.filePath
-                  : ''
-              }
+              src={this.props.stores.assets.avatar.filePath}
             />
           </figure>
         </div>
