@@ -36,6 +36,24 @@ export class Tweets {
       this.fetchTweets();
     });
   }
+
+  @action
+  removeTweet(tweetId: number) {
+    return Fetch.request(
+      env.securedRoutes + '/delete_post/' + tweetId, 
+      { 
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }
+    )
+    .then(() => {
+      this.fetchTweets();
+    });
+  }
+
 }
 
 export const tweetsStore = new Tweets();

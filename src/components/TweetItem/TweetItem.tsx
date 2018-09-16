@@ -1,18 +1,28 @@
 import * as React from 'react';
-import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons';
+import { inject, observer } from 'mobx-react';
+import { faComment, faHeart, faTimesCircle } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './TweetItem.scss';
 
-import { ITweet } from '../../interfaces';
+import { ITweet, IStores } from '../../interfaces';
 
 export interface ITweetItemProps {
   tweet: ITweet,
+  stores?: IStores
 }
 
+@inject("stores")
+@observer
 export class TweetItem extends React.Component<ITweetItemProps, {}> {
   constructor(props: ITweetItemProps) {
     super(props);
+    this.handleRemoveTweet = this.handleRemoveTweet.bind(this);
+  }
+
+  handleRemoveTweet(event: any) {
+    event.stopPropagation();
+    this.props.stores.tweetsStore.removeTweet(this.props.tweet.id);
   }
 
   render() {
@@ -26,6 +36,11 @@ export class TweetItem extends React.Component<ITweetItemProps, {}> {
               month: 'short', 
               day: '2-digit' 
             }).format(new Date(this.props.tweet.user.createdAt))}
+          </span>
+          <span className="tweet__delete" 
+            onClick={this.handleRemoveTweet}
+          >
+            <FontAwesomeIcon icon={faTimesCircle} className="tweet__icon"/>
           </span>
         </div>
         <div className="tweet__text">{this.props.tweet.content}</div>

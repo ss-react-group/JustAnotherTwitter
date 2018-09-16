@@ -33,7 +33,10 @@ export class TweetList extends React.Component<IAllTweetsProps, {}> {
         <CreateTweet />
         <ul className="tweets-list__container">
           {tweets.map((item: ITweet) => (
-            <TweetItem key={item.id} tweet={item}/>
+            <TweetItem 
+              key={item.id} 
+              tweet={item}
+            />
           ))}
         </ul>
       </div>
