@@ -6,3 +6,4 @@ export { ITweet } from './tweet';
 export { IDefaultForm } from './DefaultForm';
 export { IDefaultInput } from './DefaultInput';
 export { ITextArea } from './TextArea';
+export { IUser } from './user';

@@ -1,0 +1,50 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #1da1f2;
+  --dark: #14171a;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'nexaBold', 'Open Sans', sans-serif;
+}
+
+.auth-content {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  &__left {
+    background-color: var(--blue);
+    grid-column: 1/2;
+    height: 100vh;
+  }
+
+  &__right {
+    background-color: #fff;
+    grid-column: 2/-1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0, 0, 0, .75);
+  }
+
+  &__card {
+    min-width: 200px;
+    padding: 0 60px;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    & p {
+      margin-bottom: 5px;
+    }
+  }
+}

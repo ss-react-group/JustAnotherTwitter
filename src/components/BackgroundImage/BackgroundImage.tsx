@@ -2,7 +2,7 @@ import * as React from 'react';
 import { observer, inject } from 'mobx-react';
 
 import './BackgroundImage.scss';
-import { IStores } from '../../interfaces/stores';
+import { IStores } from '../../interfaces';
 import { FileUpload } from '../FileUpload';
 
 interface IBackgroundImageProps {
