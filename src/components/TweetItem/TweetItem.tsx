@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
-import { faComment, faHeart, faTimesCircle } from '@fortawesome/free-regular-svg-icons';
+import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './TweetItem.scss';
@@ -37,11 +37,7 @@ export class TweetItem extends React.Component<ITweetItemProps, {}> {
               day: '2-digit' 
             }).format(new Date(this.props.tweet.user.createdAt))}
           </span>
-          <span className="tweet__delete" 
-            onClick={this.handleRemoveTweet}
-          >
-            <FontAwesomeIcon icon={faTimesCircle} className="tweet__icon"/>
-          </span>
+          <span className="tweet__delete" onClick={this.handleRemoveTweet}>Delete</span>
         </div>
         <div className="tweet__text">{this.props.tweet.content}</div>
         <div className="tweet__actions">
