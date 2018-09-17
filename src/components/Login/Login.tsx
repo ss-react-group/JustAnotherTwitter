@@ -56,10 +56,10 @@ export class Login extends React.Component <ILoginProps, ILoginState> {
   authenticate = (userDetails:any) => {
     auth(userDetails).then(response => {
       if (response.sprededResponse.password && !(encrypt(response.sprededResponse.password, 10) === encrypt(userDetails.password, 10))) {
-        this.props.stores.userDetails.user  = response.sprededResponse;
-        this.props.stores.userDetails.user.token = response.token;
-        localStorage.setItem('userDetails', JSON.stringify(this.props.stores.userDetails.user));
-        localStorage.setItem('token', this.props.stores.userDetails.user.token);
+        const token = response.token;
+        localStorage.setItem('userDetails', JSON.stringify(response.sprededResponse));
+        localStorage.setItem('token', response.token);
+        this.props.stores.userDetails.user  =  {...response.sprededResponse, token};
       } else {
         console.log('The username and password did not match.');
       }

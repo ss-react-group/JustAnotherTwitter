@@ -1,15 +1,14 @@
 import * as React from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import SecuredRoute from './components/SecuredRoute';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { SecuredRoute } from './components/SecuredRoute';
 
 import './App.scss';
 import './assets/styles/common.scss';
 
-import { MainLayout } from './components/Layouts/MainLayout';
-import { Authorization } from './pages/Authorization';
+import { Authentication } from './pages/Authentication';
+import { Home } from './pages/Home';
+import { User } from './pages/User';
 
-import { getAsset } from './services/asset';
-import { IAsset } from './interfaces/asset';
 import { observer, inject } from 'mobx-react';
 
 interface IAppProps {
@@ -25,28 +24,26 @@ export default class App extends React.Component<IAppProps, {}> {
     this.props.stores.userDetails.user = userDetails;
   }
 
-  componentDidMount() {
-    getAsset(2, 1).then((result: IAsset) => {
-      this.props.stores.assets.set('avatar', result.filePath);
-    });
-
-    getAsset(2, 2).then((result: IAsset) => {
-      this.props.stores.assets.set('background', result.filePath);
-    });
-  }
-
   render() {
     return (
       <div className="App">
         <Router>
-          <div className="router">
-            {this.props.stores.userDetails.user ? <Redirect to="/home"/> : <Route exact path="/" component={Authorization} />}
+          <Switch>
             <SecuredRoute
-              component={MainLayout}
-              path="/home"
+              component={Home}
+              exact
+              path="/"
               guard={this.props.stores.userDetails.user}
             />
-          </div>
+
+            <SecuredRoute
+              component={User}
+              path="/profile"
+              guard={this.props.stores.userDetails.user}
+            />
+
+            <Route path="/login" component={Authentication} />
+          </Switch>
         </Router>
       </div>
     );
