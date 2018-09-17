@@ -3,16 +3,16 @@ import { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
 import { auth } from '../../../../helpers/db';
 import { IStores } from '../../../../interfaces';
-import {inject, observer} from "mobx-react";
+import { inject, observer } from 'mobx-react';
 import './FbLoginButton.scss';
 
 interface IFacebookRegisterProps {
-  stores?: IStores
+  stores?: IStores;
 }
 
-@inject("stores")
+@inject('stores')
 @observer
-export class FbLoginButton extends Component<IFacebookRegisterProps, {} > {
+export class FbLoginButton extends Component<IFacebookRegisterProps, {}> {
   constructor(props: IFacebookRegisterProps) {
     super(props);
   }
@@ -23,26 +23,32 @@ export class FbLoginButton extends Component<IFacebookRegisterProps, {} > {
       lastName: response.last_name || '',
       email: response.email || '',
       birthday: response.birthday || '',
-      location: response.location && response.location.name || ''
+      location: (response.location && response.location.name) || ''
     };
 
     auth(userDetails).then(response => {
       const token = response.token;
       localStorage.setItem('token', token);
-      localStorage.setItem('userDetails', JSON.stringify(response.sprededResponse));
-      this.props.stores.userDetails.user  = {...response.sprededResponse, token};
+      localStorage.setItem(
+        'userDetails',
+        JSON.stringify(response.sprededResponse)
+      );
+      this.props.stores.userDetails.user = {
+        ...response.sprededResponse,
+        token
+      };
     });
   };
 
   render() {
     return (
-        <FacebookLogin
-          appId="295196024410730"
-          fields="id,birthday,last_name,first_name,email,location"
-          callback={this.handleFacebookResponse}
-          textButton="with Facebook"
-          cssClass="facebook-button"
-        />
+      <FacebookLogin
+        appId="295196024410730"
+        fields="id,birthday,last_name,first_name,email,location"
+        callback={this.handleFacebookResponse}
+        textButton="with Facebook"
+        cssClass="facebook-button"
+      />
     );
   }
 }
