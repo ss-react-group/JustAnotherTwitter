@@ -28,9 +28,8 @@ export class FbLoginButton extends Component<IFacebookRegisterProps, {}> {
 
     auth('/user_register', userDetails).then(response => {
       const token = response.token;
-
-      localStorage.setItem('token', token);
-      localStorage.setItem(
+      token && localStorage.setItem('token', token);
+      response.sprededResponse && localStorage.setItem(
         'userDetails',
         JSON.stringify(response.sprededResponse)
       );
@@ -38,6 +37,8 @@ export class FbLoginButton extends Component<IFacebookRegisterProps, {}> {
         ...response.sprededResponse,
         token
       };
+    }).catch(function(error) {
+      console.log(error);
     });
   };
 
