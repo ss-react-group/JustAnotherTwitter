@@ -16,10 +16,9 @@ interface ITweetProps {
 export class CreateTweet extends React.Component<ITweetProps> {
   constructor(props: ITweetProps) {
     super(props);
-    this.handleCreateTweet = this.handleCreateTweet.bind(this);
   }
 
-  handleCreateTweet() {
+  handleCreateTweet = () => {
     this.props.stores.tweetsStore.addTweet(1, this.props.stores.textareaStore.content)
       .then(() => 
         this.props.stores.textareaStore.setInitValue()

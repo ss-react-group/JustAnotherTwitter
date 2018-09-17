@@ -17,10 +17,9 @@ export interface ITweetItemProps {
 export class TweetItem extends React.Component<ITweetItemProps, {}> {
   constructor(props: ITweetItemProps) {
     super(props);
-    this.handleRemoveTweet = this.handleRemoveTweet.bind(this);
   }
 
-  handleRemoveTweet(event: any) {
+  handleRemoveTweet = (event: any) => {
     event.stopPropagation();
     this.props.stores.tweetsStore.removeTweet(this.props.tweet.id);
   }
