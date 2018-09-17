@@ -1,42 +1,42 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   BrowserRouter as Router,
   Route,
   Redirect,
   Switch
-} from "react-router-dom";
-import SecuredRoute from "./components/SecuredRoute";
+} from 'react-router-dom';
+import SecuredRoute from './components/SecuredRoute';
 
-import "./App.scss";
-import "./assets/styles/common.scss";
+import './App.scss';
+import './assets/styles/common.scss';
 
-import { MainLayout } from "./components/Layouts/MainLayout";
-import { Authorization } from "./pages/Authorization";
+import { MainLayout } from './components/Layouts/MainLayout';
+import { Authorization } from './pages/Authorization';
 
-import { getAsset } from "./services/asset";
-import { IAsset } from "./interfaces/asset";
-import { observer, inject } from "mobx-react";
+import { getAsset } from './services/asset';
+import { IAsset } from './interfaces/asset';
+import { observer, inject } from 'mobx-react';
 
 interface IAppProps {
   stores?: any;
 }
 
-@inject("stores")
+@inject('stores')
 @observer
 export default class App extends React.Component<IAppProps, {}> {
   constructor(props: IAppProps) {
     super(props);
-    const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+    const userDetails = JSON.parse(localStorage.getItem('userDetails'));
     this.props.stores.userDetails.user = userDetails;
   }
 
   componentDidMount() {
     getAsset(2, 1).then((result: IAsset) => {
-      this.props.stores.assets.set("avatar", result.filePath);
+      this.props.stores.assets.set('avatar', result.filePath);
     });
 
     getAsset(2, 2).then((result: IAsset) => {
-      this.props.stores.assets.set("background", result.filePath);
+      this.props.stores.assets.set('background', result.filePath);
     });
   }
 
