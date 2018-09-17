@@ -23,14 +23,14 @@ export class FbLoginButton extends Component<IFacebookRegisterProps, {} > {
       lastName: response.last_name || '',
       email: response.email || '',
       birthday: response.birthday || '',
-      location: response.location || ''
+      location: response.location && response.location.name || ''
     };
 
     auth(userDetails).then(response => {
       const token = response.token;
+      localStorage.setItem('token', token);
+      localStorage.setItem('userDetails', JSON.stringify(response.sprededResponse));
       this.props.stores.userDetails.user  = {...response.sprededResponse, token};
-      localStorage.setItem('userDetails', JSON.stringify(this.props.stores.userDetails.user));
-      localStorage.setItem('token', this.props.stores.userDetails.user.token);
     });
   };
 
