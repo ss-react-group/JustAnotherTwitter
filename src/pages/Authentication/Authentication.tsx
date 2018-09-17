@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Redirect } from 'react-router-dom';
-import './Authentication.scss';
 import { JatLogo } from '../../components/JatLogo';
 import { Slogan } from '../../components/Slogan';
 import { Login } from '../../components/Login';
 import { Register } from '../../components/Register';
 import { inject, observer } from 'mobx-react';
+import './Authentication.scss';
 
 interface IAuthorizationProps {
   stores?: any;
