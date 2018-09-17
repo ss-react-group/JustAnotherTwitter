@@ -4,6 +4,8 @@ import { observer, inject } from 'mobx-react';
 import './BackgroundImage.scss';
 import { IStores } from '../../interfaces';
 import { FileUpload } from '../FileUpload';
+import { getAsset } from '../../services/asset';
+import { IAsset } from '../../interfaces/asset';
 
 interface IBackgroundImageProps {
   stores?: IStores;
@@ -27,6 +29,14 @@ export class BackgroundImage extends React.Component<
 
   constructor(props: IBackgroundImageProps) {
     super(props);
+  }
+
+  componendDidMount() {
+    getAsset(this.props.stores.userDetails.user.id, 2).then(
+      (result: IAsset) => {
+        this.props.stores.assets.set('background', result.filePath);
+      }
+    );
   }
 
   public render() {
