@@ -40,7 +40,11 @@ export default class App extends React.Component<IAppProps, {}> {
       <div className="App">
         <Router>
           <div className="router">
-            {this.props.stores.userDetails.user ? <Redirect to="/home"/> : <Route exact path="/" component={Authorization} />}
+            {this.props.stores.userDetails.user ? (
+              <Redirect to="/home" />
+            ) : (
+              <Route exact path="/" component={Authorization} />
+            )}
             <SecuredRoute
               component={MainLayout}
               path="/home"

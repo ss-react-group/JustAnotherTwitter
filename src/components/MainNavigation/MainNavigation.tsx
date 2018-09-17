@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import './MainNavigation.scss';
-import {Component} from "react";
-import {inject, observer} from "mobx-react";
+import { Component } from 'react';
+import { inject, observer } from 'mobx-react';
 
 interface IMainNavigationProps {
   stores?: any;
@@ -31,7 +31,7 @@ export class MainNavigation extends Component<IMainNavigationProps> {
           <a href="#">Profile</a>
         </li>
         <li>
-          <a href="#" onClick={this.handleLogout}>Log out</a>
+          <a onClick={this.handleLogout}>Log out</a>
         </li>
       </ul>
     );

@@ -1,17 +1,7 @@
-*, *:before, *:after {
-  box-sizing: border-box;
-}
+@import 'src/assets/styles/common';
+@import 'src/assets/styles/variables';
 
-:root {
-  --blue: #1da1f2;
-  --dark: #14171a;
-}
 
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: 'nexaBold', 'Open Sans', sans-serif;
-}
 
 .auth-content {
   height: 100vh;
@@ -19,10 +9,38 @@ body, html {
   grid-template-columns: 1fr 1fr;
 
   &__left {
-    background-color: var(--blue);
+    display: flex;
+    flex-direction: column;
     grid-column: 1/2;
     height: 100vh;
+    position: relative;
+    justify-content: space-between;
+    overflow: hidden;
+
+    &:after {
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      content: '';
+      display: block;
+      background-color: $blue_opacity;
+    }
+
   }
+
+  &__background-image {
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+
 
   &__right {
     background-color: #fff;
@@ -35,6 +53,12 @@ body, html {
     color: rgba(0, 0, 0, .75);
   }
 
+  &__application-slogan {
+    .application-slogan {
+      font-size: 72px;
+    }
+  }
+
   &__card {
     min-width: 200px;
     padding: 0 60px;
@@ -45,6 +69,60 @@ body, html {
 
     & p {
       margin-bottom: 5px;
+    }
+  }
+
+  &__application-name {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__github-reference {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+  }
+
+  &__soft-serve-reference {
+    max-width: 100px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+
+
+}
+
+
+.background-image {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+.application-name {
+  &__header {
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+  }
+
+  &__partial {
+    font-size: 80px;
+
+    &--bold {
+      font-weight: 700;
+    }
+
+    &--regular {
+      font-weight: 400;
     }
   }
 }

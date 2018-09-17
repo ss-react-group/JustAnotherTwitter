@@ -14,8 +14,6 @@ export const MainLayout = () => (
     <Navigation />
     <BackgroundImage />
     <Info />
-    {/*<UserSettingsModal />*/}
-
     <div className="content container">
       <TweetList />
       <Followers />
