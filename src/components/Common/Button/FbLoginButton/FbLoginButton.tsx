@@ -26,8 +26,9 @@ export class FbLoginButton extends Component<IFacebookRegisterProps, {}> {
       location: (response.location && response.location.name) || ''
     };
 
-    auth(userDetails).then(response => {
+    auth('/user_register', userDetails).then(response => {
       const token = response.token;
+
       localStorage.setItem('token', token);
       localStorage.setItem(
         'userDetails',

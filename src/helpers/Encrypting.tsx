@@ -1,5 +1,5 @@
-import * as bcrypt from 'bcryptjs';
+import {Md5} from 'ts-md5/dist/md5';
 
-export function encrypt(textToEncrypt: string, saltRounds: number) {
-  return bcrypt.hashSync(textToEncrypt, saltRounds);
+export function encrypt(textToEncrypt:string) {
+  return Md5.hashStr(textToEncrypt);
 }

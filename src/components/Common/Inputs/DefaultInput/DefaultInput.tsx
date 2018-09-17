@@ -78,11 +78,9 @@ export class DefaultInput extends React.Component<
       // If inputValidation is Valid
       if (inputValidation.isValid) {
         if (this.props.type === 'password') {
-          const encryptedPassword = encrypt(this.state.inputValue, 10);
-          this.setState(
-            {
-              userNewDetails: encryptedPassword
-            },
+          const encryptedPassword = encrypt(this.state.inputValue);
+          // @ts-ignore
+          this.setState( { userNewDetails: encryptedPassword },
             this.updateUserDetails
           );
         } else {

@@ -8,14 +8,21 @@ export abstract class Fetch {
     const securedHeader: RequestInit = {
       ...options,
       headers: {
-        Accept: 'application/json',
+        'Accept': 'application/json',
         'Content-Type': 'application/json',
         'token': token
       }
     };
 
     return fetch(url, securedHeader)
-      .then(response => response.json())
-      .catch(err => new Error(err));
+      .then(status)
+      .then(response => response.json());
   }
+}
+
+function status(response:any) {
+  if (response.ok) {
+    return Promise.resolve(response);
+  }
+  return Promise.reject(new Error(response.statusText));
 }

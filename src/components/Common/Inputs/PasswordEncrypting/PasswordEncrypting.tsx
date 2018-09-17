@@ -33,10 +33,9 @@ export class PasswordEncrypting extends Component<
 
   handleSubmit = (event: any): void => {
     event.preventDefault();
-    const encrypted = encrypt(this.state.passwordInputValue, 4);
-    this.setState({
-      encryptedPassword: encrypted
-    });
+    const encrypted = encrypt(this.state.passwordInputValue);
+    // @ts-ignore
+    this.setState({ encryptedPassword: encrypted });
   };
 
   render() {
