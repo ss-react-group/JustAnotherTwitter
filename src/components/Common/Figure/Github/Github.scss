@@ -1,0 +1,16 @@
+@import 'src/assets/styles/variables';
+
+.github-reference {
+  &__svg-icon {
+    path {
+      fill: $blue_opacity;
+      transition: .4s;
+    }
+
+    &:hover {
+      path {
+        fill: $white;
+      }
+    }
+  }
+}

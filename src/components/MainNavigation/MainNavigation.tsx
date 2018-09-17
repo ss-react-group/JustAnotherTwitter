@@ -1,6 +1,11 @@
 import * as React from 'react';
 
 import './MainNavigation.scss';
+<<<<<<< HEAD
+=======
+import { Component } from 'react';
+import { inject, observer } from 'mobx-react';
+>>>>>>> eb2defe... WIP
 
 import { inject, observer } from 'mobx-react';
 import { NavLink } from 'react-router-dom';
@@ -34,9 +39,7 @@ export class MainNavigation extends React.Component<IMainNavigationProps> {
           <NavLink to="/profile">Profile</NavLink>
         </li>
         <li>
-          <a href="#" onClick={this.handleLogout}>
-            Log out
-          </a>
+          <a onClick={this.handleLogout}>Log out</a>
         </li>
       </ul>
     );
