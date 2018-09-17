@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import SecuredRoute from './components/SecuredRoute';
+import { SecuredRoute } from './components/SecuredRoute';
 
 import './App.scss';
 import './assets/styles/common.scss';
