@@ -1,16 +1,6 @@
 import * as React from 'react';
-<<<<<<< HEAD
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { SecuredRoute } from './components/SecuredRoute';
-=======
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch
-} from 'react-router-dom';
-import SecuredRoute from './components/SecuredRoute';
->>>>>>> origin/fix/router-redirect-console-error
 
 import './App.scss';
 import './assets/styles/common.scss';
