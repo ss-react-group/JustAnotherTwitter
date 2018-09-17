@@ -40,7 +40,7 @@ export default class App extends React.Component<IAppProps, {}> {
       <div className="App">
         <Router>
           <div className="router">
-            {window.localStorage.token ? (
+            {this.props.stores.userDetails.user ? (
               <Redirect to="/home" />
             ) : (
               <Route exact path="/" component={Authorization} />
