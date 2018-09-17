@@ -1,4 +1,0 @@
-export { JatLogo } from './JatLogo';
-
-
-
