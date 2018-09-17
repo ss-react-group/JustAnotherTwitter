@@ -1,21 +1,22 @@
 import * as React from 'react';
 
 import './MainNavigation.scss';
-import {Component} from "react";
-import {inject, observer} from "mobx-react";
 
+import { inject, observer } from 'mobx-react';
+import { NavLink } from 'react-router-dom';
 interface IMainNavigationProps {
   stores?: any;
 }
 
 @inject('stores')
 @observer
-export class MainNavigation extends Component<IMainNavigationProps> {
+export class MainNavigation extends React.Component<IMainNavigationProps> {
   constructor(props: IMainNavigationProps) {
     super(props);
   }
 
-  handleLogout = () => {
+  handleLogout = (event: any) => {
+    event.preventDefault();
     this.props.stores.userDetails.user = null;
     localStorage.removeItem('userDetails');
     localStorage.removeItem('token');
@@ -25,13 +26,17 @@ export class MainNavigation extends Component<IMainNavigationProps> {
     return (
       <ul className="navigation-menu">
         <li>
-          <a href="#">Home</a>
+          <NavLink exact to="/">
+            Home
+          </NavLink>
         </li>
         <li>
-          <a href="#">Profile</a>
+          <NavLink to="/profile">Profile</NavLink>
         </li>
         <li>
-          <a href="#" onClick={this.handleLogout}>Log out</a>
+          <a href="#" onClick={this.handleLogout}>
+            Log out
+          </a>
         </li>
       </ul>
     );
