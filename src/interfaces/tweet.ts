@@ -5,4 +5,5 @@ export interface ITweet {
   commentsCount?: number;
   likesCount?: number;
   user?: any;
+  comments?: [];
 }

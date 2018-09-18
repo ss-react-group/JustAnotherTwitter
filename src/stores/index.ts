@@ -4,3 +4,5 @@ export { userDetails } from './UserDetails';
 export { loadingIndicators } from './LoadingIndicators';
 export { textareaStore } from './TextArea';
 export { followers } from './Followers';
+export { TweetModalStore }  from './TweetModalStore';
+export { commentsStore } from './Comments';

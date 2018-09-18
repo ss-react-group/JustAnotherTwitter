@@ -1,0 +1,30 @@
+.ReactModalPortal > div {
+	opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+	transition: opacity 400ms ease-in-out;
+	display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1000;
+  overflow: scroll;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+	opacity: 1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+	opacity: 0;
+}
+
+.tweet-modal {
+  width: 550px;
+  margin: 50px;
+  background: white;
+  border: 1px solid;
+  min-height: 50%;
+  outline: none;
+  overflow: scroll;
+}

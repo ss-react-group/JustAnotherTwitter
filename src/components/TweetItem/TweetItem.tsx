@@ -8,8 +8,9 @@ import './TweetItem.scss';
 import { ITweet, IStores } from '../../interfaces';
 
 export interface ITweetItemProps {
-  tweet: ITweet,
-  stores?: IStores
+  tweet: ITweet;
+  stores?: IStores;
+  handleRemoveTweet?(event: any, tweetId: number): any;
 }
 
 @inject("stores")
@@ -19,16 +20,12 @@ export class TweetItem extends React.Component<ITweetItemProps, {}> {
     super(props);
   }
 
-  handleRemoveTweet = (event: any) => {
-    event.stopPropagation();
-    this.props.stores.tweetsStore.removeTweet(this.props.tweet.id);
-  }
-
   render() {
     return (
       <div className="tweet">
+      {this.props.tweet.user &&
         <div className="tweet__header">
-          <span className="tweet__user-name">{this.props.tweet.user.firstName}{' '}{this.props.tweet.user.lastName}</span>
+         <span className="tweet__user-name">{this.props.tweet.user.firstName}{' '}{this.props.tweet.user.lastName}</span>
           <span className="tweet__created">
             &#183;{' '}
             {new Intl.DateTimeFormat('en-GB', {
@@ -36,18 +33,23 @@ export class TweetItem extends React.Component<ITweetItemProps, {}> {
               day: '2-digit' 
             }).format(new Date(this.props.tweet.user.createdAt))}
           </span>
-          <span className="tweet__delete" onClick={this.handleRemoveTweet}>Delete</span>
+          {this.props.handleRemoveTweet && <span className="tweet__delete" onClick={(e) => this.props.handleRemoveTweet(e, this.props.tweet.id)}>Delete</span>}
         </div>
+      }
         <div className="tweet__text">{this.props.tweet.content}</div>
         <div className="tweet__actions">
-          <span className="tweet__action-item">
-            <FontAwesomeIcon icon={faComment} className="tweet__icon"/>
-            {this.props.tweet.commentsCount}
-          </span>
-          <span className="tweet__action-item">
-            <FontAwesomeIcon icon={faHeart} className="tweet__icon"/>
-            {this.props.tweet.likesCount}
-          </span>
+          {this.props.tweet.comments !== undefined && 
+            <span className="tweet__action-item">
+              <FontAwesomeIcon icon={faComment} className="tweet__icon"/>
+              {this.props.tweet.comments.length}
+            </span>
+          }
+          {this.props.tweet.likesCount !== undefined && 
+            <span className="tweet__action-item">
+              <FontAwesomeIcon icon={faHeart} className="tweet__icon"/>
+              {this.props.tweet.likesCount}
+            </span>
+          }
         </div>
       </div>
     );
