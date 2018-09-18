@@ -1,5 +1,7 @@
+import { IAsset } from './asset';
 export interface IUser {
   id: number;
+  assets: IAsset[];
   firstName: string;
   lastName: string;
   email: string;

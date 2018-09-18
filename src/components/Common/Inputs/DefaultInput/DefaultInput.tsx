@@ -12,7 +12,7 @@ export interface IDefaultInputState {
   inputValue: string;
   focused: boolean;
   error: string;
-  userNewDetails: string;
+  userNewDetails: string | Int32Array;
 }
 
 export class DefaultInput extends React.Component<
@@ -34,13 +34,14 @@ export class DefaultInput extends React.Component<
       [this.props.dbPropertyKey]: this.state.userNewDetails
     };
 
-    const updateUserPromise = Fetch.request(env.securedRoutes + '/user/' + 1, {
-      method: 'PATCH',
-      body: JSON.stringify(newUserDetails),
-      headers: {
-        'Content-Type': 'application/json'
+    const updateUserPromise = Fetch.request(
+      env.securedRoutes + '/user/' + 1,
+      'json',
+      {
+        method: 'PATCH',
+        body: JSON.stringify(newUserDetails)
       }
-    });
+    );
 
     updateUserPromise.then(response => console.log(response));
   };
@@ -80,7 +81,8 @@ export class DefaultInput extends React.Component<
         if (this.props.type === 'password') {
           const encryptedPassword = encrypt(this.state.inputValue);
           // @ts-ignore
-          this.setState( { userNewDetails: encryptedPassword },
+          this.setState(
+            { userNewDetails: encryptedPassword },
             this.updateUserDetails
           );
         } else {
