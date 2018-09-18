@@ -3,24 +3,35 @@ import './Avatar.scss';
 import { observer, inject } from 'mobx-react';
 import { IStores } from '../../interfaces/stores';
 import { FileUpload } from '../FileUpload';
-import { getAsset } from '../../services/asset';
 import { IAsset } from '../../interfaces/asset';
+import { host } from '../../env/environment';
 
 interface IAvatarProps {
   stores?: IStores;
 }
 
-interface IAvatarState {}
+interface IAvatarState {
+  avatarImageSrc: string;
+}
 
 @inject('stores')
 @observer
 export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
-  componendDidMount() {
-    getAsset(this.props.stores.userDetails.user.id, 1).then(
-      (result: IAsset) => {
-        this.props.stores.assets.set('avatar', result.filePath);
+  constructor(props: IAvatarProps) {
+    super(props);
+  }
+  componentDidMount() {
+    if (this.props.stores.userDetails.user) {
+      const assetsArray: IAsset[] = this.props.stores.userDetails.user.assets;
+      if (assetsArray.length > 0) {
+        const avatarImage = assetsArray.filter(
+          asset => asset.assets_type.type === 'avatar'
+        );
+        this.props.stores.assets.avatar = avatarImage[0];
+      } else {
+        this.props.stores.assets.avatar.filePath = `assets/static/avatar.jpg`;
       }
-    );
+    }
   }
 
   public render() {
@@ -28,10 +39,10 @@ export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
       <div className="avatar">
         <div className="avatar__container">
           <figure className="avatar__figure">
-            <FileUpload avatar />
+            <FileUpload avatar inputData={this.props.stores.assets.avatar} />
             <img
               className="avatar__image"
-              src={this.props.stores.assets.avatar.filePath}
+              src={host + this.props.stores.assets.avatar.filePath}
             />
           </figure>
         </div>

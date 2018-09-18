@@ -5,16 +5,22 @@ import { IStores, IAsset } from '../../interfaces';
 
 import './FileUpload.scss';
 
-interface IFileUpload {
+interface IFileUploadProps {
   background?: boolean;
   avatar?: boolean;
   stores?: IStores;
+  inputData?: any;
 }
+
+interface IFileUploadState {}
 
 @inject('stores')
 @observer
-export class FileUpload extends React.Component<IFileUpload> {
-  static defaultProps = {
+export class FileUpload extends React.Component<
+  IFileUploadProps,
+  IFileUploadState
+> {
+  static defaultProps: IFileUploadProps = {
     background: false,
     avatar: false
   };
@@ -23,6 +29,9 @@ export class FileUpload extends React.Component<IFileUpload> {
     super(props);
   }
 
+  componentDidMount() {
+    console.log(this.props.inputData);
+  }
   handleChangeFiles = (event: any) => {
     const { files } = event.target;
 

@@ -1,18 +1,19 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { SecuredRoute } from './components/SecuredRoute';
-
-import './App.scss';
-import './assets/styles/common.scss';
+import { IStores } from './interfaces';
 
 import { Authentication } from './pages/Authentication';
 import { Home } from './pages/Home';
 import { User } from './pages/User';
 
 import { observer, inject } from 'mobx-react';
+import { UserDetailsService } from './services/user';
 
+import './App.scss';
+import './assets/styles/common.scss';
 interface IAppProps {
-  stores?: any;
+  stores?: IStores;
 }
 
 @inject('stores')
@@ -20,9 +21,16 @@ interface IAppProps {
 export default class App extends React.Component<IAppProps, {}> {
   constructor(props: IAppProps) {
     super(props);
-    
-    const userDetails = JSON.parse(localStorage.getItem('userDetails'));
-    userDetails && (this.props.stores.userDetails.user = userDetails);
+  }
+
+  componentWillMount() {
+    const logedInUser = localStorage.getItem('userId');
+    if (logedInUser) {
+      UserDetailsService(logedInUser).then(response => {
+        console.log(response);
+        this.props.stores.userDetails.user = { ...response };
+      });
+    }
   }
 
   render() {
