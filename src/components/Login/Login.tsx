@@ -43,7 +43,7 @@ export class Login extends React.Component <ILoginProps, ILoginState> {
 
     const userDetails = {
           email,
-          password: encrypt(password, 10)
+          password: encrypt(password)
         };
     this.authenticate(userDetails);
   };
@@ -54,15 +54,13 @@ export class Login extends React.Component <ILoginProps, ILoginState> {
   };
 
   authenticate = (userDetails:any) => {
-    auth(userDetails).then(response => {
-      if (response.sprededResponse.password && !(encrypt(response.sprededResponse.password, 10) === encrypt(userDetails.password, 10))) {
-        const token = response.token;
-        localStorage.setItem('userDetails', JSON.stringify(response.sprededResponse));
-        localStorage.setItem('token', response.token);
-        this.props.stores.userDetails.user  =  {...response.sprededResponse, token};
-      } else {
-        console.log('The username and password did not match.');
-      }
+    auth('/user_login', userDetails).then(response => {
+        const {token} = response;
+        response.foundUser && localStorage.setItem('userDetails', JSON.stringify(response.foundUser));
+        token && localStorage.setItem('token', response.token);
+        this.props.stores.userDetails.user = {...response.foundUser, token};
+    }).catch(function(error) {
+      console.log(error);
     });
   };
 
