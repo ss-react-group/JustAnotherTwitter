@@ -19,7 +19,10 @@ export class CreateTweet extends React.Component<ITweetProps> {
   }
 
   handleCreateTweet = () => {
-    this.props.stores.tweetsStore.addTweet(1, this.props.stores.textareaStore.content)
+    this.props.stores.tweetsStore.addTweet(
+      this.props.stores.userDetails.user.id,
+      this.props.stores.textareaStore.content
+      )
       .then(() => 
         this.props.stores.textareaStore.setInitValue()
       );
