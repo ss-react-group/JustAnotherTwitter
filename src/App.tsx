@@ -25,7 +25,6 @@ export default class App extends React.Component<IAppProps, {}> {
     localStorage.removeItem('token');
     /******************************************/
     const userDetails = JSON.parse(localStorage.getItem('userDetails'));
-    console.log(userDetails);
     userDetails && (this.props.stores.userDetails.user = userDetails);
   }
 
