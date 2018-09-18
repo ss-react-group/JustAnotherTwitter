@@ -5,22 +5,19 @@ export abstract class Fetch {
   public static request(url: string, options?: RequestInit): Promise<any> {
     // @ts-ignore
     const { token } = window.localStorage;
+
     const securedHeader: RequestInit = {
-      ...options,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'token': token
-      }
+      ...options
     };
 
     return fetch(url, securedHeader)
       .then(status)
-      .then(response => response.json());
+      .then(response => response.json())
+      .catch(err => console.log(err));
   }
 }
 
-function status(response:any) {
+function status(response: any) {
   if (response.ok) {
     return Promise.resolve(response);
   }

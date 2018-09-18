@@ -20,7 +20,7 @@ interface IAppProps {
 export default class App extends React.Component<IAppProps, {}> {
   constructor(props: IAppProps) {
     super(props);
-    
+
     const userDetails = JSON.parse(localStorage.getItem('userDetails'));
     userDetails && (this.props.stores.userDetails.user = userDetails);
   }

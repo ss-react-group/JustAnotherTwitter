@@ -26,20 +26,23 @@ export class FbLoginButton extends Component<IFacebookRegisterProps, {}> {
       location: (response.location && response.location.name) || ''
     };
 
-    auth('/user_register', userDetails).then(response => {
-      const {token} = response;
-      token && localStorage.setItem('token', token);
-      response.spreadedResponse && localStorage.setItem(
-        'userDetails',
-        JSON.stringify(response.spreadedResponse)
-      );
-      this.props.stores.userDetails.user = {
-        ...response.spreadedResponse,
-        token
-      };
-    }).catch(function(error) {
-      console.log(error);
-    });
+    auth('/user_register', userDetails)
+      .then(response => {
+        const { token } = response;
+        token && localStorage.setItem('token', token);
+        response.spreadedResponse &&
+          localStorage.setItem(
+            'userDetails',
+            JSON.stringify(response.spreadedResponse)
+          );
+        this.props.stores.userDetails.user = {
+          ...response.spreadedResponse,
+          token
+        };
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   };
 
   render() {

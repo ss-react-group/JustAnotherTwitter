@@ -1,4 +1,5 @@
-export const host = 'https://react-academy.herokuapp.com/';
+export const host = 'http://localhost:8081/';
+// export const host = 'https://reactacademy.majesticdev.co/';
 
 export const env = {
   securedRoutes: `${host}api/v1/secured`,

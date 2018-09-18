@@ -24,6 +24,8 @@ export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
   }
 
   public render() {
+    console.log(this.props.stores.userDetails);
+
     return (
       <div className="avatar">
         <div className="avatar__container">

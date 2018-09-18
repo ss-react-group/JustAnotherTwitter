@@ -39,14 +39,16 @@ export class FileUpload extends React.Component<IFileUpload> {
     uploadAsset({
       assetType,
       files
-    }).then((result: IAsset) => {
-      if (avatar) {
-        this.props.stores.assets.set('avatar', result.filePath);
-      } else if (background) {
-        this.props.stores.assets.set('background', result.filePath);
-      }
-      this.props.stores.loadingIndicators.toggle();
-    });
+    })
+      .then((result: IAsset) => {
+        if (avatar) {
+          this.props.stores.assets.set('avatar', result.filePath);
+        } else if (background) {
+          this.props.stores.assets.set('background', result.filePath);
+        }
+        this.props.stores.loadingIndicators.toggle();
+      })
+      .catch(err => console.log(err));
   };
 
   render() {
