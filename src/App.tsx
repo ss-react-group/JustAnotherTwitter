@@ -20,10 +20,7 @@ interface IAppProps {
 export default class App extends React.Component<IAppProps, {}> {
   constructor(props: IAppProps) {
     super(props);
-    /*******just for the first launch after change***********/
-    localStorage.removeItem('userDetails');
-    localStorage.removeItem('token');
-    /******************************************/
+    
     const userDetails = JSON.parse(localStorage.getItem('userDetails'));
     userDetails && (this.props.stores.userDetails.user = userDetails);
   }
