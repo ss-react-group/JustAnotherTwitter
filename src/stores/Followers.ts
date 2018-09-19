@@ -1,7 +1,7 @@
 import { IFollowers } from './../interfaces';
 import { observable, action } from 'mobx';
 
-import jsonData from '../assets/followers';
+import { followers as followersData } from '../assets/mocks';
 
 export class Followers {
   @observable
@@ -9,7 +9,7 @@ export class Followers {
 
   @action
   get() {
-    this.list = jsonData;
+    this.list = followersData;
   }
 }
 
