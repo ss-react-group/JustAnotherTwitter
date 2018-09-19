@@ -8,6 +8,9 @@ import { IAsset } from '../../interfaces/asset';
 
 interface IAvatarProps {
   stores?: IStores;
+  source: string;
+  upload?: boolean;
+  big?: boolean;
 }
 
 interface IAvatarState {}
@@ -15,6 +18,11 @@ interface IAvatarState {}
 @inject('stores')
 @observer
 export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
+  static defaultProps = {
+    upload: false,
+    big: false
+  };
+
   componendDidMount() {
     getAsset(this.props.stores.userDetails.user.id, 1).then(
       (result: IAsset) => {
@@ -25,13 +33,23 @@ export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
 
   public render() {
     return (
-      <div className="avatar">
-        <div className="avatar__container">
-          <figure className="avatar__figure">
-            <FileUpload avatar />
+      <div className={this.props.big ? 'avatar--big' : 'avatar'}>
+        <div
+          className={
+            this.props.big ? 'avatar__container--big' : 'avatar__container'
+          }
+        >
+          <figure
+            className={
+              this.props.big ? 'avatar__figure--big' : 'avatar__figure'
+            }
+          >
+            {this.props.upload && <FileUpload avatar />}
             <img
-              className="avatar__image"
-              src={this.props.stores.assets.avatar.filePath}
+              className={
+                this.props.big ? 'avatar__image--big' : 'avatar__image'
+              }
+              src={this.props.source}
             />
           </figure>
         </div>

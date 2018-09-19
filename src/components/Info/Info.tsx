@@ -12,7 +12,13 @@ export const Info = () => (
           <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
         </div>
 
-        <Avatar />
+        <div className="info__avatar">
+          <Avatar
+            big
+            source="https://api.adorable.io/avatars/285/abott@adorable.png"
+            upload
+          />
+        </div>
 
         <div className="info__userName">
           <h3 className="userName__name">John Smith</h3>
