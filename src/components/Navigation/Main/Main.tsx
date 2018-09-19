@@ -1,20 +1,15 @@
 import * as React from 'react';
-
-import './MainNavigation.scss';
-
 import { inject, observer } from 'mobx-react';
 import { NavLink } from 'react-router-dom';
-interface IMainNavigationProps {
+import './Main.scss';
+
+interface IMainProps {
   stores?: any;
 }
 
 @inject('stores')
 @observer
-export class MainNavigation extends React.Component<IMainNavigationProps> {
-  constructor(props: IMainNavigationProps) {
-    super(props);
-  }
-
+export class Main extends React.Component<IMainProps> {
   handleLogout = (event: any) => {
     event.preventDefault();
     this.props.stores.userDetails.user = null;

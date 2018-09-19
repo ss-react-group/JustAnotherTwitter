@@ -16,7 +16,7 @@ export abstract class Fetch {
 
     return fetch(url, securedHeader)
       .then(status)
-      .then(response => response.json());
+      .then(response => response.json())
   }
 }
 
@@ -24,5 +24,5 @@ function status(response:any) {
   if (response.ok) {
     return Promise.resolve(response);
   }
-  return Promise.reject(new Error(response.statusText));
+  return new Error(response.statusText);
 }
