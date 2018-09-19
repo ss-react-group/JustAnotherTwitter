@@ -37,9 +37,7 @@ export class FbLoginButton extends Component<IFacebookRegisterProps, {}> {
         ...response.spreadedResponse,
         token
       };
-    }).catch(function(error) {
-      console.log(error);
-    });
+    }).catch((error:Error)=> console.log(error));
   };
 
   render() {
