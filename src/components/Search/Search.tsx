@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {Component} from "react";
-import * as Autosuggest from  'react-autosuggest';
-import {Fetch} from "../../helpers/fetch";
-import {env} from "../../env/environment";
-import {inject, observer} from "mobx-react";
-import {ITweet} from "../../interfaces";
+import { Component } from 'react';
+import { inject, observer } from 'mobx-react';
+import * as Autosuggest from 'react-autosuggest';
+import { Fetch } from '../../helpers/fetch';
+import { env } from '../../env';
+import { ITweet } from '../../interfaces';
 import './Search.scss';
 
 interface ISearchProps {
@@ -12,9 +12,9 @@ interface ISearchProps {
 }
 
 interface ISearchState {
-  value: string,
-  suggestions: any,
-  tweets: any
+  value: string;
+  suggestions: any;
+  tweets: any;
 }
 
 @inject('stores')
@@ -30,47 +30,54 @@ export class Search extends Component<ISearchProps, ISearchState> {
     };
   }
 
-  getSuggestionValue = (suggestion:any) => {
+  getSuggestionValue = (suggestion: any) => {
     console.log('Id of chosen tweet:', suggestion.id);
     return suggestion.name;
   };
 
-  renderSuggestion = (suggestion:any) => (
-    <div>
-      {suggestion.name}
-    </div>
-  );
+  renderSuggestion = (suggestion: any) => <div>{suggestion.name}</div>;
 
-  getSuggestions = (value:any) => {
+  getSuggestions = (value: any) => {
     const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
     const { tweets } = this.state;
 
-    return inputValue.length === 0 ? [] : tweets.filter((lang:any) =>
-      lang.name.toLowerCase().includes(inputValue)
-    );
+    return inputLength === 0
+      ? []
+      : tweets.filter((lang: any) =>
+          lang.name.toLowerCase().includes(inputValue)
+        );
   };
 
-  onChange = (event:any, {newValue}:{newValue:any}) => {
+  onChange = (event: any, { newValue }: { newValue: any }) => {
     this.setState({
       value: newValue
     });
   };
 
-  onSuggestionsFetchRequested = ({value, reason}:{value:any, reason: any}) => {
-    Fetch.request(env.securedRoutes + '/posts', { method: 'GET' })
-      .then((response: ITweet[]) => {
+  onSuggestionsFetchRequested = ({
+    value,
+    reason
+  }: {
+    value: any;
+    reason: any;
+  }) => {
+    Fetch.request(env.securedRoutes + '/posts', { method: 'GET' }).then(
+      (response: ITweet[]) => {
         this.props.stores.tweetsStore.tweets = response;
-        const {tweets} = this.props.stores.tweetsStore;
-        const readableTweets = tweets.map((item: ITweet) => {
-          return {name: item.content, id: item.id};
-        });
+        const { tweets } = this.props.stores.tweetsStore;
+        const readableTweets = tweets.map((item: ITweet) => ({
+          name: item.content,
+          id: item.id
+        }));
         this.setState({
           tweets: readableTweets
         });
         this.setState({
           suggestions: this.getSuggestions(value)
         });
-      });
+      }
+    );
   };
 
   onSuggestionsClearRequested = () => {
@@ -80,7 +87,7 @@ export class Search extends Component<ISearchProps, ISearchState> {
   };
 
   render() {
-    const {value, suggestions} = this.state;
+    const { value, suggestions } = this.state;
     const inputProps = {
       placeholder: 'Search posts...',
       value,
