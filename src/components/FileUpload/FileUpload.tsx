@@ -30,7 +30,7 @@ export class FileUpload extends React.Component<
   }
 
   componentDidMount() {
-    console.log(this.props.inputData);
+    console.log('hellow', this.props.inputData);
   }
   handleChangeFiles = (event: any) => {
     const { files } = event.target;

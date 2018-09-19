@@ -6,12 +6,12 @@ import { host } from '../env/environment';
 export class Assets {
   @observable
   background: IAsset = {
-    filePath: '/default-image.png'
+    filePath: ''
   } as IAsset;
 
   @observable
   avatar: IAsset = {
-    filePath: '/default-image-square.png'
+    filePath: ''
   } as IAsset;
 
   @action

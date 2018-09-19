@@ -18,7 +18,7 @@ export class MainNavigation extends React.Component<IMainNavigationProps> {
   handleLogout = (event: any) => {
     event.preventDefault();
     this.props.stores.userDetails.user = null;
-    localStorage.removeItem('userDetails');
+    localStorage.removeItem('userId');
     localStorage.removeItem('token');
   };
 
