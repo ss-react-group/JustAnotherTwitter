@@ -10,11 +10,12 @@
     overflow: hidden;
     margin: 0;
 
-    &__image {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
+  }
+
+  &__image {
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
 
   &:hover {
@@ -23,7 +24,6 @@
     }
   }
 }
-
 
 .image-message {
   position: absolute;

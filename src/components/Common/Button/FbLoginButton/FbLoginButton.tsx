@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
-import { auth } from '../../../../helpers/db';
+import { UserAuthenticate } from '../../../../helpers/UserAuthenticate';
 import { IStores } from '../../../../interfaces';
 import { inject, observer } from 'mobx-react';
 import './FbLoginButton.scss';
@@ -23,23 +23,19 @@ export class FbLoginButton extends Component<IFacebookRegisterProps, {}> {
       lastName: response.last_name || '',
       email: response.email || '',
       birthday: response.birthday || '',
-      location: (response.location && response.location.name) || ''
+      location: response.location.name || ''
     };
 
-    auth('/user_register', userDetails).then(response => {
-      const {token} = response;
-      token && localStorage.setItem('token', token);
-      response.spreadedResponse && localStorage.setItem(
-        'userDetails',
-        JSON.stringify(response.spreadedResponse)
-      );
-      this.props.stores.userDetails.user = {
-        ...response.spreadedResponse,
-        token
-      };
-    }).catch(function(error) {
-      console.log(error);
-    });
+    UserAuthenticate('/user_register', userDetails)
+      .then(response => {
+        const { token, foundUser } = response;
+        localStorage.setItem('token', token);
+        localStorage.setItem('userId', foundUser.id);
+        this.props.stores.userDetails.user = { ...foundUser };
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   };
 
   render() {

@@ -5,16 +5,22 @@ import { IStores, IAsset } from '../../interfaces';
 
 import './FileUpload.scss';
 
-interface IFileUpload {
+interface IFileUploadProps {
   background?: boolean;
   avatar?: boolean;
   stores?: IStores;
+  inputData?: IAsset;
 }
+
+interface IFileUploadState {}
 
 @inject('stores')
 @observer
-export class FileUpload extends React.Component<IFileUpload> {
-  static defaultProps = {
+export class FileUpload extends React.Component<
+  IFileUploadProps,
+  IFileUploadState
+> {
+  static defaultProps: IFileUploadProps = {
     background: false,
     avatar: false
   };
@@ -23,28 +29,31 @@ export class FileUpload extends React.Component<IFileUpload> {
     super(props);
   }
 
+  componentDidMount() {
+    console.log('hellow', this.props.inputData);
+  }
   handleChangeFiles = (event: any) => {
     const { files } = event.target;
-
-    const { background, avatar } = this.props;
-    let assetType;
-    if (avatar) {
-      assetType = 1;
-    } else if (background) {
-      assetType = 2;
-    }
 
     this.props.stores.loadingIndicators.toggle();
 
     uploadAsset({
-      assetType,
+      userId: this.props.stores.userDetails.user.id,
+      assetType: this.props.inputData.assets_type.id,
       files
     }).then((result: IAsset) => {
-      if (avatar) {
-        this.props.stores.assets.set('avatar', result.filePath);
-      } else if (background) {
-        this.props.stores.assets.set('background', result.filePath);
+      const { type } = result.assets_type;
+
+      switch (type) {
+        case 'avatar':
+          this.props.stores.assets.avatar = result;
+          break;
+        case 'background':
+          this.props.stores.assets.background = result;
+        default:
+          break;
       }
+
       this.props.stores.loadingIndicators.toggle();
     });
   };

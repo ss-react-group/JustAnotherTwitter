@@ -5,4 +5,10 @@ export interface IAsset {
   updatedAt: any;
   user_id: number;
   type_id: number;
+  assets_type: {
+    id: number;
+    type: string;
+    createdAt: any;
+    updatedAt: any;
+  };
 }

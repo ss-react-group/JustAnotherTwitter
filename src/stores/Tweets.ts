@@ -9,30 +9,23 @@ export class Tweets {
 
   @action
   fetchTweets() {
-    return Fetch.request(env.securedRoutes + '/posts', { method: 'GET' })
-      .then((response: ITweet[]) => {
-        this.tweets = response;
-        return response;
-      });
+    return Fetch.request(env.securedRoutes + '/posts', 'json', {
+      method: 'GET'
+    }).then((response: ITweet[]) => {
+      this.tweets = response;
+      return response;
+    });
   }
 
   @action
   addTweet(authorId: number, content: string) {
-    return Fetch.request(
-      env.securedRoutes + '/add_new_post', 
-      { 
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          'authorId': authorId,
-          'content': content
-        })
-      }
-    )
-    .then(() => {
+    return Fetch.request(env.securedRoutes + '/add_new_post', 'json', {
+      method: 'POST',
+      body: JSON.stringify({
+        authorId: authorId,
+        content: content
+      })
+    }).then(() => {
       this.fetchTweets();
     });
   }
@@ -40,20 +33,15 @@ export class Tweets {
   @action
   removeTweet(tweetId: number) {
     return Fetch.request(
-      env.securedRoutes + '/delete_post/' + tweetId, 
-      { 
-        method: 'DELETE',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
+      env.securedRoutes + '/delete_post/' + tweetId,
+      'json',
+      {
+        method: 'DELETE'
       }
-    )
-    .then(() => {
+    ).then(() => {
       this.fetchTweets();
     });
   }
-
 }
 
 export const tweetsStore = new Tweets();
