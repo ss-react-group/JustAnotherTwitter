@@ -1,4 +1,4 @@
-import { env } from '../env/environment';
+import { env } from '../env';
 import { Fetch } from '../helpers/fetch';
 import { IAsset } from '../interfaces/asset';
 

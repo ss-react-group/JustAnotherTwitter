@@ -4,7 +4,7 @@ import { IDefaultInput } from '../../../../interfaces/DefaultInput';
 import { validateInput, IRegExpTestResult } from '../helpers/validation';
 import { encrypt } from '../../../../helpers/Encrypting';
 import { Fetch } from '../../../../helpers/fetch';
-import { env } from '../../../../env/environment';
+import { env } from '../../../../env';
 
 export interface IDefaultInputProps extends IDefaultInput {}
 

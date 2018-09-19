@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { SecuredRoute } from './components/SecuredRoute';
-import { IStores } from './interfaces';
+import { AppRoute } from './components/AppRoute';
+import { MainLayout } from './components/Layouts';
 
 import { Authentication } from './pages/Authentication';
 import { Home } from './pages/Home';
@@ -9,6 +9,8 @@ import { User } from './pages/User';
 
 import { observer, inject } from 'mobx-react';
 import { UserDetailsService } from './services/user';
+
+import { IStores } from './interfaces';
 
 import './App.scss';
 import './assets/styles/common.scss';
@@ -27,7 +29,6 @@ export default class App extends React.Component<IAppProps, {}> {
     const logedInUser = localStorage.getItem('userId');
     if (logedInUser) {
       UserDetailsService(logedInUser).then(response => {
-        console.log(response);
         this.props.stores.userDetails.user = { ...response };
       });
     }
@@ -38,17 +39,19 @@ export default class App extends React.Component<IAppProps, {}> {
       <div className="App">
         <Router>
           <Switch>
-            <SecuredRoute
+            <AppRoute
               component={Home}
               exact
               path="/"
-              guard={this.props.stores.userDetails.user}
+              guarded
+              layout={MainLayout}
             />
 
-            <SecuredRoute
+            <AppRoute
               component={User}
               path="/profile"
-              guard={this.props.stores.userDetails.user}
+              guarded
+              layout={MainLayout}
             />
 
             <Route path="/login" component={Authentication} />
