@@ -7,6 +7,12 @@
     grid-gap: 50px;
   }
 
+  &__avatar {
+    grid-column: 6/8;
+    position: relative;
+    margin: 0;
+  }
+
   &__userName {
     grid-column: 8 /12;
 

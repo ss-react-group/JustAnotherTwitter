@@ -1,4 +1,32 @@
 .content__followers {
   grid-column: 10 / 13;
   background-color: #fff;
+  padding: 20px;
+}
+
+.content__title {
+  margin: 0;
+}
+
+.followers__list {
+  display: grid;
+  padding: 0;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__item {
+    display: block;
+    text-align: center;
+
+    .item__name {
+      font-size: 10px;
+      font-weight: 500;
+    }
+  }
+
 }
