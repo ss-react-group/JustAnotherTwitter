@@ -1,3 +1,4 @@
+export { IMainLayoutProps } from './MainLayout';
 export { IFollowers } from './followers';
 export { ILoadingIndicators } from './loadingIndicators';
 export { IAsset } from './asset';
