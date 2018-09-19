@@ -30,6 +30,7 @@ export class DefaultDatePicker extends React.Component<
     public userDetailsService: UserDetailsService
   ) {
     super(props);
+    this.userDetailsService = new UserDetailsService();
     this.state = {
       date: null
     };
@@ -53,18 +54,13 @@ export class DefaultDatePicker extends React.Component<
 
   handleOnChange = (date: any) => {
     const formatedDate = date.format('DD/MM/YYYY');
-    this.setState(
-      {
-        date: formatedDate
-      },
-      () => {
-        this.props.stores.userDetails.user[
-          this.props.dbPropertyKey
-        ] = formatedDate;
+    this.setState({
+      date: formatedDate
+    });
 
-        this.updateUserDetails;
-      }
-    );
+    this.props.stores.userDetails.user[this.props.dbPropertyKey] = formatedDate;
+
+    this.updateUserDetails();
   };
   render() {
     return (

@@ -30,7 +30,6 @@ export class DefaultForm extends React.Component<
           onSubmit={this.handleSubmit}
         >
           {this.props.inputFields.map((inputField, index) => {
-            console.log(inputField.type);
             switch (inputField.type) {
               case 'textarea':
                 return (
