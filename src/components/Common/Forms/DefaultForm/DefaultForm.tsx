@@ -40,7 +40,11 @@ export class DefaultForm extends React.Component<
                   validateFor={inputField.validateFor}
                 />
               ) : (
-                <TextArea key={index} maxChars="200" />
+                <TextArea
+                  key={index}
+                  maxChars="200"
+                  dbPropertyKey={inputField.dbPropertyKey}
+                />
               )
           )}
         </form>

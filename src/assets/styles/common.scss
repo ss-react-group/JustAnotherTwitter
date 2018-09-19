@@ -1,3 +1,6 @@
+@import 'src/assets/styles/variables';
+
+
 .container {
   max-width: 1224px;
   margin: 0 auto;
@@ -11,4 +14,8 @@
 %h3-header {
   font-size: 24px;
   font-weight: 600;
+}
+
+%box-shadow {
+  box-shadow: 0 0 5px $black_opacity;
 }

@@ -1,5 +1,10 @@
+@import 'src/assets/styles/common';
+
+
 .info {
   background-color: #fff;
+  @extend %box-shadow;
+  margin-bottom: 60px;
 
   &__grid {
     display: grid;

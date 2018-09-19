@@ -8,7 +8,7 @@ import { IStores } from '../../interfaces/stores';
 import { inject, observer } from 'mobx-react';
 
 interface ITweetProps {
-  stores?: IStores
+  stores?: IStores;
 }
 
 @inject('stores')
@@ -19,23 +19,20 @@ export class CreateTweet extends React.Component<ITweetProps> {
   }
 
   handleCreateTweet = () => {
-    this.props.stores.tweetsStore.addTweet(
-      this.props.stores.userDetails.user.id,
-      this.props.stores.textareaStore.content
+    this.props.stores.tweetsStore
+      .addTweet(
+        this.props.stores.userDetails.user.id,
+        this.props.stores.textareaStore.content
       )
-      .then(() => 
-        this.props.stores.textareaStore.setInitValue()
-      );
-  }
+      .then(() => this.props.stores.textareaStore.setInitValue());
+  };
 
-  render () {
+  render() {
     return (
       <div className="content__create-tweet">
-        <TextArea 
-          maxChars="150"
-        />
+        <TextArea maxChars="150" />
         <div>
-          <DefaultButton handleOnClick={this.handleCreateTweet}/>
+          <DefaultButton handleOnClick={this.handleCreateTweet} />
         </div>
       </div>
     );
