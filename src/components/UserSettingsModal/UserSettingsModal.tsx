@@ -1,15 +1,13 @@
 import * as React from 'react';
-import './UserSettingsModal.scss';
-
-import { DefaultForm } from '../Common/Forms';
-
 import {
   userDetailsForm,
   securityPasswordForm,
   descriptionForm
 } from './form-models';
 import { DatePicker } from '../Common/Inputs';
-import { getUserData } from './UserSettingsModa.service';
+import { DefaultForm } from '../Common/Forms';
+import { getUserData } from './UserSettingsModal.service';
+import './UserSettingsModal.scss';
 
 export interface IUserSettingsModalProps {}
 

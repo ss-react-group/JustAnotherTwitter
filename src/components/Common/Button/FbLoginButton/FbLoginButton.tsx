@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Component } from 'react';
-import FacebookLogin from 'react-facebook-login';
-import { auth } from '../../../../helpers/db';
-import { IStores } from '../../../../interfaces';
 import { inject, observer } from 'mobx-react';
+import FacebookLogin from 'react-facebook-login';
+import { auth } from '../../../../helpers/Db';
+import { IStores } from '../../../../interfaces';
 import './FbLoginButton.scss';
 
 interface IFacebookRegisterProps {

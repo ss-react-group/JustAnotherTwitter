@@ -1,5 +1,5 @@
 import { env } from '../env';
-import { Fetch } from './fetch';
+import { Fetch } from '../services/Fetch';
 
 export function auth(route: string, userDetails: any) {
   return Fetch.request(env.publicRoutes.concat(route), {

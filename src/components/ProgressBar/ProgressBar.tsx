@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { observer, inject } from 'mobx-react';
-
-import './ProgressBar.scss';
 import { IStores } from '../../interfaces';
+import './ProgressBar.scss';
 
 interface IProgressBar {
   stores?: IStores;

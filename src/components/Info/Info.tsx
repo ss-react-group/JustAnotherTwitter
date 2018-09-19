@@ -1,7 +1,5 @@
 import * as React from 'react';
-
 import { Avatar } from '../Avatar';
-
 import './Info.scss';
 
 export const Info = () => (

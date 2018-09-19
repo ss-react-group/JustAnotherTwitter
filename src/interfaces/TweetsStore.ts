@@ -1,4 +1,4 @@
-import { ITweet } from "./tweet";
+import { ITweet } from "./Tweet";
 
 export interface ITweetsStore {
   tweets: ITweet[];

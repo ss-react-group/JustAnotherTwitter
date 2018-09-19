@@ -1,4 +1,4 @@
-import { IAsset } from './asset';
+import { IAsset } from './Asset';
 
 export interface IAssets {
   background: IAsset;

@@ -1,4 +1,5 @@
-import { IDefaultForm } from '../../../interfaces/DefaultForm';
+import { IDefaultForm } from '../../../interfaces';
+
 export const securityPasswordForm: IDefaultForm = {
   formTitle: 'Security - change password',
   inputFields: [

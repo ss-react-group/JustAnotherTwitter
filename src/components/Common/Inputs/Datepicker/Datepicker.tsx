@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 export interface IDatePickerProps {}
-
 export interface IDatePickerState {}
 
 export class DatePicker extends React.Component<

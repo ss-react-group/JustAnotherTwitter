@@ -1,13 +1,10 @@
 import * as React from 'react';
-import { IDefaultForm } from '../../../../interfaces/DefaultForm';
 import { DefaultInput, TextArea } from '../../Inputs';
-
+import { IDefaultForm } from '../../../../interfaces';
 import './DefaultForm.scss';
 
 export interface IDefaultFormProps extends IDefaultForm {}
-
 export interface IDefaultFormState {}
-
 export class DefaultForm extends React.Component<
   IDefaultFormProps,
   IDefaultFormState

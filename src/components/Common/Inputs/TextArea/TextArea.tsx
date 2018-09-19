@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ITextArea } from '../../../../interfaces/TextArea';
-import './TextArea.scss';
 import { inject, observer } from 'mobx-react';
-import { IStores } from '../../../../interfaces/stores';
+import { ITextArea } from '../../../../interfaces';
+import { IStores } from '../../../../interfaces';
+import './TextArea.scss';
 
 export interface ITextAreaProps extends ITextArea {
   stores?: IStores

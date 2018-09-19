@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { observer, inject } from 'mobx-react';
-
-import './BackgroundImage.scss';
-import { IStores } from '../../interfaces';
 import { FileUpload } from '../FileUpload';
-import { getAsset } from '../../services/asset';
-import { IAsset } from '../../interfaces/asset';
+import { getAsset } from '../../services';
+import { IStores } from '../../interfaces';
+import { IAsset } from '../../interfaces';
+import './BackgroundImage.scss';
 
 interface IBackgroundImageProps {
   stores?: IStores;

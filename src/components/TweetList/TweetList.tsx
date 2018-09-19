@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { observer, inject } from 'mobx-react';
-
-import './TweetList.scss';
-
-import { ITweet } from '../../interfaces/tweet';
-import { IStores } from '../../interfaces/stores';
 import { TweetItem } from '../TweetItem';
 import { CreateTweet } from '../CreateTweet';
+import { ITweet } from '../../interfaces';
+import { IStores } from '../../interfaces';
+import './TweetList.scss';
 
 export interface IAllTweetsProps {
   stores?: IStores

@@ -1,11 +1,11 @@
 export { IMainLayoutProps } from './MainLayout';
-export { IFollowers } from './followers';
-export { ILoadingIndicators } from './loadingIndicators';
-export { IAsset } from './asset';
-export { IAssets } from './assets';
+export { IFollowers } from './Followers';
+export { ILoadingIndicators } from './LoadingIndicators';
+export { IAsset } from './Asset';
+export { IAssets } from './Assets';
 export { IStores } from './stores';
-export { ITweet } from './tweet';
+export { ITweet } from './Tweet';
 export { IDefaultForm } from './DefaultForm';
 export { IDefaultInput } from './DefaultInput';
 export { ITextArea } from './TextArea';
-export { IUser } from './user';
+export { IUser } from './User';

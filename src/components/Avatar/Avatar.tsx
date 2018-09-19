@@ -1,10 +1,10 @@
 import * as React from 'react';
-import './Avatar.scss';
 import { observer, inject } from 'mobx-react';
-import { IStores } from '../../interfaces/stores';
 import { FileUpload } from '../FileUpload';
-import { getAsset } from '../../services/asset';
-import { IAsset } from '../../interfaces/asset';
+import { getAsset } from '../../services/Asset';
+import { IStores } from '../../interfaces/stores';
+import { IAsset } from '../../interfaces/Asset';
+import './Avatar.scss';
 
 interface IAvatarProps {
   stores?: IStores;

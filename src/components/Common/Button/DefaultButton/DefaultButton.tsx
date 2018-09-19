@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import './DefaultButton.scss';
 
 export const DefaultButton = (props: any) => (

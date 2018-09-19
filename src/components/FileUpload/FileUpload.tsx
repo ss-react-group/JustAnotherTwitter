@@ -2,7 +2,6 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import { uploadAsset } from '../../services';
 import { IStores, IAsset } from '../../interfaces';
-
 import './FileUpload.scss';
 
 interface IFileUpload {

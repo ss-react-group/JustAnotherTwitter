@@ -1,15 +1,13 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { observer, inject } from 'mobx-react';
 import { AppRoute } from './components/AppRoute';
 import { MainLayout } from './components/Layouts';
-import './App.scss';
-import './assets/styles/common.scss';
-
 import { Authentication } from './pages/Authentication';
 import { Home } from './pages/Home';
 import { User } from './pages/User';
-
-import { observer, inject } from 'mobx-react';
+import './assets/styles/common.scss';
+import './App.scss';
 
 interface IAppProps {
   stores?: any;

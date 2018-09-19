@@ -1,7 +1,6 @@
-import { IFollowers } from './../interfaces';
 import { observable, action } from 'mobx';
-
 import { followers as followersData } from '../assets/mocks';
+import { IFollowers } from '../interfaces';
 
 export class Followers {
   @observable

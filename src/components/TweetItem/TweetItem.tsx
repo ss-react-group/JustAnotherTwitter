@@ -2,10 +2,8 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import './TweetItem.scss';
-
 import { ITweet, IStores } from '../../interfaces';
+import './TweetItem.scss';
 
 export interface ITweetItemProps {
   tweet: ITweet,
@@ -22,7 +20,7 @@ export class TweetItem extends React.Component<ITweetItemProps, {}> {
   handleRemoveTweet = (event: any) => {
     event.stopPropagation();
     this.props.stores.tweetsStore.removeTweet(this.props.tweet.id);
-  }
+  };
 
   render() {
     return (

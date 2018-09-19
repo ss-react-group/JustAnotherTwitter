@@ -1,10 +1,10 @@
 import * as React from 'react';
-import './DefaultInput.scss';
-import { IDefaultInput } from '../../../../interfaces/DefaultInput';
+import { Fetch } from '../../../../services/Fetch';
 import { validateInput, IRegExpTestResult } from '../helpers/validation';
 import { encrypt } from '../../../../helpers/Encrypting';
-import { Fetch } from '../../../../helpers/fetch';
 import { env } from '../../../../env';
+import { IDefaultInput } from '../../../../interfaces';
+import './DefaultInput.scss';
 
 export interface IDefaultInputProps extends IDefaultInput {}
 

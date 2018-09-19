@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {extendObservable} from "mobx";
 import {inject, observer} from 'mobx-react';
-import { auth } from '../../helpers/db';
-import './Login.scss';
-import {IStores} from "../../interfaces";
+import { auth } from '../../helpers/Db';
 import {encrypt} from "../../helpers/Encrypting";
+import {IStores} from "../../interfaces";
+import './Login.scss';
 
 interface ILoginProps {
   stores?: IStores

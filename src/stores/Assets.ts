@@ -1,7 +1,6 @@
-import { IAsset } from './../interfaces/asset';
 import { observable, action } from 'mobx';
-
-import { host } from '../env/environment';
+import { host } from '../env';
+import { IAsset } from '../interfaces';
 
 export class Assets {
   @observable

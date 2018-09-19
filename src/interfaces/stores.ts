@@ -1,6 +1,6 @@
-import { IUser } from './user';
-import { IAssets } from './assets';
-import { ILoadingIndicators } from './loadingIndicators';
+import { IUser } from './User';
+import { IAssets } from './Assets';
+import { ILoadingIndicators } from './LoadingIndicators';
 import { ITweetsStore } from './TweetsStore';
 
 export interface IStores {

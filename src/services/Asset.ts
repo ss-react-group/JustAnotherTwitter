@@ -1,6 +1,6 @@
 import { env } from '../env';
-import { Fetch } from '../helpers/fetch';
-import { IAsset } from '../interfaces/asset';
+import { Fetch } from './Fetch';
+import { IAsset } from '../interfaces';
 
 export function getAsset(userId: number, typeId: number): Promise<IAsset> {
   return Fetch.request(`${env.securedRoutes}/assets/${userId}/${typeId}`, {

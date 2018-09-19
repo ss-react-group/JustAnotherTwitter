@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Redirect } from 'react-router-dom';
+import { inject, observer } from 'mobx-react';
 import { Login } from '../../components/Login';
 import { Register } from '../../components/Register';
-import { inject, observer } from 'mobx-react';
 import { GithubFigure, SoftServeFigure } from '../../components/Common/Figure';
-
 import './Authentication.scss';
+
 interface IAuthorizationProps {
   stores?: any;
 }

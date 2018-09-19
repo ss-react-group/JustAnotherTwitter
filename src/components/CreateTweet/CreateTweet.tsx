@@ -1,11 +1,9 @@
 import * as React from 'react';
-import './CreateTweet.scss';
-
+import { inject, observer } from 'mobx-react';
 import { DefaultButton } from '../Common/Button';
 import { TextArea } from '../Common/Inputs';
-
-import { IStores } from '../../interfaces/stores';
-import { inject, observer } from 'mobx-react';
+import { IStores } from '../../interfaces';
+import './CreateTweet.scss';
 
 interface ITweetProps {
   stores?: IStores

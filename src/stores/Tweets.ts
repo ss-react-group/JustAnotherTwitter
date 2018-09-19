@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx';
-import { ITweet } from '../interfaces/tweet';
-import { Fetch } from '../helpers/fetch';
 import { env } from '../env';
+import { Fetch } from '../services/Fetch';
+import { ITweet } from '../interfaces';
 
 export class Tweets {
   @observable
