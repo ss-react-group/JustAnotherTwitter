@@ -6,9 +6,9 @@ import { DefaultForm } from '../Common/Forms';
 import {
   userDetailsForm,
   securityPasswordForm,
-  descriptionForm
+  descriptionForm,
+  userLocationForm
 } from './form-models';
-import { DatePicker } from '../Common/Inputs';
 import { inject, observer } from 'mobx-react';
 import { IStores } from '../../interfaces';
 import { host } from '../../env';
@@ -68,7 +68,10 @@ export class UserSettingsModal extends React.Component<
                 formTitle={descriptionForm.formTitle}
                 inputFields={descriptionForm.inputFields}
               />
-              <DatePicker />
+              <DefaultForm
+                formTitle={userLocationForm.formTitle}
+                inputFields={userLocationForm.inputFields}
+              />
             </div>
           </div>
         </div>

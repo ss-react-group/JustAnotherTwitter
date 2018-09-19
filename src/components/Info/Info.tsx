@@ -6,6 +6,8 @@ import { UserSettingsModal } from '../../components/UserSettingsModal';
 import './Info.scss';
 import { inject, observer } from 'mobx-react';
 import { IStores } from '../../interfaces';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarAlt, faMap } from '@fortawesome/free-regular-svg-icons';
 
 export interface IInfoProps {
   stores?: IStores;
@@ -44,8 +46,22 @@ export class Info extends React.Component<IInfoProps, IInfoState> {
           </div>
 
           <div className="info__details">
-            <p>Location</p>
-            <p>burthday</p>
+            <div className="details-row details-row--location">
+              <figure className="details-row__icon">
+                <FontAwesomeIcon icon={faMap} />
+              </figure>
+              <span className="details-row__content">
+                {this.props.stores.userDetails.user.location}
+              </span>
+            </div>
+            <div className="details-row details-row--birthday">
+              <figure className="details-row__icon">
+                <FontAwesomeIcon icon={faCalendarAlt} />
+              </figure>
+              <span className="details-row__content">
+                {this.props.stores.userDetails.user.birthday}
+              </span>
+            </div>
           </div>
 
           <div className="info__avatar">

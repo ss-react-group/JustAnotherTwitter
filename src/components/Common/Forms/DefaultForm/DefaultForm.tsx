@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IDefaultForm } from '../../../../interfaces/DefaultForm';
-import { DefaultInput, TextArea } from '../../Inputs';
+import { DefaultInput, TextArea, DefaultDatePicker } from '../../Inputs';
 
 import './DefaultForm.scss';
 
@@ -29,24 +29,39 @@ export class DefaultForm extends React.Component<
           autoComplete="autocomplete"
           onSubmit={this.handleSubmit}
         >
-          {this.props.inputFields.map(
-            (inputField, index) =>
-              inputField.type !== 'textarea' ? (
-                <DefaultInput
-                  key={index}
-                  dbPropertyKey={inputField.dbPropertyKey}
-                  type={inputField.type}
-                  label={inputField.label}
-                  validateFor={inputField.validateFor}
-                />
-              ) : (
-                <TextArea
-                  key={index}
-                  maxChars="200"
-                  dbPropertyKey={inputField.dbPropertyKey}
-                />
-              )
-          )}
+          {this.props.inputFields.map((inputField, index) => {
+            console.log(inputField.type);
+            switch (inputField.type) {
+              case 'textarea':
+                return (
+                  <TextArea
+                    key={index}
+                    maxChars="200"
+                    dbPropertyKey={inputField.dbPropertyKey}
+                  />
+                );
+              case 'date':
+                return (
+                  <DefaultDatePicker
+                    key={index}
+                    label={inputField.label}
+                    type={inputField.type}
+                    validateFor={inputField.validateFor}
+                    dbPropertyKey={inputField.dbPropertyKey}
+                  />
+                );
+              default:
+                return (
+                  <DefaultInput
+                    key={index}
+                    dbPropertyKey={inputField.dbPropertyKey}
+                    type={inputField.type}
+                    label={inputField.label}
+                    validateFor={inputField.validateFor}
+                  />
+                );
+            }
+          })}
         </form>
       </div>
     );

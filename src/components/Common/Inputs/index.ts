@@ -1,3 +1,3 @@
 export { DefaultInput } from './DefaultInput/DefaultInput';
 export { TextArea } from './TextArea/TextArea';
-export { DatePicker } from './Datepicker/Datepicker';
+export { DefaultDatePicker } from './DefaultDatepicker/DefaultDatepicker';

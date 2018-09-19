@@ -23,7 +23,12 @@
   }
 
   &__details {
+    display: flex;
     grid-area: details;
+    flex-direction: column;
+    justify-content: center;
+
+
   }
 
   &__avatar {
@@ -53,4 +58,24 @@
     justify-content: flex-start;
   }
 
+}
+
+
+
+.details-row {
+  display: flex;
+  align-content: center;
+  margin-bottom: 10px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  &__icon {
+    margin-right: 10px;
+  }
+
+  &__content {
+    @extend %label;
+  }
 }

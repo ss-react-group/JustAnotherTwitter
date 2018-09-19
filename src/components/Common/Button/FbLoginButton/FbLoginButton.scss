@@ -1,4 +1,17 @@
-.facebook-button {
+@import 'src/assets/styles/common';
+
+
+
+.facebook-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__error-message {
+    @extend %label;
+  }
+
+  &__button {
     width: 165px;
     height: 35px;
     border-radius: 4px;
@@ -14,6 +27,8 @@
     &:hover {
       background-color: rgba(0, 127, 255, 0.95);
       opacity: 0.6;
-      cursor:pointer;
+      cursor: pointer;
     }
   }
+
+}
