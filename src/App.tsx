@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { SecuredRoute } from './components/SecuredRoute';
-
+import { AppRoute } from './components/AppRoute';
+import { MainLayout } from './components/Layouts';
 import './App.scss';
 import './assets/styles/common.scss';
 
@@ -20,7 +20,7 @@ interface IAppProps {
 export default class App extends React.Component<IAppProps, {}> {
   constructor(props: IAppProps) {
     super(props);
-    
+
     const userDetails = JSON.parse(localStorage.getItem('userDetails'));
     userDetails && (this.props.stores.userDetails.user = userDetails);
   }
@@ -30,17 +30,19 @@ export default class App extends React.Component<IAppProps, {}> {
       <div className="App">
         <Router>
           <Switch>
-            <SecuredRoute
+            <AppRoute
               component={Home}
               exact
               path="/"
-              guard={this.props.stores.userDetails.user}
+              guarded
+              layout={MainLayout}
             />
 
-            <SecuredRoute
+            <AppRoute
               component={User}
               path="/profile"
-              guard={this.props.stores.userDetails.user}
+              guarded
+              layout={MainLayout}
             />
 
             <Route path="/login" component={Authentication} />
