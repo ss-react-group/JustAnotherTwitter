@@ -8,6 +8,9 @@ import { host } from '../../env/environment';
 
 interface IAvatarProps {
   stores?: IStores;
+  source: string;
+  upload?: boolean;
+  big?: boolean;
 }
 
 interface IAvatarState {
@@ -36,12 +39,21 @@ export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
 
   public render() {
     return (
-      <div className="avatar">
-        <div className="avatar__container">
-          <figure className="avatar__figure">
-            <FileUpload avatar inputData={this.props.stores.assets.avatar} />
+      <div className={`avatar ${this.props.big && 'avatar--big'}`}>
+        <div
+          className={`avatar__container ${this.props.big &&
+            'avatar__container--big'}`}
+        >
+          <figure
+            className={`avatar__figure ${this.props.big &&
+              'avatar__figure--big'}`}
+          >
+            {this.props.upload && (
+              <FileUpload avatar inputData={this.props.stores.assets.avatar} />
+            )}
             <img
-              className="avatar__image"
+              className={`avatar__image ${this.props.big &&
+                'avatar__image--big'}`}
               src={host + this.props.stores.assets.avatar.filePath}
             />
           </figure>

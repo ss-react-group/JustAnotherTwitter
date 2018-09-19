@@ -1,46 +1,51 @@
 .avatar {
-  grid-column: 6/8;
-  position: relative;
-  margin: 0;
-
   &__container {
-    width: 150px;
-    height: 150px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 100;
-    right: 0;
-    margin: auto;
+    &--big {
+      width: 150px;
+      height: 150px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 100;
+      right: 0;
+      margin: auto;
+    }
   }
 
-  &:hover {
+  &:hover, &--big:hover {
     .file-upload--avatar {
       opacity: 1;
     }
   }
 
   &__figure {
-    border-radius: 50%;
     display: flex;
-    flex: 0 0 150px;
-    height: 150px;
     justify-content: center;
     overflow: hidden;
-    position: relative;
-    width: 150px;
     margin: 0;
+
+    &--big {
+      border-radius: 50%;
+      flex: 0 0 150px;
+      height: 150px;
+      width: 150px;
+      position: relative;
+    }
   }
 
   &__image {
     width: 100%;
     height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
     margin: auto;
-    bottom: 0;
-    z-index: 1;
+    border-radius: 50%;
+
+    &--big {
+      bottom: 0;
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
 }
