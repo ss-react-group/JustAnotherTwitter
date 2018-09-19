@@ -56,14 +56,10 @@ export class Login extends React.Component<ILoginProps, ILoginState> {
   authenticate = (userDetails: any) => {
     UserAuthenticate('/user_login', userDetails)
       .then(response => {
-        const { token } = response;
-        response.foundUser &&
-          localStorage.setItem(
-            'userDetails',
-            JSON.stringify(response.foundUser)
-          );
-        token && localStorage.setItem('token', response.token);
-        this.props.stores.userDetails.user = { ...response.foundUser, token };
+        const { token, foundUser } = response;
+        localStorage.setItem('token', token);
+        localStorage.setItem('userId', foundUser.id);
+        this.props.stores.userDetails.user = { ...foundUser };
       })
       .catch(function(error) {
         console.log(error);
