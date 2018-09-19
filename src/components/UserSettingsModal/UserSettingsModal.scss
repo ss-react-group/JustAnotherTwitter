@@ -10,9 +10,35 @@
   justify-content: center;
   left: 0;
   top: 0;
-  background-color: $black_opacity;
+  opacity: 0;
+  transition: .4s;
+  pointer-events: none;
+
+  &__background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 998;
+    background-color: $black_opacity;
+  }
+
+  &--is-open {
+    opacity: 1;
+    pointer-events: auto;
+
+    .user-settings-modal {
+      &__box {
+        transform: translateY(0%);
+      }
+    }
+
+  }
 
   &__box {
+    position: relative;
+    z-index: 999;
+    transform: translateY(-100%);
+    transition: .7s;
     padding: 25px;
     background-color: $white;
     display: grid;
