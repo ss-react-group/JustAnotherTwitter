@@ -7,6 +7,7 @@ export interface IUser {
   email: string;
   createdAt: string;
   token: string;
+  description: string;
   password?: string;
   location?: string;
   birthday?: string;

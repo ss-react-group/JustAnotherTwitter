@@ -28,10 +28,10 @@ export class FbLoginButton extends Component<IFacebookRegisterProps, {}> {
 
     UserAuthenticate('/user_register', userDetails)
       .then(response => {
-        const { token, spreadedResponse } = response;
+        const { token, foundUser } = response;
         localStorage.setItem('token', token);
-        localStorage.setItem('userId', spreadedResponse.id);
-        this.props.stores.userDetails.user = { ...spreadedResponse };
+        localStorage.setItem('userId', foundUser.id);
+        this.props.stores.userDetails.user = { ...foundUser };
       })
       .catch(function(error) {
         console.log(error);

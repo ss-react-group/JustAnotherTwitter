@@ -8,7 +8,6 @@ import { host } from '../../env/environment';
 
 interface IAvatarProps {
   stores?: IStores;
-  source: string;
   upload?: boolean;
   big?: boolean;
 }
@@ -24,7 +23,7 @@ export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
     super(props);
   }
   componentDidMount() {
-    if (this.props.stores.userDetails.user) {
+    if (this.props.stores.userDetails.user.assets) {
       const assetsArray: IAsset[] = this.props.stores.userDetails.user.assets;
       if (assetsArray.length > 0) {
         const avatarImage = assetsArray.filter(

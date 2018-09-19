@@ -13,13 +13,12 @@ export function getAsset(userId: number, typeId: number): Promise<IAsset> {
 }
 
 export function uploadAsset(params: any): Promise<IAsset> {
-  const { assetType, files } = params;
-
+  const { assetType, files, userId } = params;
   const formData = new FormData();
   formData.append('file', files[0]);
 
   return Fetch.request(
-    `${env.securedRoutes}/file_upload/2/${assetType}`,
+    `${env.securedRoutes}/file_upload/${userId}/${assetType}`,
     'media',
     {
       method: 'POST',
