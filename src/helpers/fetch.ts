@@ -8,7 +8,7 @@ export abstract class Fetch {
     options?: RequestInit
   ): Promise<any> {
     // @ts-ignore
-    const { token } = window.localStorage;
+    const token = localStorage.getItem('token');
 
     const securedHeader: RequestInit = {
       ...options,

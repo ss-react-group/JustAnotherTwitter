@@ -23,7 +23,7 @@ export class FbLoginButton extends Component<IFacebookRegisterProps, {}> {
       lastName: response.last_name || '',
       email: response.email || '',
       birthday: response.birthday || '',
-      location: (response.location && response.location.name) || ''
+      location: response.location.name || ''
     };
 
     UserAuthenticate('/user_register', userDetails)
@@ -31,7 +31,7 @@ export class FbLoginButton extends Component<IFacebookRegisterProps, {}> {
         const { token, spreadedResponse } = response;
         localStorage.setItem('token', token);
         localStorage.setItem('userId', spreadedResponse.id);
-
+        console.log('spreaded', spreadedResponse);
         this.props.stores.userDetails.user = { ...spreadedResponse };
       })
       .catch(function(error) {

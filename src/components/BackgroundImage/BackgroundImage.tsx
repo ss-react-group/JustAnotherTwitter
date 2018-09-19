@@ -22,10 +22,12 @@ export class BackgroundImage extends React.Component<
   constructor(props: IBackgroundImageProps) {
     super(props);
   }
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.stores.userDetails.user) {
       const assetsArray: IAsset[] = this.props.stores.userDetails.user.assets;
+
       if (assetsArray.length > 0) {
+        console.log(assetsArray);
         const backgroundImage = assetsArray.filter(
           asset => asset.assets_type.type === 'background'
         );
