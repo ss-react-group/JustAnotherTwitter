@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Component } from 'react';
+import { inject, observer } from 'mobx-react';
 import * as Autosuggest from 'react-autosuggest';
 import { Fetch } from '../../helpers/fetch';
 import { env } from '../../env';
-import { inject, observer } from 'mobx-react';
 import { ITweet } from '../../interfaces';
 import './Search.scss';
 
