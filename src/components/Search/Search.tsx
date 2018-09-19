@@ -62,7 +62,7 @@ export class Search extends Component<ISearchProps, ISearchState> {
     value: any;
     reason: any;
   }) => {
-    Fetch.request(env.securedRoutes + '/posts', { method: 'GET' }).then(
+    Fetch.request(env.securedRoutes + '/posts', 'json', { method: 'GET' }).then(
       (response: ITweet[]) => {
         this.props.stores.tweetsStore.tweets = response;
         const { tweets } = this.props.stores.tweetsStore;

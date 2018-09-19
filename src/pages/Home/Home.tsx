@@ -5,7 +5,6 @@ import { Info } from '../../components/Info';
 import { TweetList } from '../../components/TweetList';
 import { Followers } from '../../components/Followers';
 import { ProgressBar } from '../../components/ProgressBar';
-import './Home.scss';
 
 export const Home = () => (
   <React.Fragment>
