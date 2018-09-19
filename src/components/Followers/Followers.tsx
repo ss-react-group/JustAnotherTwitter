@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import './Followers.scss';
 import { inject, observer } from 'mobx-react';
 import { Avatar } from '../Avatar';
+import './Followers.scss';
 
 interface IFollowers {
   stores?: any;
@@ -28,9 +28,9 @@ export class Followers extends React.Component<IFollowers> {
             >
               <li className="followers__list__item">
                 <Avatar source={follower.avatar} />
-                <h3 className="item__name">{`${
-                  follower.firstName
-                } ${follower.lastName}`}</h3>
+                <h3 className="item__name">{`${follower.firstName} ${
+                  follower.lastName
+                }`}</h3>
               </li>
             </Link>
           ))}

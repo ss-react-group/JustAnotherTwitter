@@ -33,22 +33,19 @@ export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
 
   public render() {
     return (
-      <div className={this.props.big ? 'avatar--big' : 'avatar'}>
+      <div className={`avatar ${this.props.big && 'avatar--big'}`}>
         <div
-          className={
-            this.props.big ? 'avatar__container--big' : 'avatar__container'
-          }
+          className={`avatar__container ${this.props.big &&
+            'avatar__container--big'}`}
         >
           <figure
-            className={
-              this.props.big ? 'avatar__figure--big' : 'avatar__figure'
-            }
+            className={`avatar__figure ${this.props.big &&
+              'avatar__figure--big'}`}
           >
             {this.props.upload && <FileUpload avatar />}
             <img
-              className={
-                this.props.big ? 'avatar__image--big' : 'avatar__image'
-              }
+              className={`avatar__image ${this.props.big &&
+                'avatar__image--big'}`}
               src={this.props.source}
             />
           </figure>
