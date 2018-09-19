@@ -11,6 +11,7 @@
     grid-template-columns: repeat(5, 1fr);
     grid-template-areas: "description details avatar userName settings";
     grid-gap: 50px;
+    padding: 15px 0;
   }
 
   &__description {
