@@ -31,7 +31,9 @@ export class Search extends Component<ISearchProps, ISearchState> {
   }
 
   getSuggestionValue = (suggestion: any) => {
-    console.log('Id of chosen tweet:', suggestion.id);
+    let chosenTweet = this.props.stores.tweetsStore.tweets.find((item: ITweet) => item.id === suggestion.id);
+    this.props.stores.TweetModalStore.isOpen = true;
+    this.props.stores.TweetModalStore.selectedTweet = chosenTweet;
     return suggestion.name;
   };
 
