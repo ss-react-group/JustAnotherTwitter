@@ -6,10 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './TweetItem.scss';
 
-import { ITweet, IStores } from '../../interfaces';
+import { IStores } from '../../interfaces';
 
 export interface ITweetItemProps {
-  tweet: ITweet;
+  tweet: any; // ITweet || IComment
   stores?: IStores;
   handleRemoveTweet?(event: any, tweetId: number): any;
 }

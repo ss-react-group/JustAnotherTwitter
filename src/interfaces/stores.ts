@@ -3,6 +3,7 @@ import { ITweet } from './tweet';
 import { IAssets } from './assets';
 import { ILoadingIndicators } from './loadingIndicators';
 import { ITweetsStore } from './TweetsStore';
+import { IComment } from './comment';
 
 export interface IStores {
   assets: IAssets;
@@ -25,9 +26,9 @@ export interface IStores {
     selectedTweet: ITweet;
   };
   commentsStore: {
-    comments?: any[];
-    addComment(postId: number, authorId: number, content: string): Promise<any>;
-    fetchComments(postId: number): Promise<any>;
-    removeComment(commentId: number): any;
-  };
+    comments?: IComment[],
+    addComment(postId: number ,authorId: number, content: string): Promise<any>,
+    fetchComments(postId: number): Promise<any>,
+    removeComment(postId: number, commentId: number): any
+  }
 }

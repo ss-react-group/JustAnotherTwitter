@@ -24,7 +24,11 @@ export class TweetModal extends React.Component<IAllTweetsProps, {}> {
 
   handleRemoveTweet = (event: any, tweetId: number) => {
     event.stopPropagation();
-    this.props.stores.tweetsStore.removeTweet(tweetId);
+    this.props.stores.tweetsStore.removeTweet(tweetId)
+      .then(() => {
+        console.log('here');
+        this.handleCloseModal();
+      });
   }
 
   render() {
