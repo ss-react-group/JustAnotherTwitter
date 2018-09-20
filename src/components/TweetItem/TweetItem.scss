@@ -5,6 +5,18 @@
 
 .tweet__header {
   margin-bottom: 15px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.tweet__avatar {
+  flex: 0 0 70px;
+  margin-right: 15px;
+}
+
+.tweet__user-data { 
+  flex: 1 1 auto;
+  margin-top: 15px;
 }
 
 .tweet__user-name-link {
