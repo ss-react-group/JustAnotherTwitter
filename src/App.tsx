@@ -26,12 +26,12 @@ export default class App extends React.Component<IAppProps, {}> {
     this.userDetailsServer = new UserDetailsService();
   }
 
-  componentWillMount() {
+  async componentWillMount() {
     const logedInUser = localStorage.getItem('userId');
+
     if (logedInUser) {
-      this.userDetailsServer.getUserDetails(logedInUser).then(response => {
-        this.props.stores.userDetails.user = { ...response };
-      });
+      const response = await  this.userDetailsServer.getUserDetails(logedInUser);
+      await (this.props.stores.userDetails.user = { ...response });
     }
   }
 

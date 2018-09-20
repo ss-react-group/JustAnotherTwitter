@@ -8,44 +8,40 @@ export class Tweets {
   tweets: ITweet[] = [];
 
   @action
-  fetchTweets(userId?: any) {
+  async fetchTweets(userId?: any) {
     let path = `${env.securedRoutes}/posts`;
     if (userId) {
       path = `${env.securedRoutes}/posts/${userId}`;
     }
 
-    return Fetch.request(path, 'json', {
+    const response = await Fetch.request(path, 'json', {
       method: 'GET'
-    }).then((response: ITweet[]) => {
-      this.tweets = response;
-      return response;
     });
+    this.tweets = response;
+    return response;
   }
 
   @action
-  addTweet(authorId: number, content: string) {
-    return Fetch.request(env.securedRoutes + '/add_new_post', 'json', {
+  async addTweet(authorId: number, content: string) {
+    await Fetch.request(env.securedRoutes + '/add_new_post', 'json', {
       method: 'POST',
       body: JSON.stringify({
         authorId,
         content
       })
-    }).then(() => {
-      this.fetchTweets();
     });
+    this.fetchTweets();
   }
 
   @action
-  removeTweet(tweetId: number) {
-    return Fetch.request(
+  async removeTweet(tweetId: number) {
+    await Fetch.request(
       env.securedRoutes + '/delete_post/' + tweetId,
       'json',
       {
         method: 'DELETE'
-      }
-    ).then(() => {
+      });
       this.fetchTweets();
-    });
   }
 }
 
