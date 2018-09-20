@@ -33,7 +33,11 @@ export class Info extends React.Component<IInfoProps, IInfoState> {
             </div>
 
             <div className="info__avatar">
-              <Avatar big upload />
+              <Avatar
+                source={this.props.stores.userDetails.avatar.filePath}
+                big
+                upload={this.props.stores.userDetails.canUpload}
+              />
             </div>
 
             <div className="info__userName">

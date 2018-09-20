@@ -5,13 +5,22 @@ import { Info } from '../Info';
 import { ProgressBar } from '../ProgressBar';
 import { IMainLayoutProps } from '../../interfaces';
 import './MainLayout.scss';
+import { inject, observer } from 'mobx-react';
 
-export const MainLayout: React.SFC = (props: IMainLayoutProps) => (
-  <React.Fragment>
-    <ProgressBar />
-    <Navigation />
-    <BackgroundImage />
-    <Info />
-    <div className="content container">{props.children}</div>
-  </React.Fragment>
-);
+@inject('stores')
+@observer
+export class MainLayout extends React.Component<IMainLayoutProps> {
+  render() {
+    return (
+      <React.Fragment>
+        <ProgressBar />
+        <Navigation />
+        <BackgroundImage
+          source={this.props.stores.userDetails.background.filePath}
+        />
+        <Info />
+        <div className="content container">{this.props.children}</div>
+      </React.Fragment>
+    );
+  }
+}

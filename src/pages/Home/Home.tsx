@@ -1,10 +1,25 @@
 import * as React from 'react';
 import { TweetList } from '../../components/TweetList';
-import { Followers } from '../../components/Followers';
+// import { Followers } from '../../components/Followers';
+import { inject, observer } from 'mobx-react';
 
-export const Home = () => (
-  <React.Fragment>
-    <TweetList />
-    <Followers />
-  </React.Fragment>
-);
+interface IHomeProps {
+  stores?: any;
+}
+
+@inject('stores')
+@observer
+export class Home extends React.Component<IHomeProps> {
+  componentDidMount() {
+    this.props.stores.userDetails.get('me');
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <TweetList />
+        {/* <Followers /> */}
+      </React.Fragment>
+    );
+  }
+}

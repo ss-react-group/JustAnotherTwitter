@@ -8,10 +8,15 @@ export interface IStores {
   tweetsStore: ITweetsStore;
   userDetails: {
     user: IUser;
+    userPage: IUser;
+    avatar: any;
+    background: any;
+    get(userId?: number): void;
+    canUpload: any;
   };
   loadingIndicators: ILoadingIndicators;
   textareaStore: {
     content: string;
     setInitValue(): void;
-  }
+  };
 }
