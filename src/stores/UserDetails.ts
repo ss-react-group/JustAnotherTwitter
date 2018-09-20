@@ -10,6 +10,8 @@ export class UserDetails {
   user: IUser;
   @observable
   userPage: any;
+  @observable
+  userPageId: string;
 
   @computed
   get canUpload() {

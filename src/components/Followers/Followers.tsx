@@ -17,6 +17,10 @@ export class Followers extends React.Component<IFollowers> {
     this.props.stores.followers.get(this.props.userId);
   }
 
+  componentDidUpdate() {
+    this.props.stores.followers.get(this.props.userId);
+  }
+
   render() {
     return (
       <aside className="content__followers">
