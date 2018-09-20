@@ -13,7 +13,7 @@ export class Main extends React.Component<IMainProps> {
   handleLogout = (event: any) => {
     event.preventDefault();
     this.props.stores.userDetails.user = null;
-    localStorage.removeItem('userDetails');
+    localStorage.removeItem('userId');
     localStorage.removeItem('token');
   };
 

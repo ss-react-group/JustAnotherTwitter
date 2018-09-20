@@ -27,7 +27,7 @@ export class Followers extends React.Component<IFollowers> {
               to={`/user/${follower.id}`}
             >
               <li className="followers__list__item">
-                <Avatar source={follower.avatar} />
+                <Avatar />
                 <h3 className="item__name">{`${follower.firstName} ${
                   follower.lastName
                 }`}</h3>

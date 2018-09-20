@@ -4,8 +4,8 @@ import { observer, inject } from 'mobx-react';
 import './BackgroundImage.scss';
 import { IStores } from '../../interfaces';
 import { FileUpload } from '../FileUpload';
-import { getAsset } from '../../services/asset';
 import { IAsset } from '../../interfaces/asset';
+import { host } from '../../env/environment';
 
 interface IBackgroundImageProps {
   stores?: IStores;
@@ -19,34 +19,36 @@ export class BackgroundImage extends React.Component<
   IBackgroundImageProps,
   IBackgroundImageState
 > {
-  static defaultProps = {
-    assets: {
-      background: {
-        filePath: ''
-      }
-    }
-  };
-
   constructor(props: IBackgroundImageProps) {
     super(props);
   }
+  componentWillMount() {
+    if (this.props.stores.userDetails.user.assets) {
+      const assetsArray: IAsset[] = this.props.stores.userDetails.user.assets;
 
-  componendDidMount() {
-    getAsset(this.props.stores.userDetails.user.id, 2).then(
-      (result: IAsset) => {
-        this.props.stores.assets.set('background', result.filePath);
+      if (assetsArray.length > 0) {
+        const backgroundImage = assetsArray.filter(
+          asset => asset.assets_type.type === 'background'
+        );
+        this.props.stores.assets.background = backgroundImage[0];
+      } else {
+        this.props.stores.assets.background.filePath = `assets/static/background.jpg`;
       }
-    );
+    }
   }
 
   public render() {
     return (
       <div className="background">
-        <FileUpload background />
+        <FileUpload
+          background
+          inputData={this.props.stores.assets.background}
+        />
 
         <figure className="background__figure">
           <img
-            src={this.props.stores.assets.background.filePath}
+            className="background__image"
+            src={host + this.props.stores.assets.background.filePath}
             alt="Background image"
           />
         </figure>

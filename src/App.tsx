@@ -2,27 +2,37 @@ import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { AppRoute } from './components/AppRoute';
 import { MainLayout } from './components/Layouts';
-import './App.scss';
-import './assets/styles/common.scss';
 
 import { Authentication } from './pages/Authentication';
 import { Home } from './pages/Home';
 import { User } from './pages/User';
 
 import { observer, inject } from 'mobx-react';
+import { UserDetailsService } from './services/user';
 
+import { IStores } from './interfaces';
+
+import './App.scss';
+import './assets/styles/common.scss';
 interface IAppProps {
-  stores?: any;
+  stores?: IStores;
 }
 
 @inject('stores')
 @observer
 export default class App extends React.Component<IAppProps, {}> {
-  constructor(props: IAppProps) {
+  constructor(props: IAppProps, public userDetailsServer: UserDetailsService) {
     super(props);
+    this.userDetailsServer = new UserDetailsService();
+  }
 
-    const userDetails = JSON.parse(localStorage.getItem('userDetails'));
-    userDetails && (this.props.stores.userDetails.user = userDetails);
+  componentWillMount() {
+    const logedInUser = localStorage.getItem('userId');
+    if (logedInUser) {
+      this.userDetailsServer.getUserDetails(logedInUser).then(response => {
+        this.props.stores.userDetails.user = { ...response };
+      });
+    }
   }
 
   render() {

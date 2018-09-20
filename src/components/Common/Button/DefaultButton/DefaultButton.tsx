@@ -7,6 +7,6 @@ export const DefaultButton = (props: any) => (
     className="button button--primary" 
     onClick={props.handleOnClick}
   >
-    Tweet
+    {props.buttonText || 'Tweet'}
   </button>
 );
