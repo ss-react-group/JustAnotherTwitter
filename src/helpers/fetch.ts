@@ -22,7 +22,7 @@ export abstract class Fetch {
     }
 
     const response = await fetch(url, securedHeader).then(status);
-    return await response.json();
+    return response.json();
   }
 }
 
