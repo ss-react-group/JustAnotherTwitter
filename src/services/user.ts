@@ -1,6 +1,6 @@
-import { IUser } from './../interfaces/user';
 import { env } from './../env/environment';
 import { Fetch } from '../helpers/fetch';
+import { IUser } from './../interfaces';
 
 export class UserDetailsService {
   constructor() {}

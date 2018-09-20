@@ -1,11 +1,14 @@
 import * as React from 'react';
-import './DefaultInput.scss';
-import { IDefaultInput } from '../../../../interfaces/DefaultInput';
 import { validateInput, IRegExpTestResult } from '../helpers/validation';
 import { encrypt } from '../../../../helpers/Encrypting';
 import { inject, observer } from 'mobx-react';
+
 import { IStores, IUser } from '../../../../interfaces';
+import { IDefaultInput } from '../../../../interfaces/DefaultInput';
+
 import { UserDetailsService } from '../../../../services/user';
+
+import './DefaultInput.scss';
 
 export interface IDefaultInputProps extends IDefaultInput {
   stores?: IStores;
