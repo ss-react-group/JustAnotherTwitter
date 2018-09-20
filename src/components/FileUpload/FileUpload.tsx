@@ -29,9 +29,6 @@ export class FileUpload extends React.Component<
     super(props);
   }
 
-  componentDidMount() {
-    console.log('hellow', this.props.inputData);
-  }
   handleChangeFiles = (event: any) => {
     const { files } = event.target;
 

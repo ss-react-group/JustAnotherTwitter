@@ -9,12 +9,20 @@ import './FbLoginButton.scss';
 interface IFacebookRegisterProps {
   stores?: IStores;
 }
-
+interface IFacebookRegisterState {
+  errorMessage: string;
+}
 @inject('stores')
 @observer
-export class FbLoginButton extends Component<IFacebookRegisterProps, {}> {
+export class FbLoginButton extends Component<
+  IFacebookRegisterProps,
+  IFacebookRegisterState
+> {
   constructor(props: IFacebookRegisterProps) {
     super(props);
+    this.state = {
+      errorMessage: null
+    };
   }
 
   handleFacebookResponse = (response: any): void => {
@@ -33,20 +41,27 @@ export class FbLoginButton extends Component<IFacebookRegisterProps, {}> {
         localStorage.setItem('userId', foundUser.id);
         this.props.stores.userDetails.user = { ...foundUser };
       })
-      .catch(function(error) {
-        console.log(error);
+      .catch(error => {
+        this.setState({
+          errorMessage: 'Problem with connections'
+        });
       });
   };
 
   render() {
     return (
-      <FacebookLogin
-        appId="295196024410730"
-        fields="id,birthday,last_name,first_name,email,location"
-        callback={this.handleFacebookResponse}
-        textButton="with Facebook"
-        cssClass="facebook-button"
-      />
+      <div className="facebook-login">
+        <FacebookLogin
+          appId="295196024410730"
+          fields="id,birthday,last_name,first_name,email,location"
+          callback={this.handleFacebookResponse}
+          textButton="with Facebook"
+          cssClass="facebook-login__button"
+        />
+        <span className="facebook-login__error-message">
+          {this.state.errorMessage}
+        </span>
+      </div>
     );
   }
 }

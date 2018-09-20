@@ -1,12 +1,18 @@
 import * as React from 'react';
-import './DefaultInput.scss';
-import { IDefaultInput } from '../../../../interfaces/DefaultInput';
 import { validateInput, IRegExpTestResult } from '../helpers/validation';
 import { encrypt } from '../../../../helpers/Encrypting';
-import { Fetch } from '../../../../helpers/fetch';
-import { env } from '../../../../env';
+import { inject, observer } from 'mobx-react';
 
-export interface IDefaultInputProps extends IDefaultInput {}
+import { IStores, IUser } from '../../../../interfaces';
+import { IDefaultInput } from '../../../../interfaces/DefaultInput';
+
+import { UserDetailsService } from '../../../../services/user';
+
+import './DefaultInput.scss';
+
+export interface IDefaultInputProps extends IDefaultInput {
+  stores?: IStores;
+}
 
 export interface IDefaultInputState {
   inputValue: string;
@@ -15,12 +21,19 @@ export interface IDefaultInputState {
   userNewDetails: string | Int32Array;
 }
 
+@inject('stores')
+@observer
 export class DefaultInput extends React.Component<
   IDefaultInputProps,
   IDefaultInputState
 > {
-  constructor(props: IDefaultInputProps) {
+  constructor(
+    props: IDefaultInputProps,
+    public userDetailsService: UserDetailsService
+  ) {
     super(props);
+
+    this.userDetailsService = new UserDetailsService();
     this.state = {
       inputValue: '',
       focused: false,
@@ -30,29 +43,26 @@ export class DefaultInput extends React.Component<
   }
 
   updateUserDetails = () => {
+    const { id } = this.props.stores.userDetails.user;
+    const inputStoreValue = this.props.stores.userDetails.user[
+      this.props.dbPropertyKey
+    ];
     const newUserDetails = {
-      [this.props.dbPropertyKey]: this.state.userNewDetails
+      [this.props.dbPropertyKey]: inputStoreValue
     };
 
-    const updateUserPromise = Fetch.request(
-      env.securedRoutes + '/user/' + 1,
-      'json',
-      {
-        method: 'PATCH',
-        body: JSON.stringify(newUserDetails)
-      }
-    );
-
-    updateUserPromise.then(response => console.log(response));
+    this.userDetailsService
+      .updateUserDetails(id, newUserDetails)
+      .then((response: IUser) => {
+        this.props.stores.userDetails.user = response;
+      });
   };
 
   // Change input state;
   handleInputChange = (event: any): void => {
     const { value } = event.target;
 
-    this.setState({
-      inputValue: value
-    });
+    this.props.stores.userDetails.user[this.props.dbPropertyKey] = value;
   };
 
   // Set status focues for input
@@ -64,8 +74,11 @@ export class DefaultInput extends React.Component<
 
   // Handle event for blur on input
   handleOnBlur = () => {
+    const inputStoreValue = this.props.stores.userDetails.user[
+      this.props.dbPropertyKey
+    ];
     // Chech if input has lenght
-    if (!this.state.inputValue.length) {
+    if (!inputStoreValue.length) {
       this.setState({
         focused: false
       });
@@ -73,13 +86,13 @@ export class DefaultInput extends React.Component<
       // Check if is valid and display an arror
       const inputValidation: IRegExpTestResult = validateInput(
         this.props.validateFor,
-        this.state.inputValue
+        inputStoreValue
       );
 
       // If inputValidation is Valid
       if (inputValidation.isValid) {
         if (this.props.type === 'password') {
-          const encryptedPassword = encrypt(this.state.inputValue);
+          const encryptedPassword = encrypt(inputStoreValue);
           // @ts-ignore
           this.setState(
             { userNewDetails: encryptedPassword },
@@ -88,7 +101,7 @@ export class DefaultInput extends React.Component<
         } else {
           this.setState(
             {
-              userNewDetails: this.state.inputValue
+              userNewDetails: inputStoreValue
             },
             this.updateUserDetails
           );
@@ -108,13 +121,17 @@ export class DefaultInput extends React.Component<
           'default-input ' +
           'default-input--' +
           this.props.type +
-          (this.state.inputValue.length > 0 ? ' default-input--filled' : '')
+          (this.props.stores.userDetails.user[this.props.dbPropertyKey]
+            ? ' default-input--filled'
+            : '')
         }
       >
         <label
           className={
             'default-input__label ' +
-            (this.state.focused ? 'default-input__label--focused' : '')
+            (this.props.stores.userDetails.user[this.props.dbPropertyKey]
+              ? 'default-input__label--focused'
+              : '')
           }
         >
           {this.props.label}
@@ -124,6 +141,7 @@ export class DefaultInput extends React.Component<
           onBlur={this.handleOnBlur}
           className={'input input--' + this.props.type}
           type={this.props.type}
+          value={this.props.stores.userDetails.user[this.props.dbPropertyKey]}
           onChange={this.handleInputChange}
           autoComplete="autocomplete"
         />
