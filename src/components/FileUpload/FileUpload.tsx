@@ -9,7 +9,7 @@ interface IFileUploadProps {
   background?: boolean;
   avatar?: boolean;
   stores?: IStores;
-  inputData?: IAsset;
+  inputData?: number;
 }
 
 interface IFileUploadState {}
@@ -36,7 +36,7 @@ export class FileUpload extends React.Component<
 
     uploadAsset({
       userId: this.props.stores.userDetails.user.id,
-      assetType: this.props.inputData.assets_type.id,
+      assetType: this.props.inputData,
       files
     }).then((result: IAsset) => {
       const { type } = result.assets_type;
@@ -51,6 +51,7 @@ export class FileUpload extends React.Component<
           break;
       }
 
+      this.props.stores.userDetails.get(this.props.stores.userDetails.user.id);
       this.props.stores.loadingIndicators.toggle();
     });
   };
