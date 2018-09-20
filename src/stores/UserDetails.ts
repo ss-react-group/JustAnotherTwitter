@@ -8,7 +8,6 @@ import { host } from '../env';
 export class UserDetails {
   @observable
   user: IUser;
-
   @observable
   userPage: IUser;
 
@@ -22,7 +21,6 @@ export class UserDetails {
 
   @computed
   get avatar() {
-    console.log('test22', this.userPage);
     if (this.userPage) {
       const assetsArray: IAsset[] = this.userPage.assets;
       if (assetsArray.length > 0) {
@@ -42,7 +40,6 @@ export class UserDetails {
   }
 
   get background() {
-    console.log('nackgroubd', this.userPage);
     if (this.userPage) {
       const assetsArray: IAsset[] = this.userPage.assets;
       if (assetsArray.length > 0) {
@@ -63,7 +60,6 @@ export class UserDetails {
 
   @action
   get(userId: number | string) {
-    console.log('test');
     if (userId === 'me') {
       this.userPage = this.user;
     } else {
