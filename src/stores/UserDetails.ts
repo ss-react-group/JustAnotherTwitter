@@ -33,9 +33,12 @@ export class UserDetails {
         });
       }
     }
-    return `${host}assets/static/avatar.jpg`;
+    return {
+      filePath: `${host}assets/static/avatar.jpg`
+    };
   }
 
+  @computed
   get background() {
     if (this.userPage) {
       const assetsArray: IAsset[] = this.userPage.assets;
@@ -49,13 +52,19 @@ export class UserDetails {
         });
       }
     }
-    return `${host}assets/static/background.jpg`;
+    return {
+      filePath: `${host}assets/static/background.jpg`
+    };
   }
 
   @action
   get(userId: number | string) {
     if (userId === 'me') {
-      this.userPage = this.user;
+      new UserDetailsService()
+        .getUserDetails(String(this.user.id))
+        .then((response: any) => {
+          this.userPage = { ...response };
+        });
     } else {
       new UserDetailsService()
         .getUserDetails(String(userId))

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { TweetList } from '../../components/TweetList';
 import { Followers } from '../../components/Followers';
+import { TweetModal } from '../../components/TweetModal';
 import { inject, observer } from 'mobx-react';
 
 interface IUserProps {
@@ -28,6 +29,7 @@ export class User extends React.Component<IUserProps> {
     return (
       <React.Fragment>
         <TweetList userId={userId} />
+        <TweetModal />
         <Followers />
       </React.Fragment>
     );
