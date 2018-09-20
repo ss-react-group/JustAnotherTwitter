@@ -30,14 +30,19 @@ export class Info extends React.Component<IInfoProps, IInfoState> {
   componentDidMount() {
     this.props.stores.userDetails.get('me');
   }
+
   handleUpenModal = () => {
     this.setState({
       userSettingModalIsOpen: !this.state.userSettingModalIsOpen
     });
   };
 
+  follow = () => {
+    const { id: followingId } = this.props.stores.userDetails.userPage;
+    this.props.stores.userDetails.follow(followingId);
+  };
+
   render() {
-    console.log(this.props.stores);
     return (
       <div className="info">
         <div className="container info__grid ">
@@ -92,6 +97,12 @@ export class Info extends React.Component<IInfoProps, IInfoState> {
             >
               Settings
             </button>
+
+            {!this.props.stores.userDetails.canUpload && (
+              <button className="user-setting__button" onClick={this.follow}>
+                Follow
+              </button>
+            )}
           </div>
         </div>
         <UserSettingsModal

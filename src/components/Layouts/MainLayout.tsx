@@ -5,6 +5,7 @@ import { Info } from '../Info';
 import { ProgressBar } from '../ProgressBar';
 import { IMainLayoutProps } from '../../interfaces';
 import './MainLayout.scss';
+import { TweetModal } from '../../components/TweetModal';
 import { inject, observer } from 'mobx-react';
 
 @inject('stores')
@@ -20,6 +21,8 @@ export class MainLayout extends React.Component<IMainLayoutProps> {
           source={this.props.stores.userDetails.background.filePath}
         />
         <Info />
+        <TweetModal />
+
         <div className="content container">{this.props.children}</div>
       </React.Fragment>
     );

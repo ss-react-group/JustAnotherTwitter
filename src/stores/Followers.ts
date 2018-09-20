@@ -8,10 +8,8 @@ export class Followers {
 
   @action
   get(userId: number) {
-    console.log(userId);
     const followersApi = new FollowersService();
     followersApi.getUser(userId).then((response: any) => {
-      console.log(response);
       this.list = [...response];
     });
   }

@@ -9,7 +9,7 @@ export class UserDetails {
   @observable
   user: IUser;
   @observable
-  userPage: IUser;
+  userPage: any;
 
   @computed
   get canUpload() {
@@ -47,9 +47,10 @@ export class UserDetails {
           asset => asset.assets_type.type === 'background'
         );
 
-        return Object.assign({}, avatarImage[0], {
+        return {
+          ...avatarImage[0],
           filePath: `${host}${avatarImage[0].filePath}`
-        });
+        };
       }
     }
 
@@ -61,6 +62,11 @@ export class UserDetails {
   @action
   get(userId: number | string) {
     if (userId === 'me') {
+      new UserDetailsService()
+        .getUserDetails(String(this.user.id))
+        .then((response: any) => {
+          this.userPage = { ...response };
+        });
       this.userPage = this.user;
     } else {
       new UserDetailsService()
@@ -69,6 +75,17 @@ export class UserDetails {
           this.userPage = { ...response };
         });
     }
+  }
+
+  @action
+  follow(followingId: number) {
+    console.log('test');
+    new UserDetailsService()
+      .follow(String(followingId), String(this.user.id))
+      .then((response: any) => {
+        console.log(response, followingId);
+        this.get(followingId);
+      });
   }
 }
 

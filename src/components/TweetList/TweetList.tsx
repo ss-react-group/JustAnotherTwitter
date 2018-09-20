@@ -29,6 +29,14 @@ export class TweetList extends React.Component<IAllTweetsProps, {}> {
     }
   }
 
+  componentDidUpdate() {
+    if (this.props.userId) {
+      this.props.stores.tweetsStore.fetchTweets(this.props.userId);
+    } else {
+      this.props.stores.tweetsStore.fetchTweets();
+    }
+  }
+
   tweetItemClick(event: any, selectedTweet: ITweet) {
     event.stopPropagation();
     this.props.stores.TweetModalStore.isOpen = true;

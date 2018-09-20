@@ -12,12 +12,9 @@ export interface IStores {
     userPage: IUser;
     avatar: any;
     background: any;
-<<<<<<< HEAD
     get(userId?: number | string): void;
-=======
-    get(userId?: number): void;
->>>>>>> develop
     canUpload: any;
+    follow(followingId: number): void;
   };
   loadingIndicators: ILoadingIndicators;
   textareaStore: {

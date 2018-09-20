@@ -11,11 +11,20 @@ interface IUserProps {
 @inject('stores')
 @observer
 export class User extends React.Component<IUserProps> {
+  componentDidMount() {
+    let userId = this.props.match.params.userId;
+    if (this.props.match.params.userId === 'me') {
+      userId = this.props.stores.userDetails.user.id;
+    }
+    this.props.stores.userDetails.get(userId);
+  }
+
   componentDidUpdate() {
     let userId = this.props.match.params.userId;
     if (this.props.match.params.userId === 'me') {
       userId = this.props.stores.userDetails.user.id;
     }
+
     this.props.stores.userDetails.get(userId);
   }
 
@@ -28,7 +37,7 @@ export class User extends React.Component<IUserProps> {
     return (
       <React.Fragment>
         <TweetList userId={userId} />
-        <Followers />
+        <Followers userId={userId} />
       </React.Fragment>
     );
   }

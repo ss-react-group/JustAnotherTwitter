@@ -7,20 +7,21 @@ import './Followers.scss';
 
 interface IFollowers {
   stores?: any;
+  userId: string;
 }
 
 @inject('stores')
 @observer
 export class Followers extends React.Component<IFollowers> {
   componentDidMount() {
-    this.props.stores.followers.get(1);
+    this.props.stores.followers.get(this.props.userId);
   }
 
   render() {
     return (
       <aside className="content__followers">
         <h1 className="content__title">
-          Followers {this.props.stores.followers.list.length}
+          Following - {this.props.stores.followers.list.length}
         </h1>
         <ul className="followers__list">
           {this.props.stores.followers.list.length > 0 &&
