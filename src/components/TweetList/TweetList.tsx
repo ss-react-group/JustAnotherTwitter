@@ -9,10 +9,11 @@ import { TweetItem } from '../TweetItem';
 import { CreateTweet } from '../CreateTweet';
 
 export interface IAllTweetsProps {
-  stores?: IStores
+  stores?: IStores;
+  userId?: any;
 }
 
-@inject("stores")
+@inject('stores')
 @observer
 export class TweetList extends React.Component<IAllTweetsProps, {}> {
   constructor(props: IAllTweetsProps) {
@@ -20,11 +21,15 @@ export class TweetList extends React.Component<IAllTweetsProps, {}> {
   }
 
   componentWillMount() {
-    this.props.stores.tweetsStore.fetchTweets();
+    if (this.props.userId) {
+      this.props.stores.tweetsStore.fetchTweets(this.props.userId);
+    } else {
+      this.props.stores.tweetsStore.fetchTweets();
+    }
   }
 
   render() {
-    const {tweets} = this.props.stores.tweetsStore;
+    const { tweets } = this.props.stores.tweetsStore;
     return (
       <div className="tweets-list">
         <h1 className="tweets-list__title">
@@ -33,10 +38,7 @@ export class TweetList extends React.Component<IAllTweetsProps, {}> {
         <CreateTweet />
         <ul className="tweets-list__container">
           {tweets.map((item: ITweet) => (
-            <TweetItem 
-              key={item.id} 
-              tweet={item}
-            />
+            <TweetItem key={item.id} tweet={item} />
           ))}
         </ul>
       </div>

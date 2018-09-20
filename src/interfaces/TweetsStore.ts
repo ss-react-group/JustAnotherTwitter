@@ -1,8 +1,8 @@
-import { ITweet } from "./tweet";
+import { ITweet } from './tweet';
 
 export interface ITweetsStore {
   tweets: ITweet[];
-  fetchTweets(): Promise<any>,
-  addTweet(authorId: number, content: string): Promise<any>,
-  removeTweet(tweetId: number): Promise<any>
+  fetchTweets(userId?: any): Promise<any>;
+  addTweet(authorId: number, content: string): Promise<any>;
+  removeTweet(tweetId: number): Promise<any>;
 }

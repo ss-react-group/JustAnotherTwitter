@@ -26,7 +26,7 @@ export class Main extends React.Component<IMainProps> {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/profile">Profile</NavLink>
+          <NavLink to="/profile/me">Profile</NavLink>
         </li>
         <li>
           <a href="#" onClick={this.handleLogout}>

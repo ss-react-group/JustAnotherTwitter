@@ -49,7 +49,7 @@ export default class App extends React.Component<IAppProps, {}> {
 
             <AppRoute
               component={User}
-              path="/profile"
+              path="/profile/:userId"
               guarded
               layout={MainLayout}
             />
