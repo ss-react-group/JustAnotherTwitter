@@ -32,7 +32,9 @@
     overflow: hidden;
     margin: 0;
     position: relative;
-
+    flex: 0 0 70px;
+    height: 70px;
+    width: 70px;
 
     &--big {
       border-radius: 50%;
