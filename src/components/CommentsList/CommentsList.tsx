@@ -18,7 +18,7 @@ export class CommentsList extends React.Component<ICommentsListProps, {}> {
     super(props);
   }
 
-  componenDidMount() {
+  componentDidMount() {
     this.props.stores.commentsStore.fetchComments(
       this.props.stores.TweetModalStore.selectedTweet.id
     );
