@@ -26,11 +26,9 @@ export class TweetItem extends React.Component<ITweetItemProps, {}> {
       <div className="tweet">
         {this.props.tweet.user && (
           <div className="tweet__header">
-            <Link to={`/profile/${this.props.tweet.user.id}`}>
-              <span className="tweet__user-name">
-                {this.props.tweet.user.firstName}{' '}
-                {this.props.tweet.user.lastName}
-              </span>
+            <Link to={`/profile/${this.props.tweet.user.id}`} className="tweet__user-name-link">
+              {this.props.tweet.user.firstName}{' '}
+              {this.props.tweet.user.lastName}
             </Link>
             <span className="tweet__created">
               &#183;{' '}
