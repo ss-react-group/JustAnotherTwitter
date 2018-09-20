@@ -9,7 +9,6 @@ import { FileUpload } from '../FileUpload';
 
 interface IBackgroundImageProps {
   stores?: IStores;
-  source: string;
   upload?: boolean;
 }
 
@@ -28,20 +27,6 @@ export class BackgroundImage extends React.Component<
   constructor(props: IBackgroundImageProps) {
     super(props);
   }
-  // componentWillMount() {
-  //   if (this.props.stores.userDetails.user.assets) {
-  //     const assetsArray: IAsset[] = this.props.stores.userDetails.user.assets;
-
-  //     if (assetsArray.length > 0) {
-  //       const backgroundImage = assetsArray.filter(
-  //         asset => asset.assets_type.type === 'background'
-  //       );
-  //       this.props.stores.assets.background = backgroundImage[0];
-  //     } else {
-  //       this.props.stores.assets.background.filePath = `assets/static/background.jpg`;
-  //     }
-  //   }
-  // }
 
   public render() {
     return (
@@ -56,7 +41,7 @@ export class BackgroundImage extends React.Component<
         <figure className="background__figure">
           <img
             className="background__image"
-            src={this.props.source}
+            src={this.props.stores.userDetails.background.filePath}
             alt="Background image"
           />
         </figure>

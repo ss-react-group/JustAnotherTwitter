@@ -46,7 +46,7 @@ export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
             <img
               className={`avatar__image ${this.props.big &&
                 'avatar__image--big'}`}
-              src={this.props.source}
+              src={this.props.stores.userDetails.avatar.filePath}
             />
           </figure>
         </div>
