@@ -16,17 +16,22 @@ interface ILoginState {
   firstName: string;
   lastName: string;
   birthday: string;
+  error: string;
 }
 
 @inject('stores')
 @observer
 export class Login extends React.Component<ILoginProps, ILoginState> {
+
+  private error: string;
+
   constructor(props: ILoginProps) {
     super(props);
 
     extendObservable(this, {
       email: '',
-      password: ''
+      password: '',
+      error: ''
     });
   }
 
@@ -53,7 +58,8 @@ export class Login extends React.Component<ILoginProps, ILoginState> {
     this[name] = value;
   };
 
-  authenticate = (userDetails: any) => {
+  authenticate = (userDetails: any, ) => {
+    this.error = '';
     UserAuthenticate('/user_login', userDetails)
       .then(response => {
         const { token, foundUser } = response;
@@ -61,17 +67,18 @@ export class Login extends React.Component<ILoginProps, ILoginState> {
         localStorage.setItem('userId', foundUser.id);
         this.props.stores.userDetails.user = { ...foundUser };
       })
-      .catch(function(error) {
-        console.log(error);
+      .catch(err => {
+        this.error =  'Wrong email or password';
       });
   };
 
   render() {
     // @ts-ignore
-    const { email, password } = this;
+    const { email, password, error} = this;
     return (
       <div className="login">
         <p>Log in</p>
+        {error && <p className="login__error">{error}</p>}
         <form className="login__form" onSubmit={this.handleSubmit}>
           <input
             name="email"
