@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import { Avatar } from '../Avatar';
+import { host } from '../../env';
 import './Followers.scss';
 
 interface IFollowers {
@@ -27,10 +28,12 @@ export class Followers extends React.Component<IFollowers> {
               <Link
                 className="followers__list__link"
                 key={follower.followed_id}
-                to={`/user/${follower.followed_id}`}
+                to={`/profile/${follower.followed_id}`}
               >
                 <li className="followers__list__item">
-                  <Avatar source={follower.user.assets[0].filePath} />
+                  <Avatar
+                    source={`${host}${follower.user.assets[0].filePath}`}
+                  />
                   <h3 className="item__name">{`${follower.user.firstName} ${
                     follower.user.lastName
                   }`}</h3>

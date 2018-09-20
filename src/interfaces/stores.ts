@@ -9,20 +9,25 @@ export interface IStores {
   tweetsStore: ITweetsStore;
   userDetails: {
     user: IUser;
+    userPage: IUser;
+    avatar: any;
+    background: any;
+    get(userId?: number | string): void;
+    canUpload: any;
   };
   loadingIndicators: ILoadingIndicators;
   textareaStore: {
     content: string;
     setInitValue(): void;
-  },
+  };
   TweetModalStore: {
-    isOpen: boolean
-    selectedTweet: ITweet
-  },
+    isOpen: boolean;
+    selectedTweet: ITweet;
+  };
   commentsStore: {
-    comments?: any[],
-    addComment(postId: number ,authorId: number, content: string): Promise<any>,
-    fetchComments(postId: number): Promise<any>,
-    removeComment(commentId: number): any
-  }
+    comments?: any[];
+    addComment(postId: number, authorId: number, content: string): Promise<any>;
+    fetchComments(postId: number): Promise<any>;
+    removeComment(commentId: number): any;
+  };
 }

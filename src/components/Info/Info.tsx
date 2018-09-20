@@ -27,6 +27,9 @@ export class Info extends React.Component<IInfoProps, IInfoState> {
     };
   }
 
+  componentDidMount() {
+    this.props.stores.userDetails.get('me');
+  }
   handleUpenModal = () => {
     this.setState({
       userSettingModalIsOpen: !this.state.userSettingModalIsOpen
@@ -34,6 +37,7 @@ export class Info extends React.Component<IInfoProps, IInfoState> {
   };
 
   render() {
+    console.log(this.props.stores);
     return (
       <div className="info">
         <div className="container info__grid ">
@@ -65,13 +69,19 @@ export class Info extends React.Component<IInfoProps, IInfoState> {
           </div>
 
           <div className="info__avatar">
-            <Avatar big upload />
+            <Avatar
+              big
+              upload={this.props.stores.userDetails.canUpload}
+              source={this.props.stores.userDetails.avatar.filePath}
+            />
           </div>
 
           <div className="info__user-name">
             <h3 className="user-name__name">
-              {this.props.stores.userDetails.user.firstName}{' '}
-              {this.props.stores.userDetails.user.lastName}
+              {this.props.stores.userDetails.userPage &&
+                `${this.props.stores.userDetails.userPage.firstName} ${
+                  this.props.stores.userDetails.userPage.lastName
+                }`}
             </h3>
           </div>
 

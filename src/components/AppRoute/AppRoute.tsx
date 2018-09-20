@@ -6,7 +6,7 @@ import { IStores } from '../../interfaces';
 interface IAppRouteProps {
   guarded?: boolean;
   stores?: IStores;
-  layout: React.SFC;
+  layout: any;
   component: any;
   path: string;
   exact?: boolean;

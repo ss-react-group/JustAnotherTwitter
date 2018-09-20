@@ -8,8 +8,13 @@ export class Tweets {
   tweets: ITweet[] = [];
 
   @action
-  fetchTweets() {
-    return Fetch.request(env.securedRoutes + '/posts', 'json', {
+  fetchTweets(userId?: any) {
+    let path = `${env.securedRoutes}/posts`;
+    if (userId) {
+      path = `${env.securedRoutes}/posts/${userId}`;
+    }
+
+    return Fetch.request(path, 'json', {
       method: 'GET'
     }).then((response: ITweet[]) => {
       this.tweets = response;
