@@ -15,10 +15,7 @@ export class MainLayout extends React.Component<IMainLayoutProps> {
       <React.Fragment>
         <ProgressBar />
         <Navigation />
-        <BackgroundImage
-          upload={this.props.stores.userDetails.canUpload}
-          source={this.props.stores.userDetails.background.filePath}
-        />
+        <BackgroundImage upload={this.props.stores.userDetails.canUpload} />
         <Info />
         <div className="content container">{this.props.children}</div>
       </React.Fragment>

@@ -1,6 +1,7 @@
 import { IUser } from './user';
 import { ITweet } from './tweet';
 import { IAssets } from './assets';
+import { IAsset } from './asset';
 import { ILoadingIndicators } from './loadingIndicators';
 import { ITweetsStore } from './TweetsStore';
 
@@ -10,8 +11,8 @@ export interface IStores {
   userDetails: {
     user: IUser;
     userPage: IUser;
-    avatar: any;
-    background: any;
+    avatar: IAsset;
+    background: IAsset;
     get(userId?: number): void;
     canUpload: any;
   };
