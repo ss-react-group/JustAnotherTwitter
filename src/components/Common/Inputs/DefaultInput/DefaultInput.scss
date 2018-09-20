@@ -3,14 +3,10 @@
 
 .default-input {
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   position: relative;
   display: flex;
   flex-direction: column;
-
-  &:last-of-type {
-    margin-bottom: 5px;
-  }
 
   &:before,
   &:after {
@@ -49,8 +45,8 @@
     transition: .4s;
 
     &--focused {
-      top: -15px;
-      font-size: 12px;
+      top: -10px;
+      font-size: 10px;
     }
   }
 

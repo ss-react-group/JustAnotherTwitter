@@ -6,23 +6,15 @@ import { DefaultForm } from '../Common/Forms';
 import {
   userDetailsForm,
   securityPasswordForm,
-  descriptionForm,
-  userLocationForm
+  descriptionForm
 } from './form-models';
-import { inject, observer } from 'mobx-react';
-import { IStores } from '../../interfaces';
-import { host } from '../../env';
+import { DatePicker } from '../Common/Inputs';
+import { getUserData } from './UserSettingsModa.service';
 
-export interface IUserSettingsModalProps {
-  stores?: IStores;
-  isOpen: boolean;
-  onClick: any;
-}
+export interface IUserSettingsModalProps {}
 
 export interface IUserSettingsModalState {}
 
-@inject('stores')
-@observer
 export class UserSettingsModal extends React.Component<
   IUserSettingsModalProps,
   IUserSettingsModalState
@@ -31,23 +23,23 @@ export class UserSettingsModal extends React.Component<
     super(props);
     this.state = {};
   }
+  componentWillMount() {
+    const userDataPromise = getUserData(1);
+
+    userDataPromise
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => console.log(err));
+  }
 
   render() {
     return (
-      <div
-        className={
-          'user-settings-modal ' +
-          (this.props.isOpen ? 'user-settings-modal--is-open' : '')
-        }
-      >
-        <div
-          className="user-settings-modal__background"
-          onClick={this.props.onClick}
-        />
+      <div className="user-settings-modal">
         <div className="user-settings-modal__box">
           <figure className="user-settings-modal__avatar">
             <img
-              src={host + this.props.stores.assets.avatar.filePath}
+              src="https://pbs.twimg.com/profile_images/1013798240683266048/zRim1x6M_400x400.jpg"
               alt=""
               className="avatar__img"
             />
@@ -68,10 +60,7 @@ export class UserSettingsModal extends React.Component<
                 formTitle={descriptionForm.formTitle}
                 inputFields={descriptionForm.inputFields}
               />
-              <DefaultForm
-                formTitle={userLocationForm.formTitle}
-                inputFields={userLocationForm.inputFields}
-              />
+              <DatePicker />
             </div>
           </div>
         </div>

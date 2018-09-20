@@ -21,15 +21,14 @@ interface IAppProps {
 @inject('stores')
 @observer
 export default class App extends React.Component<IAppProps, {}> {
-  constructor(props: IAppProps, public userDetailsServer: UserDetailsService) {
+  constructor(props: IAppProps) {
     super(props);
-    this.userDetailsServer = new UserDetailsService();
   }
 
   componentWillMount() {
     const logedInUser = localStorage.getItem('userId');
     if (logedInUser) {
-      this.userDetailsServer.getUserDetails(logedInUser).then(response => {
+      UserDetailsService(logedInUser).then(response => {
         this.props.stores.userDetails.user = { ...response };
       });
     }
