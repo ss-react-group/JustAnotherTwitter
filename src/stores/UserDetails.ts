@@ -57,9 +57,11 @@ export class UserDetails {
     if (userId === 'me') {
       this.userPage = this.user;
     } else {
-      UserDetailsService(String(userId)).then((response: any) => {
-        this.userPage = { ...response };
-      });
+      new UserDetailsService()
+        .getUserDetails(String(userId))
+        .then((response: any) => {
+          this.userPage = { ...response };
+        });
     }
   }
 }

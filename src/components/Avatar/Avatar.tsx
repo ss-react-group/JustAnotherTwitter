@@ -40,7 +40,7 @@ export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
             {this.props.upload && (
               <FileUpload
                 avatar
-                inputData={this.props.stores.assets.avatar.type_id}
+                inputData={this.props.stores.userDetails.avatar.type_id}
               />
             )}
             <img
