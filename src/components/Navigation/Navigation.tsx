@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Main } from './Main';
 import { Side } from './Side';
-
 import './Navigation.scss';
 
 export interface Props {}
