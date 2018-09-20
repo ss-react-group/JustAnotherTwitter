@@ -55,29 +55,26 @@ export class Search extends Component<ISearchProps, ISearchState> {
     });
   };
 
-  onSuggestionsFetchRequested = ({
+  onSuggestionsFetchRequested = async ({
     value,
     reason
   }: {
     value: any;
     reason: any;
   }) => {
-    Fetch.request(env.securedRoutes + '/posts', 'json', { method: 'GET' }).then(
-      (response: ITweet[]) => {
-        this.props.stores.tweetsStore.tweets = response;
-        const { tweets } = this.props.stores.tweetsStore;
-        const readableTweets = tweets.map((item: ITweet) => ({
-          name: item.content,
-          id: item.id
-        }));
-        this.setState({
-          tweets: readableTweets
-        });
-        this.setState({
-          suggestions: this.getSuggestions(value)
-        });
-      }
-    );
+      const response = await Fetch.request(env.securedRoutes + '/posts', 'json', { method: 'GET' });
+      this.props.stores.tweetsStore.tweets = response;
+      const { tweets } = this.props.stores.tweetsStore;
+      const readableTweets = tweets.map((item: ITweet) => ({
+        name: item.content,
+        id: item.id
+      }));
+      this.setState({
+        tweets: readableTweets
+      });
+      this.setState({
+        suggestions: this.getSuggestions(value)
+      });
   };
 
   onSuggestionsClearRequested = () => {

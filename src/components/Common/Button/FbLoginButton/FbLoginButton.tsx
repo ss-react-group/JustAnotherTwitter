@@ -31,7 +31,7 @@ export class FbLoginButton extends Component<
       lastName: response.last_name || '',
       email: response.email || '',
       birthday: response.birthday || '',
-      location: response.location.name || ''
+      location: response.location && response.location.name || ''
     };
 
     UserAuthenticate('/user_register', userDetails)
