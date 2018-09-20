@@ -27,8 +27,8 @@ export class Tweets {
     return Fetch.request(env.securedRoutes + '/add_new_post', 'json', {
       method: 'POST',
       body: JSON.stringify({
-        authorId: authorId,
-        content: content
+        authorId,
+        content
       })
     }).then(() => {
       this.fetchTweets();
