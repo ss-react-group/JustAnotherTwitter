@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { Avatar } from '../Avatar';
-import { UserSettingsModal } from '../../components/UserSettingsModal';
 
 import './Info.scss';
 import { inject, observer } from 'mobx-react';
@@ -13,25 +12,14 @@ export interface IInfoProps {
   stores?: IStores;
 }
 
-export interface IInfoState {
-  userSettingModalIsOpen: boolean;
-}
+export interface IInfoState {}
 
 @inject('stores')
 @observer
 export class Info extends React.Component<IInfoProps, IInfoState> {
   constructor(props: IInfoProps) {
     super(props);
-    this.state = {
-      userSettingModalIsOpen: false
-    };
   }
-
-  handleUpenModal = () => {
-    this.setState({
-      userSettingModalIsOpen: !this.state.userSettingModalIsOpen
-    });
-  };
 
   render() {
     return (
@@ -78,20 +66,7 @@ export class Info extends React.Component<IInfoProps, IInfoState> {
               {this.props.stores.userDetails.user.lastName}
             </h3>
           </div>
-
-          <div className="info__user-settings">
-            <button
-              className="user-setting__button"
-              onClick={this.handleUpenModal}
-            >
-              Settings
-            </button>
           </div>
-        </div>
-        <UserSettingsModal
-          isOpen={this.state.userSettingModalIsOpen}
-          onClick={this.handleUpenModal}
-        />
       </div>
     );
   }
