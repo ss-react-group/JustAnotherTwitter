@@ -9,6 +9,7 @@ import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
 import { inject, observer } from 'mobx-react';
 import { UserDetailsService } from '../../../../services/user';
 
+import 'react-datepicker/dist/react-datepicker.css';
 import './DefaultDatepicker.scss';
 export interface IDefaultDatePickerProps extends IDefaultInput {
   stores?: IStores;
