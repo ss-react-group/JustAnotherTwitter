@@ -3,14 +3,13 @@ import { IDefaultInput, IStores, IUser } from '../../../../interfaces';
 import DatePicker from 'react-datepicker';
 import { Moment } from 'moment';
 
-import 'react-datepicker/dist/react-datepicker.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
 
-import './DefaultDatepicker.scss';
-
 import { inject, observer } from 'mobx-react';
 import { UserDetailsService } from '../../../../services/user';
+
+import './DefaultDatepicker.scss';
 export interface IDefaultDatePickerProps extends IDefaultInput {
   stores?: IStores;
 }
