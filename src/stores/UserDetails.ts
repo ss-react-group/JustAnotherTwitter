@@ -9,7 +9,9 @@ export class UserDetails {
   @observable
   user: IUser;
   @observable
-  userPage: IUser;
+  userPage: any;
+  @observable
+  userPageId: string;
 
   @computed
   get canUpload() {
@@ -66,6 +68,7 @@ export class UserDetails {
         .then((response: any) => {
           this.userPage = { ...response };
         });
+      this.userPage = this.user;
     } else {
       new UserDetailsService()
         .getUserDetails(String(userId))
@@ -73,6 +76,17 @@ export class UserDetails {
           this.userPage = { ...response };
         });
     }
+  }
+
+  @action
+  follow(followingId: number) {
+    console.log('test');
+    new UserDetailsService()
+      .follow(String(followingId), String(this.user.id))
+      .then((response: any) => {
+        console.log(response, followingId);
+        this.get(followingId);
+      });
   }
 }
 
