@@ -12,7 +12,9 @@ export interface IInfoProps {
   stores?: IStores;
 }
 
-export interface IInfoState {}
+export interface IInfoState {
+  userSettingModalIsOpen: any;
+}
 
 @inject('stores')
 @observer
@@ -21,7 +23,6 @@ export class Info extends React.Component<IInfoProps, IInfoState> {
     super(props);
   }
 
-<<<<<<< HEAD
   componentDidMount() {
     this.props.stores.userDetails.get('me');
   }
@@ -37,8 +38,6 @@ export class Info extends React.Component<IInfoProps, IInfoState> {
     this.props.stores.userDetails.follow(followingId);
   };
 
-=======
->>>>>>> develop
   render() {
     return (
       <div className="info">
@@ -88,13 +87,13 @@ export class Info extends React.Component<IInfoProps, IInfoState> {
           </div>
 
           <div className="info__user-settings">
-
             {!this.props.stores.userDetails.canUpload && (
               <button className="user-setting__button" onClick={this.follow}>
                 Follow
               </button>
             )}
           </div>
+        </div>
       </div>
     );
   }
