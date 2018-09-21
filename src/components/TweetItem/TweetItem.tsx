@@ -6,10 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './TweetItem.scss';
 
-import { ITweet, IStores } from '../../interfaces';
+import { IStores } from '../../interfaces';
+import { Avatar } from '../Avatar';
+import { host } from '../../env/';
 
 export interface ITweetItemProps {
-  tweet: ITweet;
+  tweet: any; // ITweet || IComment
   stores?: IStores;
   handleRemoveTweet?(event: any, tweetId: number): any;
 }
@@ -26,11 +28,23 @@ export class TweetItem extends React.Component<ITweetItemProps, {}> {
       <div className="tweet">
         {this.props.tweet.user && (
           <div className="tweet__header">
-            <Link to={`/profile/${this.props.tweet.user.id}`}>
-              <span className="tweet__user-name">
-                {this.props.tweet.user.firstName}{' '}
-                {this.props.tweet.user.lastName}
-              </span>
+            {this.props.tweet.user.assets && 
+              this.props.tweet.user.assets.length &&
+              this.props.tweet.user.assets[1] &&
+              <div className="tweet__avatar">
+                <Avatar
+                  source={host + this.props.tweet.user.assets[1].filePath}
+                />
+              </div>
+            }
+            <div className="tweet__user-data">
+            <Link 
+              to={`/profile/${this.props.tweet.user.id}`} 
+              className="tweet__user-name-link"
+              onClick={e => e.stopPropagation()}
+            >
+              {this.props.tweet.user.firstName}{' '}
+              {this.props.tweet.user.lastName}
             </Link>
             <span className="tweet__created">
               &#183;{' '}
@@ -49,6 +63,7 @@ export class TweetItem extends React.Component<ITweetItemProps, {}> {
                 Delete
               </span>
             )}
+            </div>
           </div>
         )}
         <div className="tweet__text">{this.props.tweet.content}</div>

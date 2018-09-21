@@ -30,17 +30,18 @@ export class UserDetails {
           asset => asset.assets_type.type === 'avatar'
         );
 
-        return Object.assign({}, avatarImage[0], {
+        return {
+          ...avatarImage[0],
           filePath: `${host}${avatarImage[0].filePath}`
-        });
+        };
       }
     }
-
     return {
       filePath: `${host}assets/static/avatar.jpg`
     };
   }
 
+  @computed
   get background() {
     if (this.userPage) {
       const assetsArray: IAsset[] = this.userPage.assets;
@@ -48,14 +49,12 @@ export class UserDetails {
         const avatarImage = assetsArray.filter(
           asset => asset.assets_type.type === 'background'
         );
-
         return {
           ...avatarImage[0],
           filePath: `${host}${avatarImage[0].filePath}`
         };
       }
     }
-
     return {
       filePath: `${host}assets/static/background.jpg`
     };

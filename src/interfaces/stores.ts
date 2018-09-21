@@ -1,8 +1,10 @@
 import { IUser } from './user';
 import { ITweet } from './tweet';
 import { IAssets } from './assets';
+import { IAsset } from './asset';
 import { ILoadingIndicators } from './loadingIndicators';
 import { ITweetsStore } from './TweetsStore';
+import { IComment } from './comment';
 
 export interface IStores {
   assets: IAssets;
@@ -10,8 +12,8 @@ export interface IStores {
   userDetails: {
     user: IUser;
     userPage: IUser;
-    avatar: any;
-    background: any;
+    avatar: IAsset;
+    background: IAsset;
     get(userId?: number | string): void;
     canUpload: any;
     follow(followingId: number): void;
@@ -26,9 +28,9 @@ export interface IStores {
     selectedTweet: ITweet;
   };
   commentsStore: {
-    comments?: any[];
+    comments?: IComment[];
     addComment(postId: number, authorId: number, content: string): Promise<any>;
     fetchComments(postId: number): Promise<any>;
-    removeComment(commentId: number): any;
+    removeComment(postId: number, commentId: number): any;
   };
 }

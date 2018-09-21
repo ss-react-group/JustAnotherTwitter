@@ -36,8 +36,14 @@ export class Comments {
   }
 
   @action 
-  removeComment(commentId: number) {
-    console.log(commentId);
+  removeComment(postId: number, commentId: number) {
+    return Fetch.request(env.securedRoutes + '/delete_comment/' + commentId, 'json',
+      { 
+        method: 'DELETE'
+      }
+    ).then(() => {
+      this.fetchComments(postId);
+    });
   }
 };
 

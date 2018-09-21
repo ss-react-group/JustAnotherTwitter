@@ -37,7 +37,10 @@ export class CommentsList extends React.Component<ICommentsListProps, {}> {
 
   handleRemoveComment = (event: any, commentId: number) => {
     event.stopPropagation();
-    this.props.stores.commentsStore.removeComment(commentId);
+    this.props.stores.commentsStore.removeComment(
+      this.props.stores.TweetModalStore.selectedTweet.id,
+      commentId
+    );
   }
 
   render() {

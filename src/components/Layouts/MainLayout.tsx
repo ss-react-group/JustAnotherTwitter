@@ -16,10 +16,7 @@ export class MainLayout extends React.Component<IMainLayoutProps> {
       <React.Fragment>
         <ProgressBar />
         <Navigation />
-        <BackgroundImage
-          upload={this.props.stores.userDetails.canUpload}
-          source={this.props.stores.userDetails.background.filePath}
-        />
+        <BackgroundImage upload={this.props.stores.userDetails.canUpload} />
         <Info />
         <TweetModal />
 

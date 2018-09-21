@@ -31,7 +31,9 @@ export class Search extends Component<ISearchProps, ISearchState> {
   }
 
   getSuggestionValue = (suggestion: any) => {
-    console.log('Id of chosen tweet:', suggestion.id);
+    let chosenTweet = this.props.stores.tweetsStore.tweets.find((item: ITweet) => item.id === suggestion.id);
+    this.props.stores.TweetModalStore.isOpen = true;
+    this.props.stores.TweetModalStore.selectedTweet = chosenTweet;
     return suggestion.name;
   };
 
@@ -55,29 +57,26 @@ export class Search extends Component<ISearchProps, ISearchState> {
     });
   };
 
-  onSuggestionsFetchRequested = ({
+  onSuggestionsFetchRequested = async ({
     value,
     reason
   }: {
     value: any;
     reason: any;
   }) => {
-    Fetch.request(env.securedRoutes + '/posts', 'json', { method: 'GET' }).then(
-      (response: ITweet[]) => {
-        this.props.stores.tweetsStore.tweets = response;
-        const { tweets } = this.props.stores.tweetsStore;
-        const readableTweets = tweets.map((item: ITweet) => ({
-          name: item.content,
-          id: item.id
-        }));
-        this.setState({
-          tweets: readableTweets
-        });
-        this.setState({
-          suggestions: this.getSuggestions(value)
-        });
-      }
-    );
+      const response = await Fetch.request(env.securedRoutes + '/posts', 'json', { method: 'GET' });
+      this.props.stores.tweetsStore.tweets = response;
+      const { tweets } = this.props.stores.tweetsStore;
+      const readableTweets = tweets.map((item: ITweet) => ({
+        name: item.content,
+        id: item.id
+      }));
+      this.setState({
+        tweets: readableTweets
+      });
+      this.setState({
+        suggestions: this.getSuggestions(value)
+      });
   };
 
   onSuggestionsClearRequested = () => {
