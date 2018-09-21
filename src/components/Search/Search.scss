@@ -25,7 +25,6 @@
 .react-autosuggest__suggestions-container {
   display: none;
   margin-right: 10px;
-
 }
 
 .react-autosuggest__suggestions-container--open {
@@ -33,7 +32,8 @@
   display: block;
   top: 46px;
   left: 0;
-  width: 100%;
+  width: 260px;
+  border-radius: 5px;
   border: 1px solid #e6ecf0;
   background-color: #fff;
   font-weight: 300;
@@ -53,5 +53,5 @@
 }
 
 .react-autosuggest__suggestion--highlighted {
-  background-color: #ddd;
+  background-color: #E6ECF0;
 }
