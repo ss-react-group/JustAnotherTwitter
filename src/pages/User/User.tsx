@@ -11,13 +11,13 @@ interface IUserProps {
 @inject('stores')
 @observer
 export class User extends React.Component<IUserProps> {
-  componentDidMount() {
+  componentWillMount() {
     let userId = this.props.match.params.userId;
-    if (this.props.match.params.userId === 'me') {
+
+    if (userId === 'me') {
       userId = String(this.props.stores.userDetails.user.id);
     }
     this.props.stores.userDetails.userPageId = userId;
-
     this.props.stores.userDetails.get(userId);
   }
 
