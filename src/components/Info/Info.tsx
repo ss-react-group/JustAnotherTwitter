@@ -12,9 +12,7 @@ export interface IInfoProps {
   stores?: IStores;
 }
 
-export interface IInfoState {
-  userSettingModalIsOpen: any;
-}
+export interface IInfoState {}
 
 @inject('stores')
 @observer
@@ -22,21 +20,6 @@ export class Info extends React.Component<IInfoProps, IInfoState> {
   constructor(props: IInfoProps) {
     super(props);
   }
-
-  componentDidMount() {
-    this.props.stores.userDetails.get('me');
-  }
-
-  handleUpenModal = () => {
-    this.setState({
-      userSettingModalIsOpen: !this.state.userSettingModalIsOpen
-    });
-  };
-
-  follow = () => {
-    const { id: followingId } = this.props.stores.userDetails.userPage;
-    this.props.stores.userDetails.follow(followingId);
-  };
 
   render() {
     return (
@@ -79,21 +62,11 @@ export class Info extends React.Component<IInfoProps, IInfoState> {
 
           <div className="info__user-name">
             <h3 className="user-name__name">
-              {this.props.stores.userDetails.userPage &&
-                `${this.props.stores.userDetails.userPage.firstName} ${
-                  this.props.stores.userDetails.userPage.lastName
-                }`}
+              {this.props.stores.userDetails.user.firstName}{' '}
+              {this.props.stores.userDetails.user.lastName}
             </h3>
           </div>
-
-          <div className="info__user-settings">
-            {!this.props.stores.userDetails.canUpload && (
-              <button className="user-setting__button" onClick={this.follow}>
-                Follow
-              </button>
-            )}
           </div>
-        </div>
       </div>
     );
   }

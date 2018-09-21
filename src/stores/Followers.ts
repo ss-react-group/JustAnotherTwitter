@@ -1,17 +1,15 @@
-import { FollowersService } from './../services/follower';
 import { IFollowers } from './../interfaces';
 import { observable, action } from 'mobx';
 
+import { followers as followersData } from '../assets/mocks';
+
 export class Followers {
   @observable
-  list: IFollowers = [];
+  list: IFollowers;
 
   @action
-  get(userId: number) {
-    const followersApi = new FollowersService();
-    followersApi.getUser(userId).then((response: any) => {
-      this.list = [...response];
-    });
+  get() {
+    this.list = followersData;
   }
 }
 

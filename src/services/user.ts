@@ -17,14 +17,4 @@ export class UserDetailsService {
       body: JSON.stringify(userData)
     });
   }
-
-  public follow(id: string, userId: number | string) {
-    return Fetch.request(`${env.securedRoutes}/add_new_follower`, 'json', {
-      method: 'POST',
-      body: JSON.stringify({
-        followerId: id,
-        userId
-      })
-    });
-  }
 }

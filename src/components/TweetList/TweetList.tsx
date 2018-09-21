@@ -13,41 +13,20 @@ export interface IAllTweetsProps {
   userId?: any;
 }
 
-interface IAllTweetsState {
-  intervalId: any;
-}
 @inject('stores')
 @observer
-export class TweetList extends React.Component<
-  IAllTweetsProps,
-  IAllTweetsState
-> {
+export class TweetList extends React.Component<IAllTweetsProps, {}> {
   constructor(props: IAllTweetsProps) {
     super(props);
-
-    this.state = {
-      intervalId: ''
-    };
-
     this.tweetItemClick = this.tweetItemClick.bind(this);
   }
 
   componentWillMount() {
-    const intervalId = setInterval(() => {
-      if (this.props.userId) {
-        this.props.stores.tweetsStore.fetchTweets(this.props.userId);
-      } else {
-        this.props.stores.tweetsStore.fetchTweets();
-      }
-    }, 1000);
-
-    this.setState({
-      intervalId
-    });
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.state.intervalId);
+    if (this.props.userId) {
+      this.props.stores.tweetsStore.fetchTweets(this.props.userId);
+    } else {
+      this.props.stores.tweetsStore.fetchTweets();
+    }
   }
 
   tweetItemClick(event: any, selectedTweet: ITweet) {
