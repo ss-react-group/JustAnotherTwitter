@@ -3,3 +3,5 @@ yarn-error.log
 .idea/
 build/
 .prettierrc
+yarn-lock
+package-lock.json
