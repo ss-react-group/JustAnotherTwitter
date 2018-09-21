@@ -144,14 +144,14 @@ module.exports = {
               compact: true,
             },
           },
-          {
-            test: /\.scss$/,
-            use: [
-              "style-loader", // creates style nodes from JS strings
-              "css-loader", // translates CSS into CommonJS
-              "sass-loader" // compiles Sass to CSS, using Node Sass by default
-            ]
-          },
+          // {
+          //   test: /\.scss$/,
+          //   use: [
+          //     "style-loader", // creates style nodes from JS strings
+          //     "css-loader", // translates CSS into CommonJS
+          //     "sass-loader" // compiles Sass to CSS, using Node Sass by default
+          //   ]
+          // },
           // Compile .tsx?
           {
             test: /\.(ts|tsx)$/,
@@ -178,7 +178,7 @@ module.exports = {
           // use the "style" loader inside the async code so CSS from them won't be
           // in the main CSS file.
           {
-            test: /\.css$/,
+            test: /\.scss$/,
             loader: ExtractTextPlugin.extract(
               Object.assign({
                   fallback: {
@@ -187,14 +187,15 @@ module.exports = {
                       hmr: false,
                     },
                   },
-                  use: [{
-                      loader: require.resolve('css-loader'),
-                      options: {
-                        importLoaders: 1,
-                        minimize: true,
-                        sourceMap: shouldUseSourceMap,
-                      },
-                    },
+                  use: [
+                    // {
+                    //   loader: require.resolve('css-loader'),
+                    //   options: {
+                    //     importLoaders: 1,
+                    //     minimize: true,
+                    //     sourceMap: shouldUseSourceMap,
+                    //   },
+                    // },
                     {
                       loader: require.resolve('postcss-loader'),
                       options: {
@@ -215,6 +216,9 @@ module.exports = {
                         ],
                       },
                     },
+                    {
+                      loader: require.resolve('sass-loader')
+                    }
                   ],
                 },
                 extractTextPluginOptions
