@@ -68,7 +68,7 @@ export class Login extends React.Component<ILoginProps, ILoginState> {
         this.props.stores.userDetails.user = { ...foundUser };
       })
       .catch(err => {
-        this.error =  'Wrong email or password';
+        this.error =  'Your email and password did not match our records.';
       });
   };
 
