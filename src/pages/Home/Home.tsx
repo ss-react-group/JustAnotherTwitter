@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { TweetList } from '../../components/TweetList';
-import { TweetModal } from '../../components/TweetModal';
 import { inject, observer } from 'mobx-react';
 
 interface IHomeProps {
@@ -18,7 +17,6 @@ export class Home extends React.Component<IHomeProps> {
     return (
       <React.Fragment>
         <TweetList />
-        <TweetModal />
       </React.Fragment>
     );
   }

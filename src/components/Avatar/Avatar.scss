@@ -27,8 +27,6 @@
   }
 
   &__figure {
-    display: flex;
-    justify-content: center;
     overflow: hidden;
     margin: 0;
     position: relative;
@@ -37,6 +35,8 @@
     width: 70px;
 
     &--big {
+      display: flex;
+      justify-content: center;
       border-radius: 50%;
       flex: 0 0 150px;
       height: 150px;
@@ -45,15 +45,16 @@
   }
 
   &__image {
-    width: 92%;
-    height: 92%;
+    max-width: 100%;
+    height: auto;
     margin: auto;
     border-radius: 50%;
 
     &--big {
       bottom: 0;
       z-index: 1;
-
+      width: 92%;
+      height: 92%;
     }
   }
 }

@@ -19,7 +19,8 @@ interface IAvatarState {
 @observer
 export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
   static defaultProps = {
-    source: '/images/default-image-square.png'
+    source: '/images/default-image-square.png',
+    big: false
   };
 
   constructor(props: IAvatarProps) {
@@ -28,14 +29,16 @@ export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
 
   public render() {
     return (
-      <div className={`avatar ${this.props.big && 'avatar--big'}`}>
+      <div className={`avatar ${this.props.big ? 'avatar--big' : ''}`}>
         <div
-          className={`avatar__container ${this.props.big &&
-            'avatar__container--big'}`}
+          className={`avatar__container ${
+            this.props.big ? 'avatar__container--big' : ''
+          }`}
         >
           <figure
-            className={`avatar__figure ${this.props.big &&
-              'avatar__figure--big'}`}
+            className={`avatar__figure ${
+              this.props.big ? 'avatar__figure--big' : ''
+            }`}
           >
             {this.props.upload && (
               <FileUpload
@@ -44,9 +47,10 @@ export class Avatar extends React.Component<IAvatarProps, IAvatarState> {
               />
             )}
             <img
-              className={`avatar__image ${this.props.big &&
-                'avatar__image--big'}`}
-              src={this.props.stores.userDetails.avatar.filePath}
+              className={`avatar__image ${
+                this.props.big ? 'avatar__image--big' : ''
+              }`}
+              src={this.props.source}
             />
           </figure>
         </div>

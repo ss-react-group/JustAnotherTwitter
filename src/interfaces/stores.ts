@@ -14,8 +14,9 @@ export interface IStores {
     userPage: IUser;
     avatar: IAsset;
     background: IAsset;
-    get(userId?: number): void;
+    get(userId?: number | string): void;
     canUpload: any;
+    follow(followingId: number): void;
   };
   loadingIndicators: ILoadingIndicators;
   textareaStore: {
@@ -27,9 +28,9 @@ export interface IStores {
     selectedTweet: ITweet;
   };
   commentsStore: {
-    comments?: IComment[],
-    addComment(postId: number ,authorId: number, content: string): Promise<any>,
-    fetchComments(postId: number): Promise<any>,
-    removeComment(postId: number, commentId: number): any
-  }
+    comments?: IComment[];
+    addComment(postId: number, authorId: number, content: string): Promise<any>;
+    fetchComments(postId: number): Promise<any>;
+    removeComment(postId: number, commentId: number): any;
+  };
 }
